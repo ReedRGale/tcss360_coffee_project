@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import objects.Message;
 import objects.User;
 
 /**
@@ -88,30 +87,6 @@ public class Model {
         return null;
     }
     
-    public int newUser(User usr) throws SQLException
-    {
-        String sqlInsert="insert into users (name, age) values ('" + usr.getName() + "'" + "," + usr.getAge() + ");";
-        Statement s = createStatement();
-        logger.log(Level.INFO, "attempting statement execute");
-        s.execute(sqlInsert,Statement.RETURN_GENERATED_KEYS);
-        logger.log(Level.INFO, "statement executed.  atempting get generated keys");
-        ResultSet rs = s.getGeneratedKeys();
-        logger.log(Level.INFO, "retrieved keys from statement");
-        int userid = -1;
-        while (rs.next())
-            userid = rs.getInt(3);   // assuming 3rd column is userid
-        logger.log(Level.INFO, "The new user id=" + userid);
-        return userid;
-    }
-    
-    public void deleteUser(int userid) throws SQLException
-    {
-        String sqlDelete="delete from users where userid=?";
-        PreparedStatement pst = createPreparedStatement(sqlDelete);
-        pst.setInt(1, userid);
-        pst.execute();
-    }
-    
     public User[] getUsers() throws SQLException
     {
         LinkedList<User> ll = new LinkedList<User>();
@@ -122,92 +97,62 @@ public class Model {
         {
             logger.log(Level.INFO, "Reading row...");
             User usr = new User();
-            usr.setName(rows.getString("name"));
-            usr.setUserId(rows.getInt("userid"));
-            usr.setAge(rows.getInt("age"));
-            logger.log(Level.INFO, "Adding user to list with id=" + usr.getUserid());
+            usr.setUsername(rows.getString("username"));
+            usr.setPassword(rows.getString("password"));
+            usr.setEmail(rows.getString("email"));
+            logger.log(Level.INFO, "\nAdding user to list with username=" + usr.getUsername());
             ll.add(usr);
         }
         return ll.toArray(new User[ll.size()]);
     }
     
-    public boolean updateUser(User usr) throws SQLException
+    public String newUser(User usr) throws SQLException
     {
-        StringBuilder sqlQuery = new StringBuilder();
-        sqlQuery.append("update users ");
-        sqlQuery.append("set name='" + usr.getName() + "', ");
-        sqlQuery.append("age=" + usr.getAge() + " ");
-        sqlQuery.append("where userid=" + usr.getUserid() + ";");
-        Statement st = createStatement();
-        logger.log(Level.INFO, "UPDATE SQL=" + sqlQuery.toString());
-        return st.execute(sqlQuery.toString());
-    }
-    
-    public int newMessage(Message msg) throws SQLException
-    {
-        // JSON file must be formatted as:
-        // {userId, message, dateadded, messageId}
+        // Design the SQL statement that we're going to evaulate.
+        // This statement creates a new User and sets it into a folder called:
+        // ..."users"...
+        // Unless the @path is changed at the top of UserService.
+        String sqlInsert= "insert into users (username, password, email) values ('" 
+                + usr.getUsername() + "','" 
+                + usr.getPassword() + "','" 
+                + usr.getEmail() + "');";
         
-        // Define the SQL insert we're inserting.
-        String sqlInsert="insert into messages (message, dateadded, userId) values "
-                + "('" + msg.getMessage() + "'," 
-                + "now()" + ","
-                + msg.getUserId() + ");";
-        
-        // Create the object that will execute our SQL insert
-        // Implicitly defines the connection to the server.
+        // Evaluate the SQL statement...
         Statement s = createStatement();
         logger.log(Level.INFO, "attempting statement execute");
         s.execute(sqlInsert,Statement.RETURN_GENERATED_KEYS);
         logger.log(Level.INFO, "statement executed.  atempting get generated keys");
-        ResultSet rs = s.getGeneratedKeys();
-        logger.log(Level.INFO, "retrieved keys from statement");
+//        ResultSet rs = s.getGeneratedKeys();
+//        logger.log(Level.INFO, "retrieved keys from statement");
+//        
+//        while (rs.next()); 
         
-        // Generate message ID.
-        int msgId = -1;
-        while (rs.next())
-            msgId = rs.getInt(1);   // assuming 1st column is msgid
-        logger.log(Level.INFO, "The new msg id=" + msgId);
-        return msgId;
+        return usr.getUsername();
     }
     
-    public Message[] getMessages() throws SQLException
+    public boolean updateUser(User usr) throws SQLException
     {
-        LinkedList<Message> ll = new LinkedList<Message>();
-        String sqlQuery ="select * from messages;";
-        Statement st = createStatement();
-        ResultSet rows = st.executeQuery(sqlQuery);
-        while (rows.next())
-        {
-            logger.log(Level.INFO, "Reading row...");
-            Message msg = new Message();
-            msg.setMessageId(rows.getInt("messageId"));
-            msg.setUserId(rows.getInt("userId"));
-            msg.setMessage(rows.getString("message"));
-            msg.setDateadded(rows.getDate("dateadded"));
-            logger.log(Level.INFO, "Adding user to list with id=" + msg.getMessageId());
-            ll.add(msg);
-        }
-        return ll.toArray(new Message[ll.size()]);
-    }
-    
-    public boolean updateMessage(Message msg) throws SQLException
-    {
+        // Build our SQL query...
         StringBuilder sqlQuery = new StringBuilder();
-        sqlQuery.append("update messages ");
-        sqlQuery.append("set message='" + msg.getMessage() + "', ");
-        sqlQuery.append("userId=" + msg.getUserId() + " ");
-        sqlQuery.append("where messageId=" + msg.getMessageId() + ";");
+        sqlQuery.append("update users ");
+        sqlQuery.append("set email='" + usr.getEmail() + "', ");
+        sqlQuery.append("password='" + usr.getPassword() + "' ");
+        sqlQuery.append("where username='" + usr.getUsername() + "';");
+        
+        // Execute the query...
         Statement st = createStatement();
         logger.log(Level.INFO, "UPDATE SQL=" + sqlQuery.toString());
         return st.execute(sqlQuery.toString());
     }
     
-    public void deleteMessage(int messageId) throws SQLException
+    public void deleteUser(String username) throws SQLException
     {
-        String sqlDelete="delete from messages where messageId=?";
+        // Prepare the SQL statement...
+        String sqlDelete="delete from users where username=?";
         PreparedStatement pst = createPreparedStatement(sqlDelete);
-        pst.setInt(1, messageId);
+        pst.setString(1, username);
+        
+        // Attempt user destruction...
         pst.execute();
     }
 }
