@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.sample_maven_web_app;
+package com.mycompany.tcss360_coffee_project;
 
 import data.Model;
 import javax.ws.rs.core.Context;

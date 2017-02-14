@@ -8,11 +8,11 @@
         </servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>com.mycompany.sample_maven_web_app</param-value>
+            <param-value>com.mycompany.tcss360_coffee_project</param-value>
         </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>Jersey Web Application</servlet-name>
-        <url-pattern>/tcss360/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>
