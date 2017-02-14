@@ -122,10 +122,10 @@ public class Model {
         logger.log(Level.INFO, "attempting statement execute");
         s.execute(sqlInsert,Statement.RETURN_GENERATED_KEYS);
         logger.log(Level.INFO, "statement executed.  atempting get generated keys");
-//        ResultSet rs = s.getGeneratedKeys();
-//        logger.log(Level.INFO, "retrieved keys from statement");
-//        
-//        while (rs.next()); 
+        ResultSet rs = s.getGeneratedKeys();
+        logger.log(Level.INFO, "retrieved keys from statement");
+        
+        while (rs.next()); 
         
         return usr.getUsername();
     }
