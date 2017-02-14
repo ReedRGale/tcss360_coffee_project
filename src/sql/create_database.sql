@@ -4,20 +4,13 @@
  * and open the template in the editor.
  */
 /**
- * Author:  wlloyd
- * Created: Feb 4, 2017
+ * Author:  Jared
+ * Created: Feb 14, 2017
  */
 
 create table users (
-    name varchar(40),
-    age integer,
-    userid serial primary key
-);
-
-create table messages (
-    messageid serial primary key,
-    userid integer,
-    message varchar(255),
-    dateadded timestamp
+    username varchar(40),
+    password varchar(40),
+    email varchar(40),
 );
 
