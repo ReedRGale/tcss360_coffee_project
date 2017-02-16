@@ -15,7 +15,7 @@ create table users (
 );
 
 create table shops (
-    shopid int,
+    shopid serial primary key,
     name varchar(50),
     city varchar(50),
     state varchar(2),

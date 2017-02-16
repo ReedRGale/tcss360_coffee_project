@@ -177,6 +177,7 @@ public class Model {
             shp.setPhone(rows.getInt("zip"));
             shp.setOpentime(rows.getInt("opentime"));
             shp.setClosetime(rows.getInt("closetime"));
+            shp.setDescription(rows.getString("description"));
             
             logger.log(Level.INFO, "\nAdding shop to list with ID: " + shp.getShopid());
             ll.add(shp);
