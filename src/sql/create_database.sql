@@ -14,3 +14,15 @@ create table users (
     email varchar(40)
 );
 
+create table shops (
+    shopid int,
+    name varchar(50),
+    city varchar(50),
+    state varchar(2),
+    zip long,
+    phone long,
+    opentime int,
+    closetime int,
+    description text
+);
+
