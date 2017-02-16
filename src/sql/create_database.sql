@@ -19,8 +19,8 @@ create table shops (
     name varchar(50),
     city varchar(50),
     state varchar(2),
-    zip long,
-    phone long,
+    zip int,
+    phone int,
     opentime int,
     closetime int,
     description text

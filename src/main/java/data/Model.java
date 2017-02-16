@@ -173,8 +173,8 @@ public class Model {
             shp.setName(rows.getString("name"));
             shp.setCity(rows.getString("city"));
             shp.setState(rows.getString("state"));
-            shp.setZip(rows.getLong("zip"));
-            shp.setPhone(rows.getLong("zip"));
+            shp.setZip(rows.getInt("zip"));
+            shp.setPhone(rows.getInt("zip"));
             shp.setOpentime(rows.getInt("opentime"));
             shp.setClosetime(rows.getInt("closetime"));
             
