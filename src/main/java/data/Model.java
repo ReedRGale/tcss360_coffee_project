@@ -18,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import objects.Shop;
 import objects.User;
 
 /**
@@ -151,6 +152,97 @@ public class Model {
         String sqlDelete="delete from users where username=?";
         PreparedStatement pst = createPreparedStatement(sqlDelete);
         pst.setString(1, username);
+        
+        // Attempt user destruction...
+        pst.execute();
+    }
+    
+    public Shop[] getShops() throws SQLException
+    {
+        LinkedList<Shop> ll = new LinkedList<Shop>();
+        String sqlQuery ="select * from shops;";
+        Statement st = createStatement();
+        ResultSet rows = st.executeQuery(sqlQuery);
+        while (rows.next())
+        {
+            logger.log(Level.INFO, "Reading row...");
+            
+            // Read the row of information.
+            Shop shp = new Shop();
+            shp.setShopid(rows.getInt("shopid"));
+            shp.setName(rows.getString("name"));
+            shp.setCity(rows.getString("city"));
+            shp.setState(rows.getString("state"));
+            shp.setZip(rows.getLong("zip"));
+            shp.setPhone(rows.getLong("zip"));
+            shp.setOpentime(rows.getInt("opentime"));
+            shp.setClosetime(rows.getInt("closetime"));
+            
+            logger.log(Level.INFO, "\nAdding shop to list with ID: " + shp.getShopid());
+            ll.add(shp);
+        }
+        return ll.toArray(new Shop[ll.size()]);
+    }
+    
+    public int newShop(Shop shp) throws SQLException
+    {
+        // Design the SQL statement that we're going to evaulate.
+        // This statement creates a new Shop and sets it into a folder called:
+        // ..."shops"...
+        // Unless the @path is changed at the top of ShopService.
+        String sqlInsert= "insert into shops (username, password, email) values (" 
+                + shp.getShopid() + ","
+                + shp.getName() + "','"
+                + shp.getCity() + "','"
+                + shp.getState() + "',"
+                + shp.getZip() + ","
+                + shp.getPhone() + ","
+                + shp.getOpentime() + ","
+                + shp.getClosetime() + ",'"
+                + shp.getDescription() + "');";
+        
+        // Evaluate the SQL statement...
+        Statement s = createStatement();
+        logger.log(Level.INFO, "attempting statement execute");
+        s.execute(sqlInsert,Statement.RETURN_GENERATED_KEYS);
+        logger.log(Level.INFO, "statement executed.  atempting get generated keys");
+        ResultSet rs = s.getGeneratedKeys();
+        logger.log(Level.INFO, "retrieved keys from statement");
+        
+        int shpid = -1;
+        while (rs.next())
+            shpid = rs.getInt(1);   // assuming 1st column is shopid 
+        
+        return shpid;
+    }
+    
+    public boolean updateShop(Shop shp) throws SQLException
+    {
+        // Build our SQL query...
+        StringBuilder sqlQuery = new StringBuilder();
+        sqlQuery.append("update shops ");
+        sqlQuery.append("set name='" + shp.getName() + "', ");
+        sqlQuery.append("city='" + shp.getCity() + "', ");
+        sqlQuery.append("state='" + shp.getState() + "', ");
+        sqlQuery.append("zip=" + shp.getZip() + ", ");
+        sqlQuery.append("phone=" + shp.getPhone() + ", ");
+        sqlQuery.append("opentime=" + shp.getOpentime() + ", ");
+        sqlQuery.append("closetime=" + shp.getClosetime() + ", ");
+        sqlQuery.append("description='" + shp.getDescription() + "' ");
+        sqlQuery.append("where shopid=" + shp.getShopid() + ";");
+        
+        // Execute the query...
+        Statement st = createStatement();
+        logger.log(Level.INFO, "UPDATE SQL=" + sqlQuery.toString());
+        return st.execute(sqlQuery.toString());
+    }
+    
+    public void deleteShop(int shopid) throws SQLException
+    {
+        // Prepare the SQL statement...
+        String sqlDelete="delete from shops where shopid=?";
+        PreparedStatement pst = createPreparedStatement(sqlDelete);
+        pst.setInt(1, shopid);
         
         // Attempt user destruction...
         pst.execute();
