@@ -1,0 +1,10 @@
+{
+  "name": "Magic Five",
+  "city": "Special City",
+  "state": "CA",
+  "zip": 98405,
+  "phone": 2222222222,
+  "opentime": 200,
+  "closetime": 1700,
+  "description": "Unique"
+}

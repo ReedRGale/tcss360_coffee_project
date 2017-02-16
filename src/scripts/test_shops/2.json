@@ -1,0 +1,10 @@
+{
+  "name": "Two",
+  "city": "Tacoma",
+  "state": "WA",
+  "zip": 98404,
+  "phone": 1111111111,
+  "opentime": 100,
+  "closetime": 1800,
+  "description": "Generic"
+}

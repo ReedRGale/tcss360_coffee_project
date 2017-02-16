@@ -192,7 +192,7 @@ public class Model {
         // Unless the @path is changed at the top of ShopService.
         String sqlInsert= "insert into shops "
                 + "(name, city, state, zip, phone, opentime, closetime, description)"
-                + " values (" 
+                + " values ('" 
                 + shp.getName() + "','"
                 + shp.getCity() + "','"
                 + shp.getState() + "',"
