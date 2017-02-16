@@ -114,6 +114,14 @@ public class ShopService
         StringBuilder text = new StringBuilder();
         text.append("\nThe JSON obj:" + jobj + "\n");
         text.append("Created " + shp.getShopid() + "...\n");
+        text.append("Name: " + shp.getName() + "...\n" );
+        text.append("City: " + shp.getCity() + "...\n" );
+        text.append("State: " + shp.getState() + "...\n" );
+        text.append("Zip: " + shp.getZip() + "...\n" );
+        text.append("Phone: " + shp.getPhone() + "...\n" );
+        text.append("Opentime: " + shp.getOpentime() + "...\n" );
+        text.append("Closetime: " + shp.getClosetime() + "...\n" );
+        text.append("Description: " + shp.getDescription() + "...\n" );
         
         try {
             Model db = Model.singleton();
