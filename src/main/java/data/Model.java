@@ -190,7 +190,9 @@ public class Model {
         // This statement creates a new Shop and sets it into a folder called:
         // ..."shops"...
         // Unless the @path is changed at the top of ShopService.
-        String sqlInsert= "insert into shops (username, password, email) values (" 
+        String sqlInsert= "insert into shops "
+                + "(shopid, name, city, state, zip, phone, opentime, closetime, description)"
+                + " values (" 
                 + shp.getShopid() + ","
                 + shp.getName() + "','"
                 + shp.getCity() + "','"
