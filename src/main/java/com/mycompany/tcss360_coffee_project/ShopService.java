@@ -105,7 +105,7 @@ public class ShopService
 "}\n" +
 "</script>\n" +
 "\n" +
-"<script src=\"https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap\"></script></body></html>");
+"<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
         return sb.toString();
     }
     
