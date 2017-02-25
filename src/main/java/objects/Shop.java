@@ -13,6 +13,7 @@ public class Shop
 {
     private int shopid;
     private String name;
+    private String street;
     private String city;
     private String state;
     private int zip;
@@ -35,6 +36,14 @@ public class Shop
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCity() {

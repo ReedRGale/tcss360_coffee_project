@@ -171,6 +171,7 @@ public class Model {
             Shop shp = new Shop();
             shp.setShopid(rows.getInt("shopid"));
             shp.setName(rows.getString("name"));
+            shp.setState(rows.getString("street"));
             shp.setCity(rows.getString("city"));
             shp.setState(rows.getString("state"));
             shp.setZip(rows.getInt("zip"));
@@ -195,6 +196,7 @@ public class Model {
                 + "(name, city, state, zip, phone, opentime, closetime, description)"
                 + " values ('" 
                 + shp.getName() + "','"
+                + shp.getStreet() + "','"
                 + shp.getCity() + "','"
                 + shp.getState() + "',"
                 + shp.getZip() + ","
@@ -224,6 +226,7 @@ public class Model {
         StringBuilder sqlQuery = new StringBuilder();
         sqlQuery.append("update shops ");
         sqlQuery.append("set name='" + shp.getName() + "', ");
+        sqlQuery.append("street='" + shp.getStreet() + "', ");
         sqlQuery.append("city='" + shp.getCity() + "', ");
         sqlQuery.append("state='" + shp.getState() + "', ");
         sqlQuery.append("zip=" + shp.getZip() + ", ");

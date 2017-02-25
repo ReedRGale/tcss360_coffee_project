@@ -64,6 +64,7 @@ public class ShopService
                 + "<table cellpadding=10 border=1><tr>"
                 + "<td>ID</td>"
                 + "<td>Name</td>"
+                + "<td>Street</td>"
                 + "<td>City</td>"
                 + "<td>State</td>"
                 + "<td>Zip</td>"
@@ -80,6 +81,7 @@ public class ShopService
                 sb.append("<tr><td>" 
                         + shps[i].getShopid() + "</td><td>"
                         + shps[i].getName() + "</td><td>"
+                        + shps[i].getStreet() + "</td><td>"
                         + shps[i].getCity() + "</td><td>"
                         + shps[i].getState() + "</td><td>"
                         + shps[i].getZip() + "</td><td>"
@@ -94,18 +96,18 @@ public class ShopService
         }
         sb.append("</table>");
         sb.append("<div id=\"googleMap\" style=\"width:100%;height:400px;\"></div>\n" +
-"\n" +
-"<script>\n" +
-"function myMap() {\n" +
-"var mapProp= {\n" +
-"    center:new google.maps.LatLng(51.508742,-0.120850),\n" +
-"    zoom:5,\n" +
-"};\n" +
-"var map=new google.maps.Map(document.getElementById(\"googleMap\"),mapProp);\n" +
-"}\n" +
-"</script>\n" +
-"\n" +
-"<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
+        "\n" +
+        "<script>\n" +
+        "function myMap() {\n" +
+        "var mapProp= {\n" +
+        "    center:new google.maps.LatLng(51.508742,-0.120850),\n" +
+        "    zoom:5,\n" +
+        "};\n" +
+        "var map=new google.maps.Map(document.getElementById(\"googleMap\"),mapProp);\n" +
+        "}\n" +
+        "</script>\n" +
+        "\n" +
+        "<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
         return sb.toString();
     }
     
@@ -116,9 +118,8 @@ public class ShopService
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String createUser(String jobj) throws IOException 
+    public String createShop(String jobj) throws IOException 
     {
-        
         // Turn the JSON into a Shop Object.
         ObjectMapper mapper = new ObjectMapper();
         Shop shp = mapper.readValue(jobj, Shop.class);
@@ -128,6 +129,7 @@ public class ShopService
         text.append("\nThe JSON obj:" + jobj + "\n");
         text.append("Created " + shp.getShopid() + "...\n");
         text.append("Name: " + shp.getName() + "...\n" );
+        text.append("Street: " + shp.getStreet() + "...\n" );
         text.append("City: " + shp.getCity() + "...\n" );
         text.append("State: " + shp.getState() + "...\n" );
         text.append("Zip: " + shp.getZip() + "...\n" );
@@ -163,7 +165,7 @@ public class ShopService
     @PUT
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String updateUser(String jobj) throws IOException
+    public String updateShop(String jobj) throws IOException
     {
         // Convert JSON to User object.
         ObjectMapper mapper = new ObjectMapper();

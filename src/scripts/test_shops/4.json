@@ -1,9 +1,10 @@
 {
   "name": "Four",
+  "street": "123 Beet Street",
   "city": "Tacoma",
   "state": "WA",
   "zip": 98404,
-  "phone": 1111111111,
+  "phone": 2532532253,
   "opentime": 100,
   "closetime": 1800,
   "description": "Generic"

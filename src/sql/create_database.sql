@@ -17,6 +17,7 @@ create table users (
 create table shops (
     shopid serial primary key,
     name varchar(50),
+    street varchar(255),
     city varchar(50),
     state varchar(2),
     zip int,
