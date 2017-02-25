@@ -171,7 +171,7 @@ public class Model {
             Shop shp = new Shop();
             shp.setShopid(rows.getInt("shopid"));
             shp.setName(rows.getString("name"));
-            shp.setState(rows.getString("street"));
+            shp.setStreet(rows.getString("street"));
             shp.setCity(rows.getString("city"));
             shp.setState(rows.getString("state"));
             shp.setZip(rows.getInt("zip"));
