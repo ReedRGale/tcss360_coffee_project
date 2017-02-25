@@ -92,7 +92,20 @@ public class ShopService
         {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
         }
-        sb.append("</table></body></html>");
+        sb.append("</table>");
+        sb.append("<div id=\"googleMap\" style=\"width:100%;height:400px;\"></div>\n" +
+"\n" +
+"<script>\n" +
+"function myMap() {\n" +
+"var mapProp= {\n" +
+"    center:new google.maps.LatLng(51.508742,-0.120850),\n" +
+"    zoom:5,\n" +
+"};\n" +
+"var map=new google.maps.Map(document.getElementById(\"googleMap\"),mapProp);\n" +
+"}\n" +
+"</script>\n" +
+"\n" +
+"<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
         return sb.toString();
     }
     
