@@ -144,7 +144,7 @@ public class Model {
         sqlQuery.append("set email='" + usr.getEmail() + "', ");
         sqlQuery.append("password='" + usr.getPassword() + "', ");
         sqlQuery.append("username='" + usr.getUsername() + "', ");
-        sqlQuery.append("where userid='" + usr.getUserid() + "';");
+        sqlQuery.append("where userid=" + usr.getUserid() + ";");
         
         // Execute the query...
         Statement st = createStatement();

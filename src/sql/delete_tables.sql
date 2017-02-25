@@ -1,2 +1,2 @@
 
-drop table shops;
+drop table users;
