@@ -16,7 +16,7 @@ public class Shop
     private String city;
     private String state;
     private int zip;
-    private int phone;
+    private String phone;
     private int opentime;
     private int closetime;
     private String description;
@@ -61,11 +61,11 @@ public class Shop
         this.zip = zip;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

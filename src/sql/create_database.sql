@@ -20,7 +20,7 @@ create table shops (
     city varchar(50),
     state varchar(2),
     zip int,
-    phone int,
+    phone varchar(11),
     opentime int,
     closetime int,
     description text
