@@ -135,8 +135,8 @@ public class UserService {
             Model db = Model.singleton();
             int userid = usr.getUserid();
             db.updateUser(usr);
-            logger.log(Level.INFO, "update user with username=" + userid);
-            text.append("User updated with username=" + userid + "\n");
+            logger.log(Level.INFO, "update user with id: " + userid);
+            text.append("User updated with id: " + userid + "\n");
         }
         catch (SQLException sqle)
         {
