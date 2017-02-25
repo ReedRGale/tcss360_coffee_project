@@ -98,6 +98,7 @@ public class Model {
         {
             logger.log(Level.INFO, "Reading row...");
             User usr = new User();
+            usr.setUserid(rows.getInt("userid"));
             usr.setUsername(rows.getString("username"));
             usr.setPassword(rows.getString("password"));
             usr.setEmail(rows.getString("email"));
@@ -107,7 +108,7 @@ public class Model {
         return ll.toArray(new User[ll.size()]);
     }
     
-    public String newUser(User usr) throws SQLException
+    public int newUser(User usr) throws SQLException
     {
         // Design the SQL statement that we're going to evaulate.
         // This statement creates a new User and sets it into a folder called:
@@ -126,9 +127,13 @@ public class Model {
         ResultSet rs = s.getGeneratedKeys();
         logger.log(Level.INFO, "retrieved keys from statement");
         
-        while (rs.next()); 
+        while (rs.next());
         
-        return usr.getUsername();
+        int shpid = -1;
+        while (rs.next())
+            shpid = rs.getInt(1);   // assuming 1st column is shopid 
+        
+        return shpid;
     }
     
     public boolean updateUser(User usr) throws SQLException
@@ -137,8 +142,9 @@ public class Model {
         StringBuilder sqlQuery = new StringBuilder();
         sqlQuery.append("update users ");
         sqlQuery.append("set email='" + usr.getEmail() + "', ");
-        sqlQuery.append("password='" + usr.getPassword() + "' ");
-        sqlQuery.append("where username='" + usr.getUsername() + "';");
+        sqlQuery.append("password='" + usr.getPassword() + "', ");
+        sqlQuery.append("username='" + usr.getUsername() + "', ");
+        sqlQuery.append("where userid='" + usr.getUserid() + "';");
         
         // Execute the query...
         Statement st = createStatement();
@@ -146,12 +152,12 @@ public class Model {
         return st.execute(sqlQuery.toString());
     }
     
-    public void deleteUser(String username) throws SQLException
+    public void deleteUser(int userid) throws SQLException
     {
         // Prepare the SQL statement...
-        String sqlDelete="delete from users where username=?";
+        String sqlDelete="delete from users where userid=?";
         PreparedStatement pst = createPreparedStatement(sqlDelete);
-        pst.setString(1, username);
+        pst.setInt(1, userid);
         
         // Attempt user destruction...
         pst.execute();
