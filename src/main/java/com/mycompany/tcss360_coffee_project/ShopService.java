@@ -122,12 +122,12 @@ public class ShopService {
                           shps[i].getCity() + ", " + 
                           shps[i].getState() + "'],\n");
             }
+            sb.append("];\n");
+            sb.append("var infoWindowContent = [\n");
+             for (int i = 0; i < shps.length; i++) {
+                sb.append("['<div><strong>" + shps[i].getName() + "</strong></div>'],");
+            }
                 sb.append("];\n"
-                + "    var infoWindowContent = [\n"
-                + "        ['<div><strong>this works 1</strong></div>'],"
-                + "        ['<div><strong>this works 2</strong></div>'],"
-                + "        ['<div><strong>this works 3</strong></div>']"
-                + "    ];\n"
                 //initializer of the map
                 + "function myMap() {\n"
                 + "var  map = new google.maps.Map(document.getElementById(\"googleMap\"), {\n"
