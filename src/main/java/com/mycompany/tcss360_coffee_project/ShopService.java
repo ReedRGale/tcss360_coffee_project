@@ -126,6 +126,8 @@ public class ShopService {
                 + "      lng: 150.644\n"
                 + "    }\n"
                 + "  });\n"
+                + "  var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
+
                 + "  var geocoder = new google.maps.Geocoder();\n"
                 + "for( i = 0; i < shops.length; i++ ) {\n"
                 + "  geocodeAddress(shops[i][1], i, shops[i][0], geocoder, map);\n"
@@ -167,7 +169,6 @@ public class ShopService {
                 + "        position: results[0].geometry.location,\n"
                 + "        title: title\n"// <---Coffee Shop Name will go here
                 + "      });\n"
-                + "  var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
 
                 + "        google.maps.event.addListener(marker, 'click', (function(marker, i) {\n"
                 + "console.log(marker, i);"
