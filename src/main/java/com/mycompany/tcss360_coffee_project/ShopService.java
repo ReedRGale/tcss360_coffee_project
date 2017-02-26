@@ -117,10 +117,10 @@ public class ShopService {
                 + "var shops = [\n");
             
             for (int i = 0; i < shps.length; i++) {
-                sb.append("[" + shps[i].getName() + ", " +
+                sb.append("['" + shps[i].getName() + "', '" +
                           shps[i].getStreet() + " " + 
                           shps[i].getCity() + ", " + 
-                          shps[i].getState() + "],\n");
+                          shps[i].getState() + "'],\n");
             }
                 sb.append("];\n"
                 + "    var infoWindowContent = [\n"
