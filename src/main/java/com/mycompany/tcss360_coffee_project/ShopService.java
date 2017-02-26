@@ -108,7 +108,7 @@ public class ShopService
                 + "var address2 = \"6244 25th Ave NE, Seattle, Washington\";\n"
                 + "var address3 = \"936 13th St. SE, Puyallup, Washington\";\n"
                 
-                + "$(document).on('ready', myMap);\n"
+//                + "$(document).on('ready', myMap);\n"
                 + "\n"
                 + "function myMap() {\n"
                 + "  var map = new google.maps.Map(document.getElementById(\"googleMap\"), {\n"
