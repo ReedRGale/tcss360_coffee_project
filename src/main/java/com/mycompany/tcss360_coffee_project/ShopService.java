@@ -109,7 +109,14 @@ public class ShopService
                 + "var address3 = \"936 13th St. SE, Puyallup, Washington\";\n"
                 
 //                + "$(document).on('ready', myMap);\n"
-                + "\n"
+                
+                + "    var markers = [\n"
+                + "        ['Starbucks', Starbucks, Seattle, Washington],\n"
+                + "        ['Anthem', 6244 25th Ave NE, Seattle, Washington]\n"
+                + "        ['Forza', 6244 25th Ave NE, Seattle, Washington]\n"
+                + "    ];\n"
+                
+                //initializer of the map
                 + "function myMap() {\n"
                 + "  var map = new google.maps.Map(document.getElementById(\"googleMap\"), {\n"
                 + "    zoom: 8,\n"
@@ -126,16 +133,38 @@ public class ShopService
                 + "}\n"
                 
                 //Converts the Address to a Geolocation
-                + "function geocodeAddress(address, geocoder, resultsMap) {\n"
+//                + "function geocodeAddress(address, geocoder, resultsMap) {\n"
+//                + "  geocoder.geocode({\n"
+//                + "    'address': address\n"
+//                + "  }, function(results, status) {\n"
+//                + "    if (status === google.maps.GeocoderStatus.OK) {\n"
+//                + "      resultsMap.setCenter(results[0].geometry.location);\n"
+//                + "      var marker = new google.maps.Marker({\n"
+//                + "        map: resultsMap,\n"
+//                + "        label: labels[labelIndex++ % labels.length],\n"
+//                + "        position: results[0].geometry.location,\n"
+////                + "        title: markers[i][0]" <---Coffee Shop Name will go here
+//                + "      });\n"
+//                + "      markers.push(marker);\n"
+//                + "      updateZoom(resultsMap);\n"
+//                + "    } else {\n"
+//                + "      alert('Geocode was not successful for the following reason: ' + status);\n"
+//                + "    }\n"
+//                + "  });\n"
+//                + "}\n"
+                
+                + "function geocodeAddress(markers, geocoder, resultsMap) {\n"
+                + "for( i = 0; i < markers.length; i++ ) {\n"
                 + "  geocoder.geocode({\n"
-                + "    'address': address\n"
+                + "    'address': markers[i][1]\n"
                 + "  }, function(results, status) {\n"
                 + "    if (status === google.maps.GeocoderStatus.OK) {\n"
                 + "      resultsMap.setCenter(results[0].geometry.location);\n"
                 + "      var marker = new google.maps.Marker({\n"
                 + "        map: resultsMap,\n"
                 + "        label: labels[labelIndex++ % labels.length],\n"
-                + "        position: results[0].geometry.location\n"
+                + "        position: results[0].geometry.location,\n"
+                + "        title: markers[i][0]"// <---Coffee Shop Name will go here
                 + "      });\n"
                 + "      markers.push(marker);\n"
                 + "      updateZoom(resultsMap);\n"
@@ -144,8 +173,9 @@ public class ShopService
                 + "    }\n"
                 + "  });\n"
                 + "}\n"
+                + "}\n"
        
-                
+                //fits all the markers within the map view 
                 + "function updateZoom(resultsMap) {\n"
                 + "  var bounds = new google.maps.LatLngBounds();\n"
                 + "  for (i = 0; i < markers.length; i++) {\n"
