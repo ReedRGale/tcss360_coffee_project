@@ -110,7 +110,7 @@ public class ShopService
                 
 //                + "$(document).on('ready', myMap);\n"
                 
-                + "var markers = [\n"
+                + "var shops = [\n"
                 + " ['Starbucks', 'Starbucks Seattle, Washington'],\n"
                 + " ['Anthem', '6244 25th Ave NE Seattle, Washington'],\n"
                 + " ['Forza', '6244 25th Ave NE Seattle, Washington']\n"
@@ -126,8 +126,8 @@ public class ShopService
                 + "    }\n"
                 + "  });\n"
                 + "  var geocoder = new google.maps.Geocoder();\n"
-                + "for( i = 0; i < markers.length; i++ ) {\n"
-                + "  geocodeAddress(markers[i][1], geocoder, map);\n"
+                + "for( i = 0; i < shops.length; i++ ) {\n"
+                + "  geocodeAddress(shops[i][1], geocoder, map);\n"
                 + "}\n"
 //                + "  geocodeAddress(address2, geocoder, map);\n"
 //                + "  geocodeAddress(address3, geocoder, map);\n"
