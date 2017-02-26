@@ -275,7 +275,7 @@ public class Model {
             rvw.setExpenserank(rows.getInt("expenserank"));
             rvw.setCoffeerank(rows.getInt("coffeerank"));
             rvw.setDateadded(rows.getDate("dateadded"));
-            rvw.setOwner(rows.getInt("user"));
+            rvw.setOwner(rows.getInt("owner"));
             rvw.setShop(rows.getInt("shop"));
             rvw.setComment(rows.getString("comment"));
             logger.log(Level.INFO, "Adding user to list with id=" + rvw.getReviewid());

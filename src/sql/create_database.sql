@@ -35,5 +35,6 @@ create table reviews (
     coffeerank int,
     dateadded timestamp,
     owner int,
+    shop int,
     comment text
 );

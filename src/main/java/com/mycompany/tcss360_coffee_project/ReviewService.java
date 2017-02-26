@@ -144,11 +144,11 @@ public class ReviewService
     @Consumes(MediaType.APPLICATION_JSON)
     public String updateReview(String jobj) throws IOException
     {
-        // Convert JSON to User object.
+        // Convert JSON to Review object.
         ObjectMapper mapper = new ObjectMapper();
         Review rvw = mapper.readValue(jobj, Review.class);
         
-        // Update the user.
+        // Update the review.
         StringBuilder text = new StringBuilder();
         try {
             Model db = Model.singleton();
@@ -174,18 +174,18 @@ public class ReviewService
     /**
      * DELETE method for destroying an instance of a Shop.
      * The function deletes a shop with a certain ID.
-     * @param jobj: A JSON object to format into a User object.
+     * @param jobj: A JSON object to format into a Review object.
      */
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String deleteReview(String jobj) throws IOException
     {
-        // Convert JSON to a User object...
+        // Convert JSON to a Review object...
         ObjectMapper mapper = new ObjectMapper();
         Review shp = mapper.readValue(jobj, Review.class);
         
-        // Attempt user destruction...
+        // Attempt review destruction...
         StringBuilder text = new StringBuilder();
         try {
             Model db = Model.singleton();
