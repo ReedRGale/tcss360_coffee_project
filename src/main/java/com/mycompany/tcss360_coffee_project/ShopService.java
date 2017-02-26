@@ -113,9 +113,9 @@ public class ShopService {
                 + " ['Forza', '936 13th St. SE, Puyallup, Washington']\n"
                 + "];\n"
                 + "    var infoWindowContent = [\n"
-                + "        ['<div><strong>1</strong></div>'],"
-                + "        ['<div><strong>2</strong></div>'],"
-                + "        ['<div><strong>3</strong></div>']"
+                + "        ['<div><strong>1</strong></div>',''],"
+                + "        ['<div><strong>2</strong></div>',''],"
+                + "        ['<div><strong>3</strong></div>','']"
                 + "    ];\n"
                 //initializer of the map
                 + "function myMap() {\n"
