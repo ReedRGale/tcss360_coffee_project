@@ -28,3 +28,12 @@ create table shops (
     description text
 );
 
+create table reviews (
+    reviewid serial primary key,
+    foodrank int,
+    expenserank int,
+    coffeerank int,
+    dateadded timestamp,
+    owner int,
+    comment text
+);
