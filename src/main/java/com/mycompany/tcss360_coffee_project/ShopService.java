@@ -116,6 +116,16 @@ public class ShopService
                 + " ['Forza', '936 13th St. SE, Puyallup, Washington']\n"
                 + "];\n"
                 
+                + "    var infoWindowContent = [\n"
+                + "        ['<div class=\"info_content\">' +\n"
+                + "        '<h3>London Eye</h3>' +\n"
+                + "        '<p>The London Eye is a giant Ferris wheel situated on the banks of the River Thames. The entire structure is 135 metres (443 ft) tall and the wheel has a diameter of 120 metres (394 ft).</p>' +        '</div>'],\n"
+                + "        ['<div class=\"info_content\">' +\n"
+                + "        '<h3>Palace of Westminster</h3>' +\n"
+                + "        '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +\n"
+                + "        '</div>']\n"
+                + "    ];\n"
+                
                 //initializer of the map
                 + "function myMap() {\n"
                 + "  var map = new google.maps.Map(document.getElementById(\"googleMap\"), {\n"
@@ -127,7 +137,7 @@ public class ShopService
                 + "  });\n"
                 + "  var geocoder = new google.maps.Geocoder();\n"
                 + "for( i = 0; i < shops.length; i++ ) {\n"
-                + "  geocodeAddress(shops[i][1], geocoder, map);\n"
+                + "  geocodeAddress(shops[i][1], i, shops[i][0], geocoder, map);\n"
                 + "}\n"
 //                + "  geocodeAddress(address2, geocoder, map);\n"
 //                + "  geocodeAddress(address3, geocoder, map);\n"
@@ -154,7 +164,7 @@ public class ShopService
 //                + "  });\n"
 //                + "}\n"
                 
-                + "function geocodeAddress(address, geocoder, resultsMap) {\n"
+                + "function geocodeAddress(address, i, title, geocoder, resultsMap) {\n"
             
                 + "  geocoder.geocode({\n"
                 + "    'address': address\n"
@@ -165,8 +175,16 @@ public class ShopService
                 + "        map: resultsMap,\n"
                 + "        label: labels[labelIndex++ % labels.length],\n"
                 + "        position: results[0].geometry.location,\n"
-//                + "        title: markers[i][0]\n"// <---Coffee Shop Name will go here
+                + "        title: title\n"// <---Coffee Shop Name will go here
                 + "      });\n"
+                
+                + "        google.maps.event.addListener(marker, 'click', (function(marker, i) {\n"
+                + "            return function() {\n"
+                + "                infoWindow.setContent(infoWindowContent[i][0]);\n"
+                + "                infoWindow.open(map, marker);\n"
+                + "            }\n"
+                + "        })(marker, i));\n"
+                
                 + "      markers.push(marker);\n"
                 + "      updateZoom(resultsMap);\n"
                 + "    } else {\n"
