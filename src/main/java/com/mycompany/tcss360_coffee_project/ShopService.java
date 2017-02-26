@@ -174,9 +174,7 @@ public class ShopService {
                 + "        google.maps.event.addListener(marker, 'click', (function(marker, i) {\n"
                 + "console.log(marker, i);"
                 + "            return function() {\n"
-                + "                infoWindow.setContent('<div><strong>Maybe this wokrs now?</strong><br>' +\n" +
-"                'Place ID: or not<br>' +\n" +
-"                place.formatted_address + '</div>');\n"
+                + "                infoWindow.setContent('<div><strong>Maybe this wokrs now?</strong></div>');\n"
                 + "                infoWindow.open(map, marker);\n"
                 + "            }\n"
                 + "        })(marker, i));\n"
