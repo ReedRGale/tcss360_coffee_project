@@ -112,7 +112,7 @@ public class ShopService
                 
                 + "    var markers = [\n"
                 + "        ['Starbucks', Starbucks, Seattle, Washington],\n"
-                + "        ['Anthem', 6244 25th Ave NE, Seattle, Washington]\n"
+                + "        ['Anthem', 6244 25th Ave NE, Seattle, Washington],\n"
                 + "        ['Forza', 6244 25th Ave NE, Seattle, Washington]\n"
                 + "    ];\n"
                 
