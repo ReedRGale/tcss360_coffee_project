@@ -158,7 +158,6 @@ public class ShopService {
                 + "  geocoder.geocode({\n"
                 + "    'address': address\n"
                 + "  }, function(results, status) {\n"
-                                + "  var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
 
                 + "    if (status === google.maps.GeocoderStatus.OK) {\n"
                 + "      resultsMap.setCenter(results[0].geometry.location);\n"
@@ -168,6 +167,8 @@ public class ShopService {
                 + "        position: results[0].geometry.location,\n"
                 + "        title: title\n"// <---Coffee Shop Name will go here
                 + "      });\n"
+                + "  var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
+
                 + "        google.maps.event.addListener(marker, 'click', (function(marker, i) {\n"
                 + "console.log(marker, i);"
                 + "            return function() {\n"
