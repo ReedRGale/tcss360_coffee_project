@@ -116,6 +116,8 @@ public class ShopService
                 + " ['Forza', '936 13th St. SE, Puyallup, Washington']\n"
                 + "];\n"
                 
+                +"var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
+                
                 + "    var infoWindowContent = [\n"
                 + "        ['<div class=\"info_content\">' +\n"
                 + "        '<h3>London Eye</h3>' +\n"
