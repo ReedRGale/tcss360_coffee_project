@@ -126,8 +126,9 @@ public class ShopService
                 + "    }\n"
                 + "  });\n"
                 + "  var geocoder = new google.maps.Geocoder();\n"
-          
-                + "  geocodeAddress(markers, geocoder, map);\n"
+                + "for( i = 0; i < markers.length; i++ ) {\n"
+                + "  geocodeAddress(markers[i][1], geocoder, map);\n"
+                + "}\n"
 //                + "  geocodeAddress(address2, geocoder, map);\n"
 //                + "  geocodeAddress(address3, geocoder, map);\n"
                 + "}\n"
@@ -153,10 +154,10 @@ public class ShopService
 //                + "  });\n"
 //                + "}\n"
                 
-                + "function geocodeAddress(markers, geocoder, resultsMap) {\n"
-                + "for( i = 0; i < markers.length; i++ ) {\n"
+                + "function geocodeAddress(address, geocoder, resultsMap) {\n"
+            
                 + "  geocoder.geocode({\n"
-                + "    'address': markers[i][1]\n"
+                + "    'address': address\n"
                 + "  }, function(results, status) {\n"
                 + "    if (status === google.maps.GeocoderStatus.OK) {\n"
                 + "      resultsMap.setCenter(results[0].geometry.location);\n"
@@ -172,7 +173,6 @@ public class ShopService
                 + "      alert('Geocode was not successful for the following reason: ' + status);\n"
                 + "    }\n"
                 + "  });\n"
-                + "}\n"
                 + "}\n"
        
                 //fits all the markers within the map view 
