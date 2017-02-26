@@ -134,7 +134,7 @@ public class ShopService
                 + "      resultsMap.setCenter(results[0].geometry.location);\n"
                 + "      var marker = new google.maps.Marker({\n"
                 + "        map: resultsMap,\n"
-                + "        label: labels[labelIndex++ % labels.length]"
+                + "        label: labels[labelIndex++ % labels.length],\n"
                 + "        position: results[0].geometry.location\n"
                 + "      });\n"
                 + "      markers.push(marker);\n"
