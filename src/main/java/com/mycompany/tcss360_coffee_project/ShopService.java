@@ -110,7 +110,7 @@ public class ShopService
 "$(document).on('ready', myMap);\n" +
 "\n" +
 "function myMap() {\n" +
-"  var map = new google.maps.Map(document.getElementById('map_div'), {\n" +
+"  var map = new google.maps.Map(document.getElementById(\"googleMap\"), {\n" +
 "    zoom: 8,\n" +
 "    center: {\n" +
 "      lat: -34.397,\n" +
