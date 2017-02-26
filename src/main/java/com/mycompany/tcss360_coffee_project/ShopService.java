@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.mycompany.tcss360_coffee_project;
 
 import data.Model;
@@ -32,23 +31,23 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author lloyd
  */
 @Path("shops")
-public class ShopService 
-{
+public class ShopService {
+
     static final Logger logger = Logger.getLogger(ShopService.class.getName());
-    
+
     @Context
     private UriInfo context;
 
     /**
      * Creates a new instance of the shop.
      */
-    public ShopService() 
-    {
-        
+    public ShopService() {
+
     }
 
     /**
      * GET function that retrieves all shops in a table.
+     *
      * @return A string of HTML that represents the shops.
      */
     @GET
@@ -73,12 +72,11 @@ public class ShopService
                 + "<td>Close Time</td>"
                 + "<td>Description</td>"
                 + "</tr>");
-        try
-        {
+        try {
             Model db = Model.singleton();
             Shop[] shps = db.getShops();
-            for (int i=0;i<shps.length;i++)
-                sb.append("<tr><td>" 
+            for (int i = 0; i < shps.length; i++) {
+                sb.append("<tr><td>"
                         + shps[i].getShopid() + "</td><td>"
                         + shps[i].getName() + "</td><td>"
                         + shps[i].getStreet() + "</td><td>"
@@ -88,36 +86,32 @@ public class ShopService
                         + shps[i].getPhone() + "</td><td>"
                         + shps[i].getOpentime() + "</td><td>"
                         + shps[i].getClosetime() + "</td><td>"
-                        + shps[i].getDescription() + "</td></tr>"    );
-        }
-        catch (Exception e)
-        {
+                        + shps[i].getDescription() + "</td></tr>");
+            }
+        } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
         }
         sb.append("</table>");
-      
-        sb.append("<div id=\"googleMap\" style=\"width:100%;height:400px;\"></div>\n" +
-        "\n" +
-        "<script type=\"text/javascript\">\n"
+
+        sb.append("<div id=\"googleMap\" style=\"width:100%;height:400px;\"></div>\n"
+                + "\n"
+                + "<script type=\"text/javascript\">\n"
                 + "var map;\n"
+                + "var infoWindow;\n"
                 + "var geocoder;\n"
-                + "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\n" 
+                + "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\n"
                 + "var labelIndex = 0;\n"
                 + "var markers = new Array();\n"
                 + "var address1 = \"Starbucks, Seattle, Washington\";\n"
                 + "var address2 = \"6244 25th Ave NE, Seattle, Washington\";\n"
                 + "var address3 = \"936 13th St. SE, Puyallup, Washington\";\n"
-                
-//                + "$(document).on('ready', myMap);\n"
-                
+                //                + "$(document).on('ready', myMap);\n"
+
                 + "var shops = [\n"
                 + " ['Starbucks', 'Starbucks Seattle, Washington'],\n"
                 + " ['Anthem', '6244 25th Ave NE Seattle, Washington'],\n"
                 + " ['Forza', '936 13th St. SE, Puyallup, Washington']\n"
                 + "];\n"
-                
-                +"var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
-                
                 + "    var infoWindowContent = [\n"
                 + "        ['<div class=\"info_content\">' +\n"
                 + "        '<h3>London Eye</h3>' +\n"
@@ -127,47 +121,45 @@ public class ShopService
                 + "        '<p>The Palace of Westminster is the meeting place of the House of Commons and the House of Lords, the two houses of the Parliament of the United Kingdom. Commonly known as the Houses of Parliament after its tenants.</p>' +\n"
                 + "        '</div>']\n"
                 + "    ];\n"
-                
                 //initializer of the map
                 + "function myMap() {\n"
-                + "  var map = new google.maps.Map(document.getElementById(\"googleMap\"), {\n"
+                + "    map = new google.maps.Map(document.getElementById(\"googleMap\"), {\n"
                 + "    zoom: 8,\n"
                 + "    center: {\n"
                 + "      lat: -34.397,\n"
                 + "      lng: 150.644\n"
                 + "    }\n"
                 + "  });\n"
+                + "infoWindow = new google.maps.InfoWindow(), marker, i;\n"
                 + "  var geocoder = new google.maps.Geocoder();\n"
                 + "for( i = 0; i < shops.length; i++ ) {\n"
                 + "  geocodeAddress(shops[i][1], i, shops[i][0], geocoder, map);\n"
                 + "}\n"
-//                + "  geocodeAddress(address2, geocoder, map);\n"
-//                + "  geocodeAddress(address3, geocoder, map);\n"
+                //                + "  geocodeAddress(address2, geocoder, map);\n"
+                //                + "  geocodeAddress(address3, geocoder, map);\n"
                 + "}\n"
-                
                 //Converts the Address to a Geolocation
-//                + "function geocodeAddress(address, geocoder, resultsMap) {\n"
-//                + "  geocoder.geocode({\n"
-//                + "    'address': address\n"
-//                + "  }, function(results, status) {\n"
-//                + "    if (status === google.maps.GeocoderStatus.OK) {\n"
-//                + "      resultsMap.setCenter(results[0].geometry.location);\n"
-//                + "      var marker = new google.maps.Marker({\n"
-//                + "        map: resultsMap,\n"
-//                + "        label: labels[labelIndex++ % labels.length],\n"
-//                + "        position: results[0].geometry.location,\n"
-////                + "        title: markers[i][0]" <---Coffee Shop Name will go here
-//                + "      });\n"
-//                + "      markers.push(marker);\n"
-//                + "      updateZoom(resultsMap);\n"
-//                + "    } else {\n"
-//                + "      alert('Geocode was not successful for the following reason: ' + status);\n"
-//                + "    }\n"
-//                + "  });\n"
-//                + "}\n"
-                
+                //                + "function geocodeAddress(address, geocoder, resultsMap) {\n"
+                //                + "  geocoder.geocode({\n"
+                //                + "    'address': address\n"
+                //                + "  }, function(results, status) {\n"
+                //                + "    if (status === google.maps.GeocoderStatus.OK) {\n"
+                //                + "      resultsMap.setCenter(results[0].geometry.location);\n"
+                //                + "      var marker = new google.maps.Marker({\n"
+                //                + "        map: resultsMap,\n"
+                //                + "        label: labels[labelIndex++ % labels.length],\n"
+                //                + "        position: results[0].geometry.location,\n"
+                ////                + "        title: markers[i][0]" <---Coffee Shop Name will go here
+                //                + "      });\n"
+                //                + "      markers.push(marker);\n"
+                //                + "      updateZoom(resultsMap);\n"
+                //                + "    } else {\n"
+                //                + "      alert('Geocode was not successful for the following reason: ' + status);\n"
+                //                + "    }\n"
+                //                + "  });\n"
+                //                + "}\n"
+
                 + "function geocodeAddress(address, i, title, geocoder, resultsMap) {\n"
-            
                 + "  geocoder.geocode({\n"
                 + "    'address': address\n"
                 + "  }, function(results, status) {\n"
@@ -179,14 +171,12 @@ public class ShopService
                 + "        position: results[0].geometry.location,\n"
                 + "        title: title\n"// <---Coffee Shop Name will go here
                 + "      });\n"
-                
                 + "        google.maps.event.addListener(marker, 'click', (function(marker, i) {\n"
                 + "            return function() {\n"
                 + "                infoWindow.setContent(infoWindowContent[i][0]);\n"
                 + "                infoWindow.open(map, marker);\n"
                 + "            }\n"
                 + "        })(marker, i));\n"
-                
                 + "      markers.push(marker);\n"
                 + "      updateZoom(resultsMap);\n"
                 + "    } else {\n"
@@ -194,7 +184,6 @@ public class ShopService
                 + "    }\n"
                 + "  });\n"
                 + "}\n"
-       
                 //fits all the markers within the map view 
                 + "function updateZoom(resultsMap) {\n"
                 + "  var bounds = new google.maps.LatLngBounds();\n"
@@ -203,73 +192,68 @@ public class ShopService
                 + "  }\n"
                 + "  resultsMap.fitBounds(bounds);\n"
                 + "}\n"
-                +
-        "</script>\n" +
-        "<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
+                + "</script>\n"
+                + "<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
         sb.append("</body></html>");
         return sb.toString();
     }
-    
+
     /**
      * POST method for updating or creating an instance of a Shop
+     *
      * @param jobj: A JSON object to format into a Shop object.
      */
     @POST
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String createShop(String jobj) throws IOException 
-    {
+    public String createShop(String jobj) throws IOException {
         // Turn the JSON into a Shop Object.
         ObjectMapper mapper = new ObjectMapper();
         Shop shp = mapper.readValue(jobj, Shop.class);
-        
+
         // String to let us know what's happening.
         StringBuilder text = new StringBuilder();
         text.append("\nThe JSON obj:" + jobj + "\n");
         text.append("Created " + shp.getShopid() + "...\n");
-        text.append("Name: " + shp.getName() + "...\n" );
-        text.append("Street: " + shp.getStreet() + "...\n" );
-        text.append("City: " + shp.getCity() + "...\n" );
-        text.append("State: " + shp.getState() + "...\n" );
-        text.append("Zip: " + shp.getZip() + "...\n" );
-        text.append("Phone: " + shp.getPhone() + "...\n" );
-        text.append("Opentime: " + shp.getOpentime() + "...\n" );
-        text.append("Closetime: " + shp.getClosetime() + "...\n" );
-        text.append("Description: " + shp.getDescription() + "...\n" );
-        
+        text.append("Name: " + shp.getName() + "...\n");
+        text.append("Street: " + shp.getStreet() + "...\n");
+        text.append("City: " + shp.getCity() + "...\n");
+        text.append("State: " + shp.getState() + "...\n");
+        text.append("Zip: " + shp.getZip() + "...\n");
+        text.append("Phone: " + shp.getPhone() + "...\n");
+        text.append("Opentime: " + shp.getOpentime() + "...\n");
+        text.append("Closetime: " + shp.getClosetime() + "...\n");
+        text.append("Description: " + shp.getDescription() + "...\n");
+
         try {
             Model db = Model.singleton();
             int id = db.newShop(shp);
             logger.log(Level.INFO, "Shop persisted to db with ID: " + id);
             text.append("Shop ID persisted with ID: " + id);
-        }
-        catch (SQLException sqle)
-        {
+        } catch (SQLException sqle) {
             String errText = "Error persisting shop after db connection made:\n" + sqle.getMessage() + " --- " + sqle.getSQLState() + "\n";
             logger.log(Level.SEVERE, errText);
             text.append(errText);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             logger.log(Level.SEVERE, "Error connecting to db.");
         }
-        
+
         return text.toString();
     }
 
     /**
      * PUT method for updating or creating an instance of a Shop
+     *
      * @param jobj: A JSON object to format into a Shop object.
      */
     @PUT
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String updateShop(String jobj) throws IOException
-    {
+    public String updateShop(String jobj) throws IOException {
         // Convert JSON to User object.
         ObjectMapper mapper = new ObjectMapper();
         Shop shp = mapper.readValue(jobj, Shop.class);
-        
+
         // Update the user.
         StringBuilder text = new StringBuilder();
         try {
@@ -278,35 +262,31 @@ public class ShopService
             db.updateShop(shp);
             logger.log(Level.INFO, "Update shop with ID: " + id);
             text.append("Shop updated with ID: " + id + "\n");
-        }
-        catch (SQLException sqle)
-        {
+        } catch (SQLException sqle) {
             String errText = "Error updating shop after db connection made:\n" + sqle.getMessage() + " --- " + sqle.getSQLState() + "\n";
             logger.log(Level.SEVERE, errText);
             text.append(errText);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             logger.log(Level.SEVERE, "Error connecting to db.");
             text.append("Error connecting to db.");
         }
         return text.toString();
     }
-    
+
     /**
-     * DELETE method for destroying an instance of a Shop.
-     * The function deletes a shop with a certain ID.
+     * DELETE method for destroying an instance of a Shop. The function deletes
+     * a shop with a certain ID.
+     *
      * @param jobj: A JSON object to format into a User object.
      */
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String deleteUser(String jobj) throws IOException
-    {
+    public String deleteUser(String jobj) throws IOException {
         // Convert JSON to a User object...
         ObjectMapper mapper = new ObjectMapper();
         Shop shp = mapper.readValue(jobj, Shop.class);
-        
+
         // Attempt user destruction...
         StringBuilder text = new StringBuilder();
         try {
@@ -315,15 +295,11 @@ public class ShopService
             db.deleteShop(id);
             logger.log(Level.INFO, "Shop deleted from db: " + id);
             text.append("Shop deleted with ID: " + id);
-        }
-        catch (SQLException sqle)
-        {
+        } catch (SQLException sqle) {
             String errText = "Error deleting shop after db connection made:\n" + sqle.getMessage() + " --- " + sqle.getSQLState() + "\n";
             logger.log(Level.SEVERE, errText);
             text.append(errText);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             logger.log(Level.SEVERE, "Error connecting to db.");
             text.append("Error connecting to db.");
         }
