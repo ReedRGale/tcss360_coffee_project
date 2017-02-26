@@ -98,7 +98,7 @@ public class ShopService
       
         sb.append("<div id=\"googleMap\" style=\"width:100%;height:400px;\"></div>\n" +
         "\n" +
-        "<script>\n"
+        "<script type=\"text/javascript\">\n"
                 + "var map;\n"
                 + "var geocoder;\n"
                 + "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\n" 
