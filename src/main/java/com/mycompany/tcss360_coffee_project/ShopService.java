@@ -98,14 +98,66 @@ public class ShopService
       
         sb.append("<div id=\"googleMap\" style=\"width:100%;height:400px;\"></div>\n" +
         "\n" +
-        "<script>\n" +
-        "function myMap() {\n" +
-        "var mapProp= {\n" +
-        "    center:new google.maps.LatLng(51.508742,-0.120850),\n" +
-        "    zoom:5,\n" +
-        "};\n" +
-        "var map=new google.maps.Map(document.getElementById(\"googleMap\"),mapProp);\n" +
-        "}\n" +
+        "<script>\n" + 
+                "var map;\n" +
+"var geocoder;\n" +
+"var markers = new Array();\n" +
+"\n" +
+"var address1 = \"Bergmannstraße 2, Berlin, Germany\";\n" +
+"var address2 = \"Nürnberg, Germany\";\n" +
+"var address3 = \"936 13th St. SE, Puyallup, Washington\";\n" +
+"\n" +
+"$(document).on('ready', initMap);\n" +
+"\n" +
+"function initMap() {\n" +
+"  var map = new google.maps.Map(document.getElementById('map_div'), {\n" +
+"    zoom: 8,\n" +
+"    center: {\n" +
+"      lat: -34.397,\n" +
+"      lng: 150.644\n" +
+"    }\n" +
+"  });\n" +
+"  var geocoder = new google.maps.Geocoder();\n" +
+"\n" +
+"  geocodeAddress(address1, geocoder, map);\n" +
+"  geocodeAddress(address2, geocoder, map);\n" +
+"  geocodeAddress(address3, geocoder, map);\n" +
+"}\n" +
+"\n" +
+"function geocodeAddress(address, geocoder, resultsMap) {\n" +
+"  geocoder.geocode({\n" +
+"    'address': address\n" +
+"  }, function(results, status) {\n" +
+"    if (status === google.maps.GeocoderStatus.OK) {\n" +
+"      resultsMap.setCenter(results[0].geometry.location);\n" +
+"      var marker = new google.maps.Marker({\n" +
+"        map: resultsMap,\n" +
+"        position: results[0].geometry.location\n" +
+"      });\n" +
+"      markers.push(marker);\n" +
+"      updateZoom(resultsMap);\n" +
+"    } else {\n" +
+"      alert('Geocode was not successful for the following reason: ' + status);\n" +
+"    }\n" +
+"  });\n" +
+"}\n" +
+"\n" +
+"function updateZoom(resultsMap) {\n" +
+"  var bounds = new google.maps.LatLngBounds();\n" +
+"  for (i = 0; i < markers.length; i++) {\n" +
+"    bounds.extend(markers[i].getPosition());\n" +
+"  }\n" +
+"\n" +
+"  resultsMap.fitBounds(bounds);\n" +
+"}\n" +
+                
+//        "function myMap() {\n" +
+//        "var mapProp= {\n" +
+//        "    center:new google.maps.LatLng(51.508742,-0.120850),\n" +
+//        "    zoom:5,\n" +
+//        "};\n" +
+//        "var map=new google.maps.Map(document.getElementById(\"googleMap\"),mapProp);\n" +
+//        "}\n" +
         "</script>\n" +
         "\n" +
         "<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
