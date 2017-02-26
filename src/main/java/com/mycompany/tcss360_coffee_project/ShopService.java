@@ -111,9 +111,9 @@ public class ShopService
 //                + "$(document).on('ready', myMap);\n"
                 
                 + "var markers = [\n"
-                + " [\"Starbucks\", 'Starbucks Seattle, Washington'],\n"
-                + " [\"Anthem\", '6244 25th Ave NE Seattle, Washington'],\n"
-                + " [\"Forza\", '6244 25th Ave NE Seattle, Washington']\n"
+                + " ['Starbucks', 'Starbucks Seattle, Washington'],\n"
+                + " ['Anthem', '6244 25th Ave NE Seattle, Washington'],\n"
+                + " ['Forza', '6244 25th Ave NE Seattle, Washington']\n"
                 + "];\n"
                 
                 //initializer of the map
@@ -164,7 +164,7 @@ public class ShopService
                 + "        map: resultsMap,\n"
                 + "        label: labels[labelIndex++ % labels.length],\n"
                 + "        position: results[0].geometry.location,\n"
-                + "        title: markers[i][0]"// <---Coffee Shop Name will go here
+//                + "        title: markers[i][0]\n"// <---Coffee Shop Name will go here
                 + "      });\n"
                 + "      markers.push(marker);\n"
                 + "      updateZoom(resultsMap);\n"
