@@ -113,7 +113,7 @@ public class ShopService
                 + "var shops = [\n"
                 + " ['Starbucks', 'Starbucks Seattle, Washington'],\n"
                 + " ['Anthem', '6244 25th Ave NE Seattle, Washington'],\n"
-                + " ['Forza', '6244 25th Ave NE Seattle, Washington']\n"
+                + " ['Forza', '936 13th St. SE, Puyallup, Washington']\n"
                 + "];\n"
                 
                 //initializer of the map
