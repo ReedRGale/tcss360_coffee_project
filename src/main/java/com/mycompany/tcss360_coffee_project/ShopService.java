@@ -127,9 +127,9 @@ public class ShopService
                 + "  });\n"
                 + "  var geocoder = new google.maps.Geocoder();\n"
           
-                + "  geocodeAddress(address1, geocoder, map);\n"
-                + "  geocodeAddress(address2, geocoder, map);\n"
-                + "  geocodeAddress(address3, geocoder, map);\n"
+                + "  geocodeAddress(markers, geocoder, map);\n"
+//                + "  geocodeAddress(address2, geocoder, map);\n"
+//                + "  geocodeAddress(address3, geocoder, map);\n"
                 + "}\n"
                 
                 //Converts the Address to a Geolocation
