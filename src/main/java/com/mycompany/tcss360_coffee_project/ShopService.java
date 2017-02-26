@@ -96,7 +96,7 @@ public class ShopService
         }
         sb.append("</table>");
         sb.append("<div id=\"map_div\" style=\"height: 400px;\"></div>");
-        sb.append("<script type=\"text/javascript\" src=\"http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false\"></script>");
+        sb.append("<script type=\"text/javascript\" src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script>");
         sb.append("<script>var map;\n" +
 "var geocoder;\n" +
 "var markers = new Array();\n" +
