@@ -106,7 +106,7 @@ public class ShopService {
                 + "var map;\n"
                 + "var infoWindow;\n"
                 + "var geocoder;\n"
-                + "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';\n"
+                + "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\n"
                 + "var labelIndex = 0;\n"
                 + "var markers = new Array();\n"
                 + "var address1 = \"Starbucks, Seattle, Washington\";\n"
