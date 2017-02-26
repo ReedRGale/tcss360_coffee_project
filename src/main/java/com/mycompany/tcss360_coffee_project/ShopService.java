@@ -107,9 +107,9 @@ public class ShopService
 "var address2 = \"Nürnberg, Germany\";\n" +
 "var address3 = \"936 13th St. SE, Puyallup, Washington\";\n" +
 "\n" +
-"$(document).on('ready', initMap);\n" +
+"$(document).on('ready', myMap);\n" +
 "\n" +
-"function initMap() {\n" +
+"function myMap() {\n" +
 "  var map = new google.maps.Map(document.getElementById('map_div'), {\n" +
 "    zoom: 8,\n" +
 "    center: {\n" +
