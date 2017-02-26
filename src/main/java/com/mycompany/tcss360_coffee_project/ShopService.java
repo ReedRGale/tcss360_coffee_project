@@ -97,6 +97,7 @@ public class ShopService {
                 + "\n"
                 + "<script type=\"text/javascript\">\n"
                 + "var map;\n"
+                + "var infoWindow;\n"
                 + "var geocoder;\n"
                 + "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\n"
                 + "var labelIndex = 0;\n"
