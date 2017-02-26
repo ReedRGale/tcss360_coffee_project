@@ -110,10 +110,10 @@ public class ShopService
                 
 //                + "$(document).on('ready', myMap);\n"
                 
-                + "var markers = [\n"
-                + " [\"Starbucks\", Starbucks Seattle Washington],\n"
-                + " [\"Anthem\", 6244 25th Ave NE Seattle Washington],\n"
-                + " [\"Forza\", 6244 25th Ave NE Seattle Washington]\n"
+                + "var markers = ["
+//                + " [\"Starbucks\", Starbucks Seattle Washington],\n"
+                + " [\"Anthem\", 6244 25th Ave NE Seattle Washington],"
+                + " [\"Forza\", 6244 25th Ave NE Seattle Washington]"
                 + "];\n"
                 
                 //initializer of the map
