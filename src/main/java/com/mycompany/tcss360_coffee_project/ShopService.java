@@ -103,8 +103,8 @@ public class ShopService
 "var geocoder;\n" +
 "var markers = new Array();\n" +
 "\n" +
-"var address1 = \"Bergmannstraße 2, Berlin, Germany\";\n" +
-"var address2 = \"Nürnberg, Germany\";\n" +
+"var address1 = \"Starbucks, Seattle, Washington\";\n" +
+"var address2 = \"6244 25th Ave NE, Seattle, Washington\";\n" +
 "var address3 = \"936 13th St. SE, Puyallup, Washington\";\n" +
 "\n" +
 "$(document).on('ready', myMap);\n" +
