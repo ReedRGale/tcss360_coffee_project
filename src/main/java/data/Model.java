@@ -5,19 +5,16 @@
  */
 package data;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import objects.Review;
 import objects.Shop;
 import objects.User;
 
@@ -163,6 +160,8 @@ public class Model {
         pst.execute();
     }
     
+// **** **** **** **** **** **** **** **** **** **** **** **** **** **** //
+    
     public Shop[] getShops() throws SQLException
     {
         LinkedList<Shop> ll = new LinkedList<Shop>();
@@ -256,6 +255,86 @@ public class Model {
         pst.setInt(1, shopid);
         
         // Attempt user destruction...
+        pst.execute();
+    }
+    
+// **** **** **** **** **** **** **** **** **** **** **** **** **** **** //
+    
+    public Review[] getReviews() throws SQLException
+    {
+        LinkedList<Review> ll = new LinkedList<Review>();
+        String sqlQuery ="select * from reviews;";
+        Statement st = createStatement();
+        ResultSet rows = st.executeQuery(sqlQuery);
+        while (rows.next())
+        {
+            logger.log(Level.INFO, "Reading row...");
+            Review rvw = new Review();
+            rvw.setReviewid(rows.getInt("reviewid"));
+            rvw.setFoodrank(rows.getInt("foodrank"));
+            rvw.setExpenserank(rows.getInt("expenserank"));
+            rvw.setCoffeerank(rows.getInt("coffeerank"));
+            rvw.setDateadded(rows.getDate("dateadded"));
+            rvw.setOwner(rows.getInt("owner"));
+            rvw.setShop(rows.getInt("shop"));
+            rvw.setComment(rows.getString("comment"));
+            logger.log(Level.INFO, "Adding user to list with id=" + rvw.getReviewid());
+            ll.add(rvw);
+        }
+        return ll.toArray(new Review[ll.size()]);
+    }
+    
+    public int newReview(Review rvw) throws SQLException
+    {  
+        // Define the SQL insert we're inserting.
+        String sqlInsert="insert into reviews "
+                + "(foodrank, expenserank, coffeerank, "
+                + "dateadded, owner, shop, comment) values (" 
+                + rvw.getFoodrank() + ","
+                + rvw.getExpenserank() + ","
+                + rvw.getCoffeerank() + ","
+                + "now()" + ","
+                + rvw.getOwner() + ","
+                + rvw.getShop() + ","
+                + "'" + rvw.getComment() + "');";
+        
+        // Create the object that will execute our SQL insert
+        // Implicitly defines the connection to the server.
+        Statement s = createStatement();
+        logger.log(Level.INFO, "attempting statement execute");
+        s.execute(sqlInsert,Statement.RETURN_GENERATED_KEYS);
+        logger.log(Level.INFO, "statement executed.  atempting get generated keys");
+        ResultSet rs = s.getGeneratedKeys();
+        logger.log(Level.INFO, "retrieved keys from statement");
+        
+        // Generate message ID.
+        int rvwId = -1;
+        while (rs.next())
+            rvwId = rs.getInt(1);   // assuming 1st column is msgid
+        logger.log(Level.INFO, "The new review id: " + rvwId);
+        return rvwId;
+    }
+    
+    public boolean updateReview(Review msg) throws SQLException
+    {
+        StringBuilder sqlQuery = new StringBuilder();
+        sqlQuery.append("update reviews ");
+        sqlQuery.append("set foodrank=" + msg.getFoodrank() + ", ");
+        sqlQuery.append("expenserank=" + msg.getExpenserank() + ", ");
+        sqlQuery.append("coffeerank=" + msg.getCoffeerank() + ", ");
+        sqlQuery.append("comment=" + msg.getComment() + " ");
+        sqlQuery.append("where reviewid=" + msg.getReviewid() + ";");
+        
+        Statement st = createStatement();
+        logger.log(Level.INFO, "UPDATE SQL=" + sqlQuery.toString());
+        return st.execute(sqlQuery.toString());
+    }
+    
+    public void deleteReview(int reviewid) throws SQLException
+    {
+        String sqlDelete="delete from messages where reviewid=?";
+        PreparedStatement pst = createPreparedStatement(sqlDelete);
+        pst.setInt(1, reviewid);
         pst.execute();
     }
 }
