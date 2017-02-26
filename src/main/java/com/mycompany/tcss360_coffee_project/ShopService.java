@@ -132,7 +132,7 @@ public class ShopService {
                 + "  });\n"
                 + "  var geocoder = new google.maps.Geocoder();\n"
                 + "for( i = 0; i < shops.length; i++ ) {\n"
-                + "var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
+                + "  var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
                 + "  geocodeAddress(shops[i][1], i, shops[i][0], geocoder, map);\n"
                 + "}\n"
                 //                + "  geocodeAddress(address2, geocoder, map);\n"
@@ -174,7 +174,9 @@ public class ShopService {
                 + "        google.maps.event.addListener(marker, 'click', (function(marker, i) {\n"
                 + "console.log(marker, i);"
                 + "            return function() {\n"
-                + "                infoWindow.setContent(infoWindowContent[i][0]);\n"
+                + "                infoWindow.setContent('<div><strong>Maybe this wokrs now?</strong><br>' +\n" +
+"                'Place ID: or not<br>' +\n" +
+"                place.formatted_address + '</div>');\n"
                 + "                infoWindow.open(map, marker);\n"
                 + "            }\n"
                 + "        })(marker, i));\n"
