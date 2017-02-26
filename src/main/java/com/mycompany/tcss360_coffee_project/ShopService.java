@@ -132,7 +132,6 @@ public class ShopService {
                 + "  });\n"
                 + "  var geocoder = new google.maps.Geocoder();\n"
                 + "for( i = 0; i < shops.length; i++ ) {\n"
-                + "  var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
                 + "  geocodeAddress(shops[i][1], i, shops[i][0], geocoder, map);\n"
                 + "}\n"
                 //                + "  geocodeAddress(address2, geocoder, map);\n"
@@ -163,6 +162,8 @@ public class ShopService {
                 + "  geocoder.geocode({\n"
                 + "    'address': address\n"
                 + "  }, function(results, status) {\n"
+                                + "  var infoWindow = new google.maps.InfoWindow(), marker, i;\n"
+
                 + "    if (status === google.maps.GeocoderStatus.OK) {\n"
                 + "      resultsMap.setCenter(results[0].geometry.location);\n"
                 + "      var marker = new google.maps.Marker({\n"
