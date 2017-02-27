@@ -60,6 +60,7 @@ public class ShopService {
                 + "0px;border-spacing: 0px;}</style>"
                 + "<b>SHOP LIST:</b>"
                 + "<br><br>"
+                + "<div id=\"googleMap\" style=\"float:right;width:60%;height:300px;\"></div>"
                 + "<table cellpadding=10 border=1><tr>"
                 + "<td>ID</td>"
                 + "<td>Name</td>"
@@ -100,9 +101,7 @@ public class ShopService {
             Shop[] shps = db.getShops();
             
             
-            sb.append("<div id=\"googleMap\" style=\"width:60%;height:300px;\"></div>\n"
-                + "\n"
-                + "<script type=\"text/javascript\">\n"
+            sb.append("<script type=\"text/javascript\">\n"
                 + "var map;\n"
                 + "var infoWindow;\n"
                 + "var geocoder;\n"
