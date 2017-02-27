@@ -124,10 +124,10 @@ public class ShopService {
             }
             sb.append("];\n");
             sb.append("var infoWindowContent = [\n");
-             for (int i = 0; i < shps.length; i++) {
+            for (int i = 0; i < shps.length; i++) {
                 sb.append("['<div><h3>" + shps[i].getName() + "</h3>"
-                        + "<p>" + shps[i].getDescription() +"</p></div>'],");
-                        
+                        + "<p>" + shps[i].getDescription() + "</p></div>'],");
+
             }
                 sb.append("];\n"
                 //initializer of the map
