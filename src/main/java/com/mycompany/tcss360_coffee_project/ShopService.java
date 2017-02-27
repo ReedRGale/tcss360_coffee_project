@@ -100,7 +100,7 @@ public class ShopService {
             Shop[] shps = db.getShops();
             
             
-            sb.append("<div id=\"googleMap\" style=\"width:100%;height:400px;\"></div>\n"
+            sb.append("<div id=\"googleMap\" style=\"width:60%;height:300px;\"></div>\n"
                 + "\n"
                 + "<script type=\"text/javascript\">\n"
                 + "var map;\n"
@@ -109,9 +109,6 @@ public class ShopService {
                 + "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\n"
                 + "var labelIndex = 0;\n"
                 + "var markers = new Array();\n"
-                + "var address1 = \"Starbucks, Seattle, Washington\";\n"
-                + "var address2 = \"6244 25th Ave NE, Seattle, Washington\";\n"
-                + "var address3 = \"936 13th St. SE, Puyallup, Washington\";\n"
                 //                + "$(document).on('ready', myMap);\n"
 
                 + "var shops = [\n");
