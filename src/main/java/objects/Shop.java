@@ -21,6 +21,9 @@ public class Shop
     private int opentime;
     private int closetime;
     private String description;
+    private int wifi;
+    private int capacity;
+    private int volume;
 
     public int getShopid() {
         return shopid;
@@ -100,5 +103,29 @@ public class Shop
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    public int getCapacity() {
+        return capacity;
+    }
+    
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+    
+    public int getVolume() {
+        return volume;
+    }
+    
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+    
+    public int getWifi() {
+        return wifi;
+    }
+    
+    public void setWifi(int wifi) {
+        this.wifi = wifi;
     }
 }

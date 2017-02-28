@@ -184,6 +184,9 @@ public class Model {
             shp.setOpentime(rows.getInt("opentime"));
             shp.setClosetime(rows.getInt("closetime"));
             shp.setDescription(rows.getString("description"));
+            shp.setCapacity(rows.getInt("capacity"));
+            shp.setWifi(rows.getInt("wifi"));
+            shp.setVolume(rows.getInt("volume"));
             
             logger.log(Level.INFO, "\nAdding shop to list with ID: " + shp.getShopid());
             ll.add(shp);
@@ -198,7 +201,7 @@ public class Model {
         // ..."shops"...
         // Unless the @path is changed at the top of ShopService.
         String sqlInsert= "insert into shops "
-                + "(name, street, city, state, zip, phone, opentime, closetime, description)"
+                + "(name, street, city, state, zip, phone, opentime, closetime, description, capacity, wifi, volume)"
                 + " values ('" 
                 + shp.getName() + "','"
                 + shp.getStreet() + "','"
@@ -208,7 +211,10 @@ public class Model {
                 + shp.getPhone() + ","
                 + shp.getOpentime() + ","
                 + shp.getClosetime() + ",'"
-                + shp.getDescription() + "');";
+                + shp.getDescription() + ","
+                + shp.getCapacity() + "');"
+                + shp.getWifi() + "');"
+                + shp.getVolume() + ",";
         
         // Evaluate the SQL statement...
         Statement s = createStatement();
@@ -239,6 +245,9 @@ public class Model {
         sqlQuery.append("opentime=" + shp.getOpentime() + ", ");
         sqlQuery.append("closetime=" + shp.getClosetime() + ", ");
         sqlQuery.append("description='" + shp.getDescription() + "' ");
+        sqlQuery.append("capacity='" + shp.getCapacity() + "' ");
+        sqlQuery.append("wifi='" + shp.getWifi() + "' ");
+        sqlQuery.append("volume='" + shp.getVolume() + "' ");
         sqlQuery.append("where shopid=" + shp.getShopid() + ";");
         
         // Execute the query...
