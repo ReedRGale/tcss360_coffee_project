@@ -30,7 +30,7 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author Jared Lowery
  * @author lloyd
  */
-@Path("")
+@Path("shops")
 public class ShopService {
 
     static final Logger logger = Logger.getLogger(ShopService.class.getName());
@@ -171,7 +171,7 @@ public class ShopService {
                 + "      markers.push(marker);\n"
                 + "      updateZoom(resultsMap);\n"
                 + "    } else {\n"
-                //+ "      alert('Geocode was not successful for the following reason: ' + status);\n"
+                + "      alert('Geocode was not successful for the following reason: ' + status);\n"
                 + "    }\n"
                 + "  });\n"
                 + "}\n"
