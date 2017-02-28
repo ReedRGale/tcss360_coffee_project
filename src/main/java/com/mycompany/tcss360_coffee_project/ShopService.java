@@ -170,9 +170,10 @@ public class ShopService {
                 + "        })(marker, i));\n"
                 + "      markers.push(marker);\n"
                 + "      updateZoom(resultsMap);\n"
-                + "    } else {\n"
-                + "      alert('Geocode was not successful for the following reason: ' + status);\n"
                 + "    }\n"
+//                        + "else {\n"
+//                + "      alert('Geocode was not successful for the following reason: ' + status);\n"
+//                + "    }\n"
                 + "  });\n"
                 + "}\n"
                 //fits all the markers within the map view 
