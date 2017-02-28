@@ -30,7 +30,7 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author Jared Lowery
  * @author lloyd
  */
-@Path("shops")
+@Path("")
 public class ShopService {
 
     static final Logger logger = Logger.getLogger(ShopService.class.getName());
@@ -58,8 +58,11 @@ public class ShopService {
         sb.append("<html><body><style>table, th, td "
                 + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
                 + "0px;border-spacing: 0px;}</style>"
+                + "<b><a href=\"users\"><button>Check out some reviews!!</button></a></b>"
+                + "<br></br>"
                 + "<b>SHOP LIST:</b>"
                 + "<br><br>"
+                + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>" 
                 + "<table cellpadding=10 border=1><tr>"
                 + "<td>ID</td>"
                 + "<td>Name</td>"
@@ -91,32 +94,40 @@ public class ShopService {
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
         }
+        
+        
         sb.append("</table>");
-
-        sb.append("<div id=\"googleMap\" style=\"width:100%;height:400px;\"></div>\n"
-                + "\n"
-                + "<script type=\"text/javascript\">\n"
+        
+        try {
+            Model db = Model.singleton();
+            Shop[] shps = db.getShops();
+            
+            
+            sb.append("<script type=\"text/javascript\">\n"
                 + "var map;\n"
                 + "var infoWindow;\n"
                 + "var geocoder;\n"
                 + "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';\n"
                 + "var labelIndex = 0;\n"
                 + "var markers = new Array();\n"
-                + "var address1 = \"Starbucks, Seattle, Washington\";\n"
-                + "var address2 = \"6244 25th Ave NE, Seattle, Washington\";\n"
-                + "var address3 = \"936 13th St. SE, Puyallup, Washington\";\n"
                 //                + "$(document).on('ready', myMap);\n"
 
-                + "var shops = [\n"
-                + " ['Starbucks', 'Starbucks Seattle, Washington'],\n"
-                + " ['Anthem', '6244 25th Ave NE Seattle, Washington'],\n"
-                + " ['Forza', '936 13th St. SE, Puyallup, Washington']\n"
-                + "];\n"
-                + "    var infoWindowContent = [\n"
-                + "        ['<div><strong>this works 1</strong></div>'],"
-                + "        ['<div><strong>this works 2</strong></div>'],"
-                + "        ['<div><strong>this works 3</strong></div>']"
-                + "    ];\n"
+                + "var shops = [\n");
+            
+            for (int i = 0; i < shps.length; i++) {
+                sb.append("['" + shps[i].getName() + "', '" +
+                          shps[i].getStreet() + " " + 
+                          shps[i].getCity() + ", " + 
+                          shps[i].getState() + "'],\n");
+            }
+            sb.append("];\n");
+            sb.append("var infoWindowContent = [\n");
+            for (int i = 0; i < shps.length; i++) {
+                sb.append("['<div><h3>" + shps[i].getName() + "</h3>"
+                        + "<p>" + shps[i].getDescription() + "</p></div>'],");
+
+            }
+                sb.append("];\n"
                 //initializer of the map
                 + "function myMap() {\n"
                 + "var  map = new google.maps.Map(document.getElementById(\"googleMap\"), {\n"
@@ -135,26 +146,6 @@ public class ShopService {
                 //                + "  geocodeAddress(address2, geocoder, map);\n"
                 //                + "  geocodeAddress(address3, geocoder, map);\n"
                 + "}\n"
-                //Converts the Address to a Geolocation
-                //                + "function geocodeAddress(address, geocoder, resultsMap) {\n"
-                //                + "  geocoder.geocode({\n"
-                //                + "    'address': address\n"
-                //                + "  }, function(results, status) {\n"
-                //                + "    if (status === google.maps.GeocoderStatus.OK) {\n"
-                //                + "      resultsMap.setCenter(results[0].geometry.location);\n"
-                //                + "      var marker = new google.maps.Marker({\n"
-                //                + "        map: resultsMap,\n"
-                //                + "        label: labels[labelIndex++ % labels.length],\n"
-                //                + "        position: results[0].geometry.location,\n"
-                ////                + "        title: markers[i][0]" <---Coffee Shop Name will go here
-                //                + "      });\n"
-                //                + "      markers.push(marker);\n"
-                //                + "      updateZoom(resultsMap);\n"
-                //                + "    } else {\n"
-                //                + "      alert('Geocode was not successful for the following reason: ' + status);\n"
-                //                + "    }\n"
-                //                + "  });\n"
-                //                + "}\n"
 
                 + "function geocodeAddress(address, i, title, geocoder, resultsMap, infoWindow) {\n"
                 + "  geocoder.geocode({\n"
@@ -194,6 +185,11 @@ public class ShopService {
                 + "}\n"
                 + "</script>\n"
                 + "<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
+            
+        } catch (Exception e) {
+                sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
+        }
+        
         sb.append("</body></html>");
         return sb.toString();
     }
