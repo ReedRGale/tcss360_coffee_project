@@ -60,7 +60,7 @@ public class ShopService {
                 + "0px;border-spacing: 0px;}</style>"
                 + "<b>SHOP LIST:</b>"
                 + "<br><br>"
-                + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>"
+                + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>" 
                 + "<table cellpadding=10 border=1><tr>"
                 + "<td>ID</td>"
                 + "<td>Name</td>"
