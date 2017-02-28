@@ -58,6 +58,7 @@ public class ShopService {
         sb.append("<html><body><style>table, th, td "
                 + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
                 + "0px;border-spacing: 0px;}</style>"
+                + "<b><a href=\"~/shops\"><button>Text</button></a></b>"
                 + "<b>SHOP LIST:</b>"
                 + "<br><br>"
                 + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>" 
