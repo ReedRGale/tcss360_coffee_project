@@ -30,7 +30,7 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author Jared Lowery
  * @author lloyd
  */
-@Path("")
+@Path("shops")
 public class ShopService {
 
     static final Logger logger = Logger.getLogger(ShopService.class.getName());
