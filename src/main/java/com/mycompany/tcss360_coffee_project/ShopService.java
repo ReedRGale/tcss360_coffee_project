@@ -30,7 +30,7 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author Jared Lowery
  * @author lloyd
  */
-@Path("shops")
+@Path("")
 public class ShopService {
 
     static final Logger logger = Logger.getLogger(ShopService.class.getName());
@@ -58,7 +58,7 @@ public class ShopService {
         sb.append("<html><body><style>table, th, td "
                 + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
                 + "0px;border-spacing: 0px;}</style>"
-                + "<b><a href=\"reviews\"><button>Check out some reviews!!</button></a></b>"
+                + "<b><a href=\"users\"><button>Check out some reviews!!</button></a></b>"
                 + "<br></br>"
                 + "<b>SHOP LIST:</b>"
                 + "<br><br>"
