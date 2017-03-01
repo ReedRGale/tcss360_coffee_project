@@ -246,8 +246,8 @@ public class Model {
         sqlQuery.append("closetime=" + shp.getClosetime() + ", ");
         sqlQuery.append("description='" + shp.getDescription() + "', ");
         sqlQuery.append("capacity=" + shp.getCapacity() + ", ");
-        sqlQuery.append("wifi=" + shp.getWifi() + ", ");
         sqlQuery.append("volume=" + shp.getVolume() + ", ");
+        sqlQuery.append("wifi=" + shp.getWifi() + " ");
         sqlQuery.append("where shopid=" + shp.getShopid() + ";");
         
         // Execute the query...
