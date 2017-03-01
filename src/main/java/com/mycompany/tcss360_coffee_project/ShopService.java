@@ -74,6 +74,9 @@ public class ShopService {
                 + "<td>Open Time</td>"
                 + "<td>Close Time</td>"
                 + "<td>Description</td>"
+                + "<td>Capacity</td>"
+                + "<td>Wifi</td>"
+                + "<td>Volume</td>"
                 + "</tr>");
         try {
             Model db = Model.singleton();
@@ -89,7 +92,10 @@ public class ShopService {
                         + shps[i].getPhone() + "</td><td>"
                         + shps[i].getOpentime() + "</td><td>"
                         + shps[i].getClosetime() + "</td><td>"
-                        + shps[i].getDescription() + "</td></tr>");
+                        + shps[i].getDescription() + "</td><td>"
+                        + shps[i].getCapacity() + "</td><td>"
+                        + shps[i].getWifi() + "</td><td>"
+                        + shps[i].getVolume() + "</td></tr>");
             }
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
@@ -220,6 +226,9 @@ public class ShopService {
         text.append("Opentime: " + shp.getOpentime() + "...\n");
         text.append("Closetime: " + shp.getClosetime() + "...\n");
         text.append("Description: " + shp.getDescription() + "...\n");
+        text.append("Capacity: " + shp.getCapacity() + "...\n");
+        text.append("Wifi: " + shp.getWifi() + "...\n");
+        text.append("Volume: " + shp.getVolume() + "...\n");
 
         try {
             Model db = Model.singleton();
