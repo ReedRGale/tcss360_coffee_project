@@ -211,10 +211,10 @@ public class Model {
                 + shp.getPhone() + ","
                 + shp.getOpentime() + ","
                 + shp.getClosetime() + ",'"
-                + shp.getDescription() + ","
-                + shp.getCapacity() + "');"
-                + shp.getWifi() + "');"
-                + shp.getVolume() + ",";
+                + shp.getDescription() + "',"
+                + shp.getCapacity() + ","
+                + shp.getWifi() + ","
+                + shp.getVolume() + ");";
         
         // Evaluate the SQL statement...
         Statement s = createStatement();
@@ -244,7 +244,7 @@ public class Model {
         sqlQuery.append("phone=" + shp.getPhone() + ", ");
         sqlQuery.append("opentime=" + shp.getOpentime() + ", ");
         sqlQuery.append("closetime=" + shp.getClosetime() + ", ");
-        sqlQuery.append("description='" + shp.getDescription() + "' ");
+        sqlQuery.append("description='" + shp.getDescription() + "', ");
         sqlQuery.append("capacity=" + shp.getCapacity() + ", ");
         sqlQuery.append("wifi=" + shp.getWifi() + ", ");
         sqlQuery.append("volume=" + shp.getVolume() + ", ");
