@@ -222,13 +222,13 @@ public class Model {
 	
 	// calculate percentage to use for weighted average (sum of all weights after this loop should add up to 100)
 	for (int i = 0; i < weights.length; i++) {
-		weights[i] /= outOf;
+		weights[i] = weights[i]/outOf;
 	}
 	
 	// calculate overall rank (sum of each review's rank * weight)
 	double rank = 0;
         
-        switch (choice) {
+      /*  switch (choice) {
             case 1: //coffee ranking 
                 for (int i = 0; i < rvws.length; i++) {
                     rank += rvws[i].getCoffeerank() * weights[i];
@@ -241,7 +241,7 @@ public class Model {
                 for (int i = 0; i < rvws.length; i++) {
                     rank += rvws[i].getExpenserank() * weights[i];
                 }
-        }	
+        }	*/
 	return rank;
     }
     
