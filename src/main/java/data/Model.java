@@ -233,14 +233,17 @@ public class Model {
                 for (int i = 0; i < rvws.length; i++) {
                     rank += rvws[i].getCoffeerank() * weights[i];
                 }   
+                break;
             case 2: //food ranking
                 for (int i = 0; i < rvws.length; i++) {
                     rank += rvws[i].getFoodrank() * weights[i];
                 }  
+                break;
             case 3: //expense ranking
                 for (int i = 0; i < rvws.length; i++) {
                     rank += rvws[i].getExpenserank() * weights[i];
                 }
+                break;
         }	
 	return rank;
     }
