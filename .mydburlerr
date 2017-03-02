@@ -1,3 +1,6 @@
-Running echo $JDBC_DATABASE_URL on aqueous-caverns-35252... starting, run.8202 (Free)
-Running echo $JDBC_DATABASE_URL on aqueous-caverns-35252... connecting, run.8202 (Free)
-Running echo $JDBC_DATABASE_URL on aqueous-caverns-35252... up, run.8202 (Free)
+ !    Error: No app specified
+ !    Usage: heroku run --app APP
+ !    We don't know which app to run this on.
+ !    Run this command from inside an app folder or specify which app to use with --app APP
+ !    
+ !    https://devcenter.heroku.com/articles/using-the-cli#app-commands

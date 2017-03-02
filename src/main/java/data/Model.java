@@ -17,12 +17,15 @@ import java.util.logging.Logger;
 import objects.Review;
 import objects.Shop;
 import objects.User;
+import java.sql.Date;
+import java.util.Calendar;
 
 /**
  *
  * @author wlloyd
  */
 public class Model {
+    private static final int REVIEW_DECAY_RATE = -4;
     static final Logger logger = Logger.getLogger(Model.class.getName());
     private static Model instance;
     private Connection conn;
@@ -188,11 +191,68 @@ public class Model {
             shp.setWifi(rows.getInt("wifi"));
             shp.setVolume(rows.getInt("volume"));
             
+            double coffeerank = calculateRank(shp.getShopid(), 1);
+            double foodrank = calculateRank(shp.getShopid(), 2);
+            double expenserank = calculateRank(shp.getShopid(), 3);
+            shp.setCoffeeRank(coffeerank);
+            shp.setFoodRank(foodrank);
+            shp.setExpenseRank(expenserank);
+            
+            
             logger.log(Level.INFO, "\nAdding shop to list with ID: " + shp.getShopid());
             ll.add(shp);
         }
         return ll.toArray(new Shop[ll.size()]);
     }
+    
+    private double calculateRank(int id, int choice) throws SQLException {
+     
+        Review[] rvws = getReviews(id);
+        double[] weights = new double[rvws.length];
+	
+        int outOf = 0; 
+	int age;
+	// get percentage of original weight to keep (out of 100; ex: a review that is 
+        //2 months old will keep 92% (100 + (2 * -4)) of its original weight of 100)
+	for (int i = 0; i < rvws.length; i++) {
+		age = calculateAgeInMonths(rvws[i].getDateadded()); 
+		weights[i] = 100 + (age * REVIEW_DECAY_RATE);
+		outOf += weights[i];
+	}
+	
+	// calculate percentage to use for weighted average (sum of all weights after this loop should add up to 100)
+	for (int i = 0; i < weights.length; i++) {
+		weights[i] /= outOf;
+	}
+	
+	// calculate overall rank (sum of each review's rank * weight)
+	double rank = 0;
+        
+        switch (choice) {
+            case 1: //coffee ranking 
+                for (int i = 0; i < rvws.length; i++) {
+                    rank += rvws[i].getCoffeerank() * weights[i];
+                }   
+            case 2: //food ranking
+                for (int i = 0; i < rvws.length; i++) {
+                    rank += rvws[i].getFoodrank() * weights[i];
+                }  
+            case 3: //expense ranking
+                for (int i = 0; i < rvws.length; i++) {
+                    rank += rvws[i].getExpenserank() * weights[i];
+                }
+        }	
+	return rank;
+    }
+    
+    private int calculateAgeInMonths(Date date) {
+        Calendar now = Calendar.getInstance();
+        Calendar d = Calendar.getInstance();
+        d.setTime(date);
+        int diff = (now.get(Calendar.YEAR) - d.get(Calendar.YEAR)) * 12 + now.get(Calendar.MONTH) - d.get(Calendar.MONTH);
+        return diff;
+    }
+    
     
     public int newShop(Shop shp) throws SQLException
     {
@@ -292,6 +352,33 @@ public class Model {
         }
         return ll.toArray(new Review[ll.size()]);
     }
+    
+    // returns array of reviews connected to specified coffee shop sortecd from newest to oldest
+    private Review[] getReviews(int shopid) throws SQLException
+    {
+        LinkedList<Review> ll = new LinkedList<Review>();
+        String sqlQuery ="select * from reviews where shop=" + shopid + " order by dateadded desc;";
+        Statement st = createStatement();
+        ResultSet rows = st.executeQuery(sqlQuery);
+        while (rows.next())
+        {
+            logger.log(Level.INFO, "Reading row...");
+            Review rvw = new Review();
+            rvw.setReviewid(rows.getInt("reviewid"));
+            rvw.setFoodrank(rows.getInt("foodrank"));
+            rvw.setExpenserank(rows.getInt("expenserank"));
+            rvw.setCoffeerank(rows.getInt("coffeerank"));
+            rvw.setDateadded(rows.getDate("dateadded"));
+            rvw.setOwner(rows.getInt("owner"));
+            rvw.setShop(rows.getInt("shop"));
+            rvw.setComment(rows.getString("comment"));
+            logger.log(Level.INFO, "Adding user to list with id=" + rvw.getReviewid());
+            ll.add(rvw);
+        }
+        return ll.toArray(new Review[ll.size()]);
+    }
+    
+    
     
     public int newReview(Review rvw) throws SQLException
     {  
