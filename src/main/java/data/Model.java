@@ -228,7 +228,7 @@ public class Model {
 	// calculate overall rank (sum of each review's rank * weight)
 	double rank = 0;
         
-      /*  switch (choice) {
+        switch (choice) {
             case 1: //coffee ranking 
                 for (int i = 0; i < rvws.length; i++) {
                     rank += rvws[i].getCoffeerank() * weights[i];
@@ -241,7 +241,7 @@ public class Model {
                 for (int i = 0; i < rvws.length; i++) {
                     rank += rvws[i].getExpenserank() * weights[i];
                 }
-        }	*/
+        }	
 	return rank;
     }
     
