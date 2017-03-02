@@ -431,7 +431,7 @@ public class Model {
     
     public void deleteReview(int reviewid) throws SQLException
     {
-        String sqlDelete="delete from messages where reviewid=?";
+        String sqlDelete="delete from reviews where reviewid=?";
         PreparedStatement pst = createPreparedStatement(sqlDelete);
         pst.setInt(1, reviewid);
         pst.execute();
