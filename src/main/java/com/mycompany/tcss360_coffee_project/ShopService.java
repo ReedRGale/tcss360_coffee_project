@@ -77,6 +77,9 @@ public class ShopService {
                 + "<td>Capacity</td>"
                 + "<td>Wifi</td>"
                 + "<td>Volume</td>"
+                + "<td>Coffee Ranking</td>"
+                + "<td>Food Ranking</td>"
+                + "<td>Expense Ranking</td>"
                 + "</tr>");
         try {
             Model db = Model.singleton();
@@ -95,7 +98,10 @@ public class ShopService {
                         + shps[i].getDescription() + "</td><td>"
                         + shps[i].getCapacity() + "</td><td>"
                         + shps[i].getWifi() + "</td><td>"
-                        + shps[i].getVolume() + "</td></tr>");
+                        + shps[i].getVolume() + "</td><td>"
+                        + shps[i].getCoffeeRank() + "</td><td>"
+                        + shps[i].getFoodRank() + "</td><td>"
+                        + shps[i].getExpenseRank() + "</td></tr>");
             }
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");

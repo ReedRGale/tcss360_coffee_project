@@ -24,6 +24,9 @@ public class Shop
     private int wifi;
     private int capacity;
     private int volume;
+    private double coffeeRank;
+    private double foodRank;
+    private double expenseRank;
 
     public int getShopid() {
         return shopid;
@@ -128,4 +131,29 @@ public class Shop
     public void setWifi(int wifi) {
         this.wifi = wifi;
     }
+    
+    public double getFoodRank() {
+        return foodRank;
+    }
+    
+    public void setFoodRank(double rank) {
+        foodRank = rank;
+    }
+    
+    public double getCoffeeRank() {
+        return coffeeRank;
+    }
+    
+    public void setCoffeeRank(double rank) {
+        coffeeRank = rank;
+    }
+    
+    public double getExpenseRank() {
+        return expenseRank;
+    }
+    
+    public void setExpenseRank(double rank) {
+        expenseRank = rank;
+    }
+    
 }
