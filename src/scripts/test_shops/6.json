@@ -1,0 +1,14 @@
+{
+  "name": "Six",
+  "street": "123 Beet Street",
+  "city": "Tacoma",
+  "state": "WA",
+  "zip": 98404,
+  "phone": 2532532253,
+  "opentime": 100,
+  "closetime": 1800,
+  "description": "Generic",
+  "capacity": 1,
+  "wifi": 1,
+  "volume": 1  
+}
