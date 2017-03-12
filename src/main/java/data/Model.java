@@ -444,7 +444,7 @@ public class Model {
     {
         LinkedList<Shop> ll = new LinkedList<Shop>();
         String sqlQuery ="select * from shops";
-        sqlQuery += (messageId > 0) ? " where messageid=" + messageId + " order by messageid;" : " order by message;";
+        sqlQuery += (messageId > 0) ? " where shopid=" + messageId + " order by messageid;" : " order by message;";
         Statement st = createStatement();
         ResultSet rows = st.executeQuery(sqlQuery);
         while (rows.next())
