@@ -26,7 +26,13 @@ public class Shop
     private int wifi;
     private int capacity;
     private int volume;
+<<<<<<< HEAD
     public LogRecord toString;
+=======
+    private double coffeeRank;
+    private double foodRank;
+    private double expenseRank;
+>>>>>>> 8540c3372cb62faf39833b71dc8636e2ceb9ca92
 
     public int getShopid() {
         return shopid;
@@ -131,4 +137,29 @@ public class Shop
     public void setWifi(int wifi) {
         this.wifi = wifi;
     }
+    
+    public double getFoodRank() {
+        return foodRank;
+    }
+    
+    public void setFoodRank(double rank) {
+        foodRank = rank;
+    }
+    
+    public double getCoffeeRank() {
+        return coffeeRank;
+    }
+    
+    public void setCoffeeRank(double rank) {
+        coffeeRank = rank;
+    }
+    
+    public double getExpenseRank() {
+        return expenseRank;
+    }
+    
+    public void setExpenseRank(double rank) {
+        expenseRank = rank;
+    }
+    
 }
