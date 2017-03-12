@@ -55,22 +55,22 @@ public class PublicShops{
      * @return A string of HTML that represents the shops.
      */
     @GET
-   // @Path("{shopid}")
+    @Path("{shopid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Shop> getShopsJSON(/*@PathParam("shopid") String id*/) {
+    public List<Shop> getShopsJSON(@PathParam("shopid") String id) {
         LinkedList<Shop> shopList = new LinkedList<Shop>();
      
         try
         {
-            //int shopid = Integer.parseInt(id);
+            int shopid = Integer.parseInt(id);
             Model db = Model.singleton();
             Shop[] shops = db.getShops();
-           // if (shopid == 0)
+            if (shopid == 0)
                 for (int i=0;i<shops.length;i++)
                     shopList.add(shops[i]);
-           // else
-             //   shopList.add(shops[0]);
-           // logger.log(Level.INFO, "Received request to fetch user id=" + shopid);
+            else
+                shopList.add(shops[0]);
+            logger.log(Level.INFO, "Received request to fetch user id=" + shopid);
             return shopList;
         }
         catch (Exception e)
