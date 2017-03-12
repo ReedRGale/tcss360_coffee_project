@@ -117,7 +117,7 @@ public class ShopService {
                 + "</tr>");
         try {
             Model db = Model.singleton();
-            Shop[] shps = db.getShops(null);
+            Shop[] shps = db.getShops(0);
             for (int i = 0; i < shps.length; i++) {
                 sb.append("<tr><td>"
                         + shps[i].getShopid() + "</td><td><a href=\"#\">"
@@ -146,7 +146,7 @@ public class ShopService {
         
         try {
             Model db = Model.singleton();
-            Shop[] shps = db.getShops(null);
+            Shop[] shps = db.getShops(0);
             
             
             sb.append("<script type=\"text/javascript\">\n"

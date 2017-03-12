@@ -165,12 +165,12 @@ public class Model {
     
 // **** **** **** **** **** **** **** **** **** **** **** **** **** **** //
     
-    public Shop[] getShops(String query) throws SQLException
+    public Shop[] getShops(int query) throws SQLException
     {
         LinkedList<Shop> ll = new LinkedList<Shop>();
         String sqlQuery = null;
         
-        if (query == null)
+        if (query == 0)
         {
             sqlQuery = "select * from shops;";
         }
@@ -446,11 +446,6 @@ public class Model {
         pst.setInt(1, reviewid);
         pst.execute();
     }
-
-    public Shop[] getShops(int messageid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
     public Shop[] getMessages(int messageId) throws SQLException
     {

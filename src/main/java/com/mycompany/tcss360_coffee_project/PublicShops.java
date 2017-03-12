@@ -68,7 +68,7 @@ public class PublicShops{
             
             if (shopid == 0)
             {
-                shops = db.getShops(null);
+                shops = db.getShops(0);
             }
             else
             {
