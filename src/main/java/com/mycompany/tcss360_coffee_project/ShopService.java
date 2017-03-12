@@ -97,7 +97,7 @@ public class ShopService {
                 + "<b>SHOP LIST:</b>"
                 + "<br><br>"
                 + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>" 
-                + "<table cellpadding=10 border=1><tr>"
+                + "<table cellpadding=10 border=1 id=\"shopTable\"><tr>"
                 + "<td>ID</td>"
                 + "<td>Name</td>"
                 + "<td>Street</td>"
@@ -114,7 +114,26 @@ public class ShopService {
                 + "<td>Coffee Ranking</td>"
                 + "<td>Food Ranking</td>"
                 + "<td>Expense Ranking</td>"
-                + "</tr>");
+                + "</tr> "
+                + "<script language=\"javascript\">\n" 
+                + "getshops();"
+                + "function getshops()" 
+                + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
+                + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
+                + "function render(data)  {" 
+                + "$.each(data, function(index, shop) {" 
+                + "var newrow = \"<tr><td id=\\\"shopid\\\"\" + index + \"\\\">\"+ shop.shopid + \"</td>\";" 
+                + "newrow += \"<td id=\\\"name\\\">\" + shop.name + \"</td>\";" 
+                + "newrow += \"<td id=\\\"street\\\">\" + shop.street + \"</td>\";" 
+                + "newrow += \"<td id=\\\"city\\\">\" + shop.city + \"</td>\";" 
+                + "newrow += \"<td id=\\\"state\\\">\" + shop.state + \"</td>\";" 
+                + "newrow += \"<td id=\\\"zip\\\">\" + shop.zip + \"</td>\";"
+                + "newrow += \"<td id=\\\"phone\\\">\" + shop.phone + \"</td>\";" 
+                + "newrow += \"<td id=\\\"opentime\\\">\" + shop.opentime + \"</td>\";"
+                + "newrow += \"<td id=\\\"closetime\\\">\" + shop.closetime + \"</td>\";"
+                + "newrow += \"<td id=\\\"description\\\">\" + shop.description + \"</td></tr>\";"
+                + "$('#shopTable').append(newrow);});}</script>"
+        );
         try {
             Model db = Model.singleton();
             Shop[] shps = db.getShops();

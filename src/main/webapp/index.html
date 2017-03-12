@@ -175,31 +175,36 @@
             
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>    
-        <script language="javascript">
-//            $('#get-data').click(function () {
-////                var messageid = document.getElementById("messageid");
-//                var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops' + 1; //+messageid.value;
-//    //            console.log(messageid);
-//                console.log(url);
-//                $.ajax({
-//                    type: 'GET',
-//                    url: url,
-//                    datatype: 'json',
-//                    success: render_form
-//                });        
-//            });
-//            // displays a selected user in the form
-//            function render_form(data)  {
-//                var list = data;
-//                if (list)
-//                $.each(list, function(index, message) { 
-//                    $('#message').text(message.shopid);
-//                });
-//                else {
-//                    document.getElementById("message2").text = "";
-//                }
-//            } 
-        </script>
+<!--        <script language="javascript">
+            getshops();
+            function getshops() {
+                // Form load
+                var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    datatype: 'json',
+                    success: render
+                }); 
+            } 
+            
+            // renders the user table
+            function render(data)  {
+              $.each(data, function(index, shop) { 
+                  var newrow = "<tr><td id=\"shopid\"" + index + "\">"+ shop.shopid + "</td>";
+                  newrow += "<td id=\"name\">" + shop.name + "</td>";
+                  newrow += "<td id=\"street\">" + shop.street + "</td>";
+                  newrow += "<td id=\"city\">" + shop.city + "</td>";
+                  newrow += "<td id=\"state\">" + shop.state + "</td>";
+                  newrow += "<td id=\"zip\">" + shop.zip + "</td>";
+                  newrow += "<td id=\"phone\">" + shop.phone + "</td>";
+                  newrow += "<td id=\"opentime\">" + shop.opentime + "</td>";
+                  newrow += "<td id=\"closetime\">" + shop.closetime + "</td>";
+                  newrow += "<td id=\"description\">" + shop.description + "</td></tr>";
+                  $('#shopTable').append(newrow);
+              });
+            }
+        </script>-->
     </head>
     <body>
         <!-- Navigation -->
@@ -246,7 +251,6 @@
                     <h1>Coffee Finder</h1>
                     <input type="search" id="zip" placeholder="Enter Zip Code...">
                     <input type="button" value="Search" onclick="" id="findRadius"/>
-                    <input type="button" value="Get Shops" onclick="" id="get-data"/>
                 </div>
                 <div class="header-content-inner">
                     <a href="#" class="btn btn-primary btn-lg">Sign In or Register</a>
