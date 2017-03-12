@@ -18,7 +18,7 @@ public class Shop
     private String street;
     private String city;
     private String state;
-    private int zip;
+    private long zip;
     private String phone;
     private int opentime;
     private int closetime;
@@ -74,11 +74,11 @@ public class Shop
         this.state = state;
     }
 
-    public int getZip() {
+    public long getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(long zip) {
         this.zip = zip;
     }
 
