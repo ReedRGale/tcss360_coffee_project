@@ -120,8 +120,8 @@ public class ShopService {
             Shop[] shps = db.getShops();
             for (int i = 0; i < shps.length; i++) {
                 sb.append("<tr><td>"
-                        + shps[i].getShopid() + "</td><td>"
-                        + shps[i].getName() + "</td><td>"
+                        + shps[i].getShopid() + "</td><td><a href=\"#\">"
+                        + shps[i].getName() + "</a></td><td>"
                         + shps[i].getStreet() + "</td><td>"
                         + shps[i].getCity() + "</td><td>"
                         + shps[i].getState() + "</td><td>"
