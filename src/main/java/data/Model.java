@@ -440,11 +440,13 @@ public class Model {
     public Shop[] getShops(int messageid) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
     public Shop[] getMessages(int messageId) throws SQLException
     {
         LinkedList<Shop> ll = new LinkedList<Shop>();
         String sqlQuery ="select * from shops";
-        sqlQuery += (messageId > 0) ? " where shopid=" + messageId + " order by messageid;" : " order by message;";
+        sqlQuery += (messageId > 0) ? " where shopid=" + messageId + " order by shopid;" : " order by shopid;";
         Statement st = createStatement();
         ResultSet rows = st.executeQuery(sqlQuery);
         while (rows.next())
