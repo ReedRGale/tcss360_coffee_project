@@ -176,7 +176,7 @@ public class Model {
         }
         else
         {
-            sqlQuery = "select * from shops where shopid = " + query + ";";
+            sqlQuery = "select * from shops where shopid=" + query + ";";
         }
         
         Statement st = createStatement();

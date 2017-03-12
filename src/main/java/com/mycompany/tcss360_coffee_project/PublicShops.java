@@ -75,11 +75,9 @@ public class PublicShops{
                 shops = db.getShops(shopid);
             }
             
-            if (shopid == 0)
-                for (int i=0;i<shops.length;i++)
-                    shopList.add(shops[i]);
-            else
-                shopList.add(shops[0]);
+            for (int i=0;i<shops.length;i++)
+                shopList.add(shops[i]);
+            
             logger.log(Level.INFO, "Received request to fetch user id=" + shopid);
             return shopList;
         }
