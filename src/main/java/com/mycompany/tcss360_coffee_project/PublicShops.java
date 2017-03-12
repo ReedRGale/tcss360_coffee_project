@@ -64,7 +64,17 @@ public class PublicShops{
         {
             int shopid = Integer.parseInt(id);
             Model db = Model.singleton();
-            Shop[] shops = db.getShops();
+            Shop[] shops = null;
+            
+            if (shopid == 0)
+            {
+                shops = db.getShops(null);
+            }
+            else
+            {
+                shops = db.getShops(shopid);
+            }
+            
             if (shopid == 0)
                 for (int i=0;i<shops.length;i++)
                     shopList.add(shops[i]);

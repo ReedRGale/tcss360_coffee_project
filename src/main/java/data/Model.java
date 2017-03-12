@@ -165,10 +165,20 @@ public class Model {
     
 // **** **** **** **** **** **** **** **** **** **** **** **** **** **** //
     
-    public Shop[] getShops() throws SQLException
+    public Shop[] getShops(String query) throws SQLException
     {
         LinkedList<Shop> ll = new LinkedList<Shop>();
-        String sqlQuery ="select * from shops;";
+        String sqlQuery = null;
+        
+        if (query != null)
+        {
+            sqlQuery = "select * from shops;";
+        }
+        else
+        {
+            sqlQuery = "select * from shops where shopid = " + query + ";";
+        }
+        
         Statement st = createStatement();
         ResultSet rows = st.executeQuery(sqlQuery);
         while (rows.next())
