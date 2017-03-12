@@ -176,29 +176,29 @@
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>    
         <script language="javascript">
-            $('#get-data').click(function () {
-//                var messageid = document.getElementById("messageid");
-                var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops' + 1; //+messageid.value;
-    //            console.log(messageid);
-                console.log(url);
-                $.ajax({
-                    type: 'GET',
-                    url: url,
-                    datatype: 'json',
-                    success: render_form
-                });        
-            });
-            // displays a selected user in the form
-            function render_form(data)  {
-                var list = data;
-                if (list)
-                $.each(list, function(index, message) { 
-                    $('#message').text(message.shopid);
-                });
-                else {
-                    document.getElementById("message2").text = "";
-                }
-            } 
+//            $('#get-data').click(function () {
+////                var messageid = document.getElementById("messageid");
+//                var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops' + 1; //+messageid.value;
+//    //            console.log(messageid);
+//                console.log(url);
+//                $.ajax({
+//                    type: 'GET',
+//                    url: url,
+//                    datatype: 'json',
+//                    success: render_form
+//                });        
+//            });
+//            // displays a selected user in the form
+//            function render_form(data)  {
+//                var list = data;
+//                if (list)
+//                $.each(list, function(index, message) { 
+//                    $('#message').text(message.shopid);
+//                });
+//                else {
+//                    document.getElementById("message2").text = "";
+//                }
+//            } 
         </script>
     </head>
     <body>
@@ -250,8 +250,8 @@
                 </div>
                 <div class="header-content-inner">
                     <a href="#" class="btn btn-primary btn-lg">Sign In or Register</a>
-                    <p class="message">TEXT GOES HERE</p>
-                    <p class="message2" id='message2'>it didn't replace this.</td>
+<!--                    <p class="message">TEXT GOES HERE</p>
+                    <p class="message2" id='message2'>it didn't replace this.</td>-->
                 </div>
             </div>
         </header>
