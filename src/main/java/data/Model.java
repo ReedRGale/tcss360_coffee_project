@@ -436,4 +436,39 @@ public class Model {
         pst.setInt(1, reviewid);
         pst.execute();
     }
+
+    public Shop[] getShops(int messageid) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public Shop[] getMessages(int messageId) throws SQLException
+    {
+        LinkedList<Shop> ll = new LinkedList<Shop>();
+        String sqlQuery ="select * from shops";
+        sqlQuery += (messageId > 0) ? " where messageid=" + messageId + " order by messageid;" : " order by message;";
+        Statement st = createStatement();
+        ResultSet rows = st.executeQuery(sqlQuery);
+        while (rows.next())
+        {
+            logger.log(Level.INFO, "Reading row...");
+            Shop shp = new Shop();
+            shp.setShopid(rows.getInt("shopid"));
+            shp.setName(rows.getString("name"));
+            shp.setStreet(rows.getString("street"));
+            shp.setCity(rows.getString("city"));
+            shp.setState(rows.getString("city"));
+            shp.setZip(rows.getInt("zip"));
+            shp.setPhone(rows.getString("phone"));
+            shp.setOpentime(rows.getInt("opentime"));
+            shp.setClosetime(rows.getInt("closetime"));
+            shp.setDescription(rows.getString("description"));
+            shp.setCapacity(rows.getInt("capacity"));
+            shp.setVolume(rows.getInt("volume"));
+            shp.setWifi(rows.getInt("wifi"));
+     
+         
+            logger.log(Level.INFO, "Adding user to list with id=" + shp.getShopid());
+            ll.add(shp);
+        }
+        return ll.toArray(new Shop[ll.size()]);
+    }
 }

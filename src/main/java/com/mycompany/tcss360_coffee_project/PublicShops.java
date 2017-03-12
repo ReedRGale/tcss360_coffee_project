@@ -17,10 +17,12 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
+import javax.ws.rs.PathParam;
 import objects.Shop;
 import objects.User;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -53,23 +55,23 @@ public class PublicShops{
      * @return A string of HTML that represents the shops.
      */
     @GET
+    @Path("{allshops}")
     @Produces(MediaType.APPLICATION_JSON)
-    public LinkedList<Shop> getShops() {
-        //TODO return proper representation object
-        LinkedList<Shop> shopList = new LinkedList<Shop>();
+    public List<Shop> getMessages(@PathParam("allshops") String id) {
+        LinkedList<Shop> messageList = new LinkedList<Shop>();
      
         try
         {
+            int messageid = Integer.parseInt(id);
             Model db = Model.singleton();
-            Shop[] shops = db.getShops();
-            
-                for (int i=0;i<shops.length;i++) {
-                    shopList.add(shops[i]);
-                    logger.log(shops[i].toString);
-                }
-                
-            logger.log(Level.INFO, "Received request to fetch user id=" );
-            return shopList;
+            Shop[] shops = db.getMessages(messageid);
+            if (messageid == 0)
+                for (int i=0;i<shops.length;i++)
+                    messageList.add(shops[i]);
+            else
+                messageList.add(shops[0]);
+            logger.log(Level.INFO, "Received request to fetch user id=" + messageid);
+            return messageList;
         }
         catch (Exception e)
         {
@@ -77,6 +79,7 @@ public class PublicShops{
                 logger.log(Level.WARNING, "Error getting users:" + e.toString());
                 return null;
         }
+
     }
 }
 
