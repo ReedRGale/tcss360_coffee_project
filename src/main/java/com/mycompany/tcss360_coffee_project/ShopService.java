@@ -135,7 +135,9 @@ public class ShopService {
                         + shps[i].getVolume() + "</td><td>"
                         + shps[i].getCoffeeRank() + "</td><td>"
                         + shps[i].getFoodRank() + "</td><td>"
-                        + shps[i].getExpenseRank() + "</td></tr>");
+                        + shps[i].getExpenseRank() + "</td>"
+                        + "<td><input type=\"button\" value=\"Edit\" onclick=\"\" id=\"delete-user\"/></td>\n" 
+                        + "<td><input type=\"button\" value=\"X\" onclick=\"\" id=\"delete-user\"/></td></tr>");
             }
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
