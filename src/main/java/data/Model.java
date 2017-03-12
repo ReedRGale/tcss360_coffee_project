@@ -170,7 +170,7 @@ public class Model {
         LinkedList<Shop> ll = new LinkedList<Shop>();
         String sqlQuery = null;
         
-        if (query != null)
+        if (query == null)
         {
             sqlQuery = "select * from shops;";
         }
