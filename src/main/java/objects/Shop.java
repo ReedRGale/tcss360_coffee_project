@@ -5,6 +5,8 @@
  */
 package objects;
 
+import java.util.logging.LogRecord;
+
 /**
  *
  * @author Reed R Gale
@@ -24,6 +26,7 @@ public class Shop
     private int wifi;
     private int capacity;
     private int volume;
+    public LogRecord toString;
 
     public int getShopid() {
         return shopid;

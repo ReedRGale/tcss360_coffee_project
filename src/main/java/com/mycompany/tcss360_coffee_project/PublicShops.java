@@ -65,6 +65,7 @@ public class PublicShops{
             
                 for (int i=0;i<shops.length;i++) {
                     shopList.add(shops[i]);
+                    logger.log(shops[i].toString);
                 }
                 
             logger.log(Level.INFO, "Received request to fetch user id=" );
@@ -76,117 +77,6 @@ public class PublicShops{
                 logger.log(Level.WARNING, "Error getting users:" + e.toString());
                 return null;
         }
-    }
-
-    /**
-     * POST method for updating or creating an instance of a Shop
-     *
-     * @param jobj: A JSON object to format into a Shop object.
-     */
-    @POST
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String createShop(String jobj) throws IOException {
-        // Turn the JSON into a Shop Object.
-        ObjectMapper mapper = new ObjectMapper();
-        Shop shp = mapper.readValue(jobj, Shop.class);
-
-        // String to let us know what's happening.
-        StringBuilder text = new StringBuilder();
-        text.append("\nThe JSON obj:" + jobj + "\n");
-        text.append("Created " + shp.getShopid() + "...\n");
-        text.append("Name: " + shp.getName() + "...\n");
-        text.append("Street: " + shp.getStreet() + "...\n");
-        text.append("City: " + shp.getCity() + "...\n");
-        text.append("State: " + shp.getState() + "...\n");
-        text.append("Zip: " + shp.getZip() + "...\n");
-        text.append("Phone: " + shp.getPhone() + "...\n");
-        text.append("Opentime: " + shp.getOpentime() + "...\n");
-        text.append("Closetime: " + shp.getClosetime() + "...\n");
-        text.append("Description: " + shp.getDescription() + "...\n");
-        text.append("Capacity: " + shp.getCapacity() + "...\n");
-        text.append("Wifi: " + shp.getWifi() + "...\n");
-        text.append("Volume: " + shp.getVolume() + "...\n");
-
-        try {
-            Model db = Model.singleton();
-            int id = db.newShop(shp);
-            logger.log(Level.INFO, "Shop persisted to db with ID: " + id);
-            text.append("Shop ID persisted with ID: " + id);
-        } catch (SQLException sqle) {
-            String errText = "Error persisting shop after db connection made:\n" + sqle.getMessage() + " --- " + sqle.getSQLState() + "\n";
-            logger.log(Level.SEVERE, errText);
-            text.append(errText);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error connecting to db.");
-        }
-
-        return text.toString();
-    }
-
-    /**
-     * PUT method for updating or creating an instance of a Shop
-     *
-     * @param jobj: A JSON object to format into a Shop object.
-     */
-    @PUT
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String updateShop(String jobj) throws IOException {
-        // Convert JSON to User object.
-        ObjectMapper mapper = new ObjectMapper();
-        Shop shp = mapper.readValue(jobj, Shop.class);
-
-        // Update the user.
-        StringBuilder text = new StringBuilder();
-        try {
-            Model db = Model.singleton();
-            int id = shp.getShopid();
-            db.updateShop(shp);
-            logger.log(Level.INFO, "Update shop with ID: " + id);
-            text.append("Shop updated with ID: " + id + "\n");
-        } catch (SQLException sqle) {
-            String errText = "Error updating shop after db connection made:\n" + sqle.getMessage() + " --- " + sqle.getSQLState() + "\n";
-            logger.log(Level.SEVERE, errText);
-            text.append(errText);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error connecting to db.");
-            text.append("Error connecting to db.");
-        }
-        return text.toString();
-    }
-
-    /**
-     * DELETE method for destroying an instance of a Shop. The function deletes
-     * a shop with a certain ID.
-     *
-     * @param jobj: A JSON object to format into a User object.
-     */
-    @DELETE
-    @Produces(MediaType.TEXT_PLAIN)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String deleteUser(String jobj) throws IOException {
-        // Convert JSON to a User object...
-        ObjectMapper mapper = new ObjectMapper();
-        Shop shp = mapper.readValue(jobj, Shop.class);
-
-        // Attempt user destruction...
-        StringBuilder text = new StringBuilder();
-        try {
-            Model db = Model.singleton();
-            int id = shp.getShopid();
-            db.deleteShop(id);
-            logger.log(Level.INFO, "Shop deleted from db: " + id);
-            text.append("Shop deleted with ID: " + id);
-        } catch (SQLException sqle) {
-            String errText = "Error deleting shop after db connection made:\n" + sqle.getMessage() + " --- " + sqle.getSQLState() + "\n";
-            logger.log(Level.SEVERE, errText);
-            text.append(errText);
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, "Error connecting to db.");
-            text.append("Error connecting to db.");
-        }
-        return text.toString();
     }
 }
 
