@@ -193,10 +193,10 @@
                 var list = data;
                 if (list)
                 $.each(list, function(index, message) { 
-                    $('#message').val(message.shopid);
+                    $('#message').text(message.shopid);
                 });
                 else {
-                    document.getElementById("message2").value = "";
+                    document.getElementById("message2").text = "";
                 }
             } 
         </script>
@@ -251,7 +251,7 @@
                 <div class="header-content-inner">
                     <a href="#" class="btn btn-primary btn-lg">Sign In or Register</a>
                     <p class="message">TEXT GOES HERE</p>
-                    <p class="message2" id='message2'>it didn't replace this.</p>
+                    <p class="message2" id='message2'>it didn't replace this.</td>
                 </div>
             </div>
         </header>
