@@ -64,12 +64,20 @@ public class PublicShops{
         {
             int shopid = Integer.parseInt(id);
             Model db = Model.singleton();
-            Shop[] shops = db.getShops();
+            Shop[] shops = null;
+            
             if (shopid == 0)
-                for (int i=0;i<shops.length;i++)
-                    shopList.add(shops[i]);
+            {
+                shops = db.getShops(0);
+            }
             else
-                shopList.add(shops[0]);
+            {
+                shops = db.getShops(shopid);
+            }
+            
+            for (int i=0;i<shops.length;i++)
+                shopList.add(shops[i]);
+            
             logger.log(Level.INFO, "Received request to fetch user id=" + shopid);
             return shopList;
         }

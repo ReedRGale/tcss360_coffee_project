@@ -165,10 +165,20 @@ public class Model {
     
 // **** **** **** **** **** **** **** **** **** **** **** **** **** **** //
     
-    public Shop[] getShops() throws SQLException
+    public Shop[] getShops(int query) throws SQLException
     {
         LinkedList<Shop> ll = new LinkedList<Shop>();
-        String sqlQuery ="select * from shops;";
+        String sqlQuery = null;
+        
+        if (query == 0)
+        {
+            sqlQuery = "select * from shops orderby shopname;";
+        }
+        else
+        {
+            sqlQuery = "select * from shops where shopid=" + query + "orderby shopid;";
+        }
+        
         Statement st = createStatement();
         ResultSet rows = st.executeQuery(sqlQuery);
         while (rows.next())
@@ -436,11 +446,6 @@ public class Model {
         pst.setInt(1, reviewid);
         pst.execute();
     }
-
-    public Shop[] getShops(int messageid) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
     public Shop[] getMessages(int messageId) throws SQLException
     {
