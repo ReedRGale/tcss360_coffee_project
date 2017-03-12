@@ -26,13 +26,13 @@ public class Shop
     private int wifi;
     private int capacity;
     private int volume;
-<<<<<<< HEAD
+
     public LogRecord toString;
-=======
+
     private double coffeeRank;
     private double foodRank;
     private double expenseRank;
->>>>>>> 8540c3372cb62faf39833b71dc8636e2ceb9ca92
+
 
     public int getShopid() {
         return shopid;
