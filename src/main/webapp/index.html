@@ -176,7 +176,29 @@
         </style>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>    
         <script language="javascript">
-            
+            $('#get-data').click(function () {
+//                var messageid = document.getElementById("messageid");
+                var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops'; //+messageid.value;
+    //            console.log(messageid);
+                console.log(url);
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    datatype: 'json',
+                    success: render_form
+                });        
+            });
+            // displays a selected user in the form
+            function render_form(data)  {
+                var list = data;
+                if (list)
+                $.each(list, function(index, message) { 
+                    $('#message').val(message.shopid);
+                });
+                else {
+                    document.getElementById("message2").value = "";
+                }
+            } 
         </script>
     </head>
     <body>
@@ -205,16 +227,13 @@
                         <a href="https://shrouded-shore-30021.herokuapp.com">Home</a>
                     </li>
                     <li>
-                        <a href="../home/shops.html">Shops</a>
+                        <a href="../home/shops">Shops</a>
                     </li>
                     <li>
-                        <a href="https://shrouded-shore-30021.herokuapp.com/home/shops">Shops2</a>
+                        <a href="../home/reviews">Reviews</a>
                     </li>
                     <li>
-                        <a href="https://shrouded-shore-30021.herokuapp.com/home/reviews">Reviews</a>
-                    </li>
-                    <li>
-                        <a href="https://shrouded-shore-30021.herokuapp.com/home/users">Users</a>
+                        <a href="../home/users">Users</a>
                     </li>
                 </ul>
             </div>
@@ -227,9 +246,12 @@
                     <h1>Coffee Finder</h1>
                     <input type="search" id="zip" placeholder="Enter Zip Code...">
                     <input type="button" value="Search" onclick="" id="findRadius"/>
+                    <input type="button" value="Get Shops" onclick="" id="get-data"/>
                 </div>
                 <div class="header-content-inner">
                     <a href="#" class="btn btn-primary btn-lg">Sign In or Register</a>
+                    <p class="message">TEXT GOES HERE</p>
+                    <p class="message2" id='message2'>it didn't replace this.</p>
                 </div>
             </div>
         </header>
