@@ -57,21 +57,21 @@ public class PublicShops{
     @GET
     @Path("{shopid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Shop> getMessages(@PathParam("shopid") String id) {
-        LinkedList<Shop> messageList = new LinkedList<Shop>();
+    public List<Shop> getShopsJSON(@PathParam("shopid") String id) {
+        LinkedList<Shop> shopList = new LinkedList<Shop>();
      
         try
         {
-            int messageid = Integer.parseInt(id);
+            int shopid = Integer.parseInt(id);
             Model db = Model.singleton();
-            Shop[] shops = db.getShops(messageid);
-            if (messageid == 0)
+            Shop[] shops = db.getShops();
+            if (shopid == 0)
                 for (int i=0;i<shops.length;i++)
-                    messageList.add(shops[i]);
+                    shopList.add(shops[i]);
             else
-                messageList.add(shops[0]);
-            logger.log(Level.INFO, "Received request to fetch user id=" + messageid);
-            return messageList;
+                shopList.add(shops[0]);
+            logger.log(Level.INFO, "Received request to fetch user id=" + shopid);
+            return shopList;
         }
         catch (Exception e)
         {
