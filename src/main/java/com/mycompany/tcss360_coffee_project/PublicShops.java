@@ -70,7 +70,7 @@ public class PublicShops{
                     shopList.add(shops[i]);
            // else
              //   shopList.add(shops[0]);
-            logger.log(Level.INFO, "Received request to fetch user id=" + shopid);
+           // logger.log(Level.INFO, "Received request to fetch user id=" + shopid);
             return shopList;
         }
         catch (Exception e)
