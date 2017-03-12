@@ -55,9 +55,9 @@ public class PublicShops{
      * @return A string of HTML that represents the shops.
      */
     @GET
-    @Path("{allshops}")
+    @Path("{shopid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Shop> getMessages(@PathParam("allshops") String id) {
+    public List<Shop> getMessages(@PathParam("shopid") String id) {
         LinkedList<Shop> messageList = new LinkedList<Shop>();
      
         try
