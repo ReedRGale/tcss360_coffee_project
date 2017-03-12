@@ -50,7 +50,7 @@
                 text-align: center;
             }
             
-            header .header-content .header-content-inner h1 {
+            header .header-content .header-content-inner2 h1 {
                 margin-top: 0;
                 margin-bottom: 20px;
                 font-size: 50px;
@@ -150,7 +150,33 @@
                     color: yellowgreen;
                 }
             }
+/*            .container-1 {
+                width: 300px;
+                position: relative;
+                
+                white-space: nowrap;
+                position: relative;
+            }*/
+            
+            .header-content-inner2 input#zip {
+                width: 300px;
+                height: 50px;
+                background: #2b303b;
+                border: none;
+                font-size: 10pt;
+                /*float: left;*/
+                color: #63717f;
+                padding-left: 45px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+            }
+            
         </style>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>    
+        <script language="javascript">
+            
+        </script>
     </head>
     <body>
         <!-- Navigation -->
@@ -193,14 +219,15 @@
         <!-- Header -->
         <header>
             <div class="header-content">
-                <div class="header-content-inner">
+                <div class="header-content-inner2">
                     <h1>Coffee Finder</h1>
-                    <a href="#" class="btn btn-primary btn-lg">Sign In or Register</a>
+                    <input type="search" id="zip" placeholder="Enter Zip Code...">
                 </div>
-                <div class="header-content-inner-lower">
-                    <input class="input input-zip" placeholder="Enter Zip Code">
+                <div class="header-content-inner">
+                    <a href="#" class="btn btn-primary btn-lg">Sign In or Register</a>
                 </div>
             </div>
         </header>
+        
     </body>
 </html>
