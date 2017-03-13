@@ -267,27 +267,34 @@ public class Model {
     }
     
     
-    public int newShop(Shop shp) throws SQLException
+    public int newShop(Shop[] shp) throws SQLException
     {
         // Design the SQL statement that we're going to evaulate.
         // This statement creates a new Shop and sets it into a folder called:
         // ..."shops"...
         // Unless the @path is changed at the top of ShopService.
-        String sqlInsert= "insert into shops "
+        
+        String sqlInsert = "";
+        
+        for (int i = 0; i < shp.length; i++)
+        {
+            sqlInsert += "insert into shops "
                 + "(name, street, city, state, zip, phone, opentime, closetime, description, capacity, wifi, volume)"
                 + " values ('" 
-                + shp.getName() + "','"
-                + shp.getStreet() + "','"
-                + shp.getCity() + "','"
-                + shp.getState() + "',"
-                + shp.getZip() + ","
-                + shp.getPhone() + ","
-                + shp.getOpentime() + ","
-                + shp.getClosetime() + ",'"
-                + shp.getDescription() + "',"
-                + shp.getCapacity() + ","
-                + shp.getWifi() + ","
-                + shp.getVolume() + ");";
+                + shp[i].getName() + "','"
+                + shp[i].getStreet() + "','"
+                + shp[i].getCity() + "','"
+                + shp[i].getState() + "',"
+                + shp[i].getZip() + ","
+                + shp[i].getPhone() + ","
+                + shp[i].getOpentime() + ","
+                + shp[i].getClosetime() + ",'"
+                + shp[i].getDescription() + "',"
+                + shp[i].getCapacity() + ","
+                + shp[i].getWifi() + ","
+                + shp[i].getVolume() + ");\n";
+        }
+        
         
         // Evaluate the SQL statement...
         Statement s = createStatement();

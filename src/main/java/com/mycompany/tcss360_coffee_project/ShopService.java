@@ -63,38 +63,9 @@ public class ShopService {
                     + "<head>"
                     + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">"
                     + "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>  "
-                    
-                
+                   
                     + "<script language=\"javascript\">"
                     + "$(document).ready(function () {");
-            
-            
-            
-            // Design the functionality for each ajax call.
-            sb.append(
-              "function getshops(){" 
-            + "var url='https://team2coffeefinder.herokuapp.com/api/shops';" 
-            + "$.ajax({type: 'GET',url: url,datatype: 'application/json',success: render});"
-            + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
-            + "$.ajax({type: 'GET',url: url,datatype: 'application/json',success: render});}"
-            );
-            
-
-            sb.append(
-              "function render(data)  {" 
-            + "$.each(data, function(index, shop) {" 
-            + "var newrow = \"<tr><td>\" + shop.shopid + \"</td>\";" 
-            + "newrow += \"<td>\" + shop.name + \"</td>\";" 
-            + "newrow += \"<td>\" + shop.street + \"</td>\";" 
-            + "newrow += \"<td>\" + shop.city + \"</td>\";" 
-            + "newrow += \"<td>\" + shop.state + \"</td>\";" 
-            + "newrow += \"<td>\" + shop.zip + \"</td>\";"
-            + "newrow += \"<td>\" + shop.phone + \"</td>\";" 
-            + "newrow += \"<td>\" + shop.opentime + \"</td>\";"
-            + "newrow += \"<td>\" + shop.closetime + \"</td>\";"
-            + "newrow += \"<td>\" + shop.description + \"</td></tr>\";"
-            + "$('#shopTable').append(newrow);});}"
-            );
             
             // Designate all buttons a function.
             for (int i = 0; i < shps.length; i++) 
@@ -118,6 +89,29 @@ public class ShopService {
                 "        });"
                 );
             }
+            
+//            // Designate all buttons a function.
+//            for (int i = 0; i < shps.length; i++) 
+//            {
+//                sb.append(
+//                "        \n$('#edit-shop-" + shps[i].getShopid() + "').click(function ()\n" +
+//                "        {\n" +                                         
+//                "           var shopid = " + shps[i].getShopid() + ";\n" +
+//                "           var shop = { 'shopid': shopid.value };   \n" +      
+//                "           var url='shops';\n" +
+//                "           if (confirm('Are you sure')) {\n" +
+//                "             $.ajax({\n" +
+//                "               type: 'DELETE',\n" +
+//                "               url: url,\n" +
+//                "               datatype: 'json',\n" +
+//                "               data: JSON.stringify(shop),\n" +
+//                "               contentType: 'application/json',\n" +
+//                "               success: render_delete\n" +
+//                "             }); \n" +
+//                "           } \n" +         
+//                "        });"
+//                );
+//            }
             
             // Delete shop functionality.
             sb.append(
@@ -330,39 +324,20 @@ public class ShopService {
     public String createShop(String jobj) throws IOException {
         // Turn the JSON into a Shop Object.
         ObjectMapper mapper = new ObjectMapper();
-        Shop shp = mapper.readValue(jobj, Shop.class);
-
-        // String to let us know what's happening.
-        StringBuilder text = new StringBuilder();
-        text.append("\nThe JSON obj:" + jobj + "\n");
-        text.append("Created " + shp.getShopid() + "...\n");
-        text.append("Name: " + shp.getName() + "...\n");
-        text.append("Street: " + shp.getStreet() + "...\n");
-        text.append("City: " + shp.getCity() + "...\n");
-        text.append("State: " + shp.getState() + "...\n");
-        text.append("Zip: " + shp.getZip() + "...\n");
-        text.append("Phone: " + shp.getPhone() + "...\n");
-        text.append("Opentime: " + shp.getOpentime() + "...\n");
-        text.append("Closetime: " + shp.getClosetime() + "...\n");
-        text.append("Description: " + shp.getDescription() + "...\n");
-        text.append("Capacity: " + shp.getCapacity() + "...\n");
-        text.append("Wifi: " + shp.getWifi() + "...\n");
-        text.append("Volume: " + shp.getVolume() + "...\n");
+        Shop[] shp = mapper.readValue(jobj, Shop[].class);
 
         try {
             Model db = Model.singleton();
             int id = db.newShop(shp);
             logger.log(Level.INFO, "Shop persisted to db with ID: " + id);
-            text.append("Shop ID persisted with ID: " + id);
         } catch (SQLException sqle) {
             String errText = "Error persisting shop after db connection made:\n" + sqle.getMessage() + " --- " + sqle.getSQLState() + "\n";
             logger.log(Level.SEVERE, errText);
-            text.append(errText);
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Error connecting to db.");
         }
 
-        return text.toString();
+        return "Completed";
     }
 
     /**
