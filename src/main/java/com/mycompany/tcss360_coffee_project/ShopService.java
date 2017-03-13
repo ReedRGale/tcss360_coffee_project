@@ -73,8 +73,7 @@ public class ShopService {
                 sb.append(
                 "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +                                         
-                "           var shop = { 'shopid': " + shps[i].getShopid() + "};   \n" +    
-                "           console.log(JSON.stringify(shop));   \n" +      
+                "           var shop = { 'shopid': " + shps[i].getShopid() + "};   \n" +     
                 "           var url='shops';\n" +
                 "           if (confirm('Are you sure')) {\n" +
                 "             $.ajax({\n" +
@@ -187,6 +186,7 @@ public class ShopService {
             "    function render_newuser(data)\n" +
             "    {\n" +            
             "        document.getElementById(\"id-field\").disabled = false;" +
+            "        console.log(data);" +
             "    }"
             );
 
