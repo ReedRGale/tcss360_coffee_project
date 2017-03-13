@@ -108,8 +108,9 @@ public class ShopService {
             for (int i = 0; i < shps.length; i++) 
             {
                 sb.append(
-                "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
+                "        \n$('#delete-shop-" + shps[i].getShopid() + "').ready(function ()\n" +
                 "        {\n" +
+                "           function deleteit() {                                          " +       
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
                 "           var url='home/shops';\n" +
@@ -123,6 +124,7 @@ public class ShopService {
                 "               success: render_delete\n" +
                 "             }); \n" +
                 "           } \n" +
+                "           }" +            
                 "        });"
                 );
             }
