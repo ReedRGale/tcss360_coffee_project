@@ -74,7 +74,7 @@ public class ShopService {
             sb.append(
               "function getshops(){" 
             + "var url='https://team2coffeefinder.herokuapp.com/api/shops';" 
-            + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
+            + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});"
             + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
             + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
             );
