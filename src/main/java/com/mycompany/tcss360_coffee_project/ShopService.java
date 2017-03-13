@@ -71,11 +71,10 @@ public class ShopService {
                 sb.append(
                 "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +
-                "           console.log('the button was pressed');\n" +
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
                 "           var url='home/shops';\n" +
-                "           if (confirm('Are you sure') {\n" +
+                "           if (confirm('Are you sure')) {\n" +
                 "             $.ajax({\n" +
                 "               type: 'DELETE',\n" +
                 "               url: url,\n" +
@@ -91,8 +90,7 @@ public class ShopService {
             
             // Design the functionality for each ajax call.
                 sb.append(
-                  "<script language=\"javascript\">\n" 
-                + "getshops();"
+                  "getshops();"
                 + "function getshops()" 
                 + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
                 + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
@@ -187,25 +185,6 @@ public class ShopService {
                     + "<td>Food Ranking</td>"
                     + "<td>Expense Ranking</td>"
                     + "</tr> "
-                    + "<script language=\"javascript\">\n" 
-                    + "getshops();"
-                    + "function getshops()" 
-                    + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
-                    + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
-                    + "function render(data)  {" 
-                    + "$.each(data, function(index, shop) {" 
-                    + "var newrow = \"<tr><td id=\\\"shopid\\\"\" + index + \"\\\">\"+ shop.shopid + \"</td>\";" 
-                    + "newrow += \"<td id=\\\"name\\\">\" + shop.name + \"</td>\";" 
-                    + "newrow += \"<td id=\\\"street\\\">\" + shop.street + \"</td>\";" 
-                    + "newrow += \"<td id=\\\"city\\\">\" + shop.city + \"</td>\";" 
-                    + "newrow += \"<td id=\\\"state\\\">\" + shop.state + \"</td>\";" 
-                    + "newrow += \"<td id=\\\"zip\\\">\" + shop.zip + \"</td>\";"
-                    + "newrow += \"<td id=\\\"phone\\\">\" + shop.phone + \"</td>\";" 
-                    + "newrow += \"<td id=\\\"opentime\\\">\" + shop.opentime + \"</td>\";"
-                    + "newrow += \"<td id=\\\"closetime\\\">\" + shop.closetime + \"</td>\";"
-                    + "newrow += \"<td id=\\\"description\\\">\" + shop.description + \"</td></tr>\";"
-                    + "$('#shopTable').append(newrow);});}"
-                    + "</script>"
         );
             
             for (int i = 0; i < shps.length; i++) {
