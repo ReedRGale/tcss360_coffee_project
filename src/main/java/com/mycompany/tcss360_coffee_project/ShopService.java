@@ -103,7 +103,7 @@ public class ShopService {
             "                var opentime = document.getElementById(\"opentime-field\");\n" +
             "                var closetime = document.getElementById(\"closetime-field\");\n" +
             "                var description = document.getElementById(\"description-field\");\n" +
-                    
+                        
             "                var obj = { 'name': name.value, \n " + 
             "                            'street': street.value,            \n" +
             "                            'city': city.value,           \n" +
@@ -113,7 +113,7 @@ public class ShopService {
             "                            'opentime': opentime.value,            \n" +
             "                            'closetime': closetime.value,            \n" +
             "                            'description': description.value };           \n" +
-                    
+                             "console.log(JSON.stringify(obj));" +
             "                var url='shops';\n" +
             "                if (confirm('Are you sure you wanna add this?')) {\n" +
             "                  $.ajax({\n" +
@@ -168,7 +168,6 @@ public class ShopService {
             sb.append(
             "        $('#new-shop').click(function ()\n" +
             "        {\n" +
-            "           console.log('Inside');" +
             "           document.getElementById(\"id-field\").disabled = true;\n" +       
             "        }\n);"
             );
