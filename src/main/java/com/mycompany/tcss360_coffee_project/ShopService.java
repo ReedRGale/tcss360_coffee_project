@@ -443,7 +443,7 @@ public class ShopService {
     public String createShop(String jobj) throws IOException {
         // Turn the JSON into a Shop Object.
         ObjectMapper mapper = new ObjectMapper();
-        Shop[] shp = { };
+        Shop[] shp = new Shop[1];
         
         try
         {
