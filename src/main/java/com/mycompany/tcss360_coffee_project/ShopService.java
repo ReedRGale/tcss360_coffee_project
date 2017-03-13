@@ -104,7 +104,7 @@ public class ShopService {
                 "        {\n" +                                         
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +      
-                "           var url='home/shops';\n" +
+                "           var url='shops';\n" +
                 "           if (confirm('Are you sure')) {\n" +
                 "             $.ajax({\n" +
                 "               type: 'DELETE',\n" +
