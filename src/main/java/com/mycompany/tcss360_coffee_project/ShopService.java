@@ -73,9 +73,9 @@ public class ShopService {
                 sb.append(
                 "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +                                         
-                "           var shopid = " + shps[i].getShopid() + ";\n" +
-                "           var shop = { \"shopid\": shopid.value };   \n" +      
-                "           var url='https://shrouded-shore-30021.herokuapp.com/home/shops';\n" +
+                "           var shop = { 'shopid': " + shps[i].getShopid() + "};   \n" +    
+                "           console.log(JSON.stringify(shop));   \n" +      
+                "           var url='shops';\n" +
                 "           if (confirm('Are you sure')) {\n" +
                 "             $.ajax({\n" +
                 "               type: 'DELETE',\n" +
