@@ -501,9 +501,7 @@ public class ShopService {
             sb.append("var infoWindowContent = [\n");
             for (int i = 0; i < shps.length; i++) {
                 sb.append("['<div><h3>" + shps[i].getName() + "</h3>"
-                        + "<h6>Coffee Ranking: " + shps[i].getCoffeeRank() + "</h6>" 
-                        + "<h6>Food Ranking" + shps[i].getFoodRank() + "</h6>"
-                        + "<h6>Expense Ranking" + shps[i].getExpenseRank() + "</h6>"
+                        + "<h6>Coffee Ranking: " + shps[i].getCoffeeRank() + "   Food Ranking: " + shps[i].getFoodRank() + "   Expense Ranking: " + shps[i].getExpenseRank() + "</h6>"
                         + "<p>" + shps[i].getDescription() + "</p></div>'],");
             }
                 sb.append("];\n"
