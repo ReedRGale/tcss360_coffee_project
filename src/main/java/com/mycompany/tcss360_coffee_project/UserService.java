@@ -92,13 +92,34 @@ public class UserService {
                 + "Shops</a></li><li><a "
                 + "href=\"https://shrouded-shore-30021.herokuapp.com/home/reviews\">"
                 + "Reviews</a></li><li><a "
-                + "href=\"https://shrouded-shore-30021.herokuapp.com/home/users\">"
+                + "href=\"https://shrouded-shore-30021.herokuapp.com/home/users\">" +
+                "   <tr>\n" +
+                "       <td>Enter User ID:  </td>\n" +
+                "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
+                "   </tr>" +
+
+                "   <tr>\n" +
+                "       <td>Enter Name:  </td>\n" +
+                "       <td><input type=\"text\" id=\"name-field\" size=\"10\"/>  \n" +
+                "   </tr>" +
+
+                "   <tr>\n" +
+                "       <td>Enter Password:  </td>\n" +
+                "       <td><input type=\"text\" id=\"password-field\" size=\"10\"/>  \n" +
+                "   </tr>" +
+
+                "   <tr>\n" +
+                "       <td>Enter Email:  </td>\n" +
+                "       <td><input type=\"text\" id=\"email-field\" size=\"10\"/>  \n" +
+                "   </tr>" 
                 + "Users</a></li></ul></div></nav><b>USERS LIST:</b><br><br><table "
                 + "cellpadding=10 border=1><tr>"
                 + "<td>ID</td>"
                 + "<td>Username</td>"
                 + "<td>Password</td>"
                 + "<td>Email</td></tr>");
+        
+        
         try
         {
             Model db = Model.singleton();
