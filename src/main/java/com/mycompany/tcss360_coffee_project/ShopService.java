@@ -75,7 +75,7 @@ public class ShopService {
 //              "response.addHeader(\"Access-Control-Allow-Origin\", \"https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops\");"
               "getshops();"
             + "function getshops(){" 
-            + "var url='team2coffeefinder.herokuapp.com/api/shops';" 
+            + "var url='http://team2coffeefinder.herokuapp.com/api/shops';" 
             + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
             );
 
