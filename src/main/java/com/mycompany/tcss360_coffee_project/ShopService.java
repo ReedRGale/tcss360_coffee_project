@@ -108,10 +108,10 @@ public class ShopService {
             "                            'street': street.value,            \n" +
             "                            'city': city.value,           \n" +
             "                            'state': state.value,           \n" +
-            "                            'zip': zip.value,            \n" +
+            "                            'zip': parseInt(zip.value),            \n" +
             "                            'phone': phone.value,            \n" +
-            "                            'opentime': opentime.value,            \n" +
-            "                            'closetime': closetime.value,            \n" +
+            "                            'opentime': parseInt(opentime.value),            \n" +
+            "                            'closetime': parseInt(closetime.value),            \n" +
             "                            'description': description.value };           \n" +
                              "console.log(JSON.stringify(obj));" +
             "                var url='shops';\n" +
