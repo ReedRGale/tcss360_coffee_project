@@ -61,6 +61,7 @@ public class ShopService {
             Shop[] shps = db.getShops(0);
             sb.append("<html>"
                     + "<head>"
+                    + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">"
                     + "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>  "
                     
                 
@@ -108,7 +109,7 @@ public class ShopService {
             for (int i = 0; i < shps.length; i++) 
             {
                 sb.append(
-                "        \n$('#delete-shop-" + shps[i].getShopid() + "').onclick(function ()\n" +
+                "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
