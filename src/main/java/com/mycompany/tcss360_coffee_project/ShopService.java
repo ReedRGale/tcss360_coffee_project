@@ -73,7 +73,6 @@ public class ShopService {
             // Design the functionality for each ajax call.
             sb.append(
               "response.addHeader(\"Access-Control-Allow-Origin\", \"https://team2coffeefinder.herokuapp.com/api/shops\");"
-            +  "getshops();"
             + "function getshops(){" 
             + "var url='https://team2coffeefinder.herokuapp.com/api/shops';" 
             + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
