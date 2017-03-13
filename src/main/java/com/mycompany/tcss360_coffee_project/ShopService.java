@@ -66,15 +66,14 @@ public class ShopService {
                     
                 
                     + "<script language=\"javascript\">"
-                    + "response.addHeader(\"Access-Control-Allow-Origin\", \"*\");"
                     + "$(document).ready(function () {");
             
             
             
             // Design the functionality for each ajax call.
             sb.append(
-              "getshops();"
-
+              "response.addHeader(\"Access-Control-Allow-Origin\", \"*\");"
+            + "getshops();"
             + "function getshops(){" 
             + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
             + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
