@@ -168,7 +168,7 @@ public class ShopService {
             );
             
             sb.append(
-            "        \n$('#new-shop').click(function ()\n" +
+            "        $('#new-shop').click(function ()\n" +
             "        {\n" +                                         
             "           document.getElementById(\"id-field\").disabled = true;\n" +       
             "        }\n);"
@@ -184,7 +184,7 @@ public class ShopService {
             
             // Add shop functionality.
             sb.append(
-            "    function render_delete(data)\n" +
+            "    function render_newuser(data)\n" +
             "    {\n" +            
             "        document.getElementById(\"id-field\").disabled = false;" +
             "    }"
