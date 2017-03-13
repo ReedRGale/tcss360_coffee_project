@@ -127,7 +127,7 @@ public class ReviewService
             "                var shopid = document.getElementById(\"shop-field\");\n" +
             "                var comment = document.getElementById(\"comment-field\");\n" +
                     
-            "                 var obj = {'reviewid':  reviewid.value, \n " +
+            "                 var obj = {'reviewid':  parseInt(reviewid.value), \n " +
             "                            'foodrank': foodrank.value, \n " + 
             "                            'expenserank': expenserank.value,            \n" +
             "                            'coffeerank': coffeerank.value,           \n" +
@@ -167,7 +167,7 @@ public class ReviewService
             
              // Add review functionality.
             sb.append(
-            "    function render_newuser(data)\n" +
+            "    function render_newreview(data)\n" +
             "    {\n" +            
             "        document.getElementById(\"id-field\").disabled = false;" +
             "        console.log(data);" +
@@ -178,8 +178,8 @@ public class ReviewService
                     + "</script>"
                     + "</head>"
                     
-                    + "<input type=\"button\" value=\"New Review\" onclick=\"\" id=\"new-shop\"/>"
-                    + "<input type=\"button\" value=\"Add/Update Review\" onclick=\"\" id=\"add-shop\"/>" +
+                    + "<input type=\"button\" value=\"New Review\" onclick=\"\" id=\"new-review\"/>"
+                    + "<input type=\"button\" value=\"Add/Update Review\" onclick=\"\" id=\"add-review\"/>" +
                     
                     "   <tr>\n" +
                     "       <td>Enter Review ID:  </td>\n" +
