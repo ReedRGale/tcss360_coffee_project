@@ -99,9 +99,8 @@ public class ShopService {
             // Delete shop functionality.
             sb.append(
             "    function render_delete(data)\n" +
-            "    {\n"
-                    + "\n" +
-"                        + \"console.log('Now testing that button is pressed.');\" +  " +
+            "    {\n" +
+                     "console.log('Now testing that button is pressed.');" +
             "        $('#shopTable').empty();\n" +
             "        getshops();\n" +
             "    }"
