@@ -178,7 +178,7 @@ public class ShopService {
             sb.append(
             "    function render_delete(data)\n" +
             "    {\n" +            
-            "        console.log('Delete Succeeded');" +
+            "        console.log(data);" +
             "    }"
             );
             
