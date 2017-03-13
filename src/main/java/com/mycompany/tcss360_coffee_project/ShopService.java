@@ -90,43 +90,163 @@ public class ShopService {
                 );
             }
             
-//            // Designate all buttons a function.
-//            for (int i = 0; i < shps.length; i++) 
-//            {
-//                sb.append(
-//                "        \n$('#edit-shop-" + shps[i].getShopid() + "').click(function ()\n" +
-//                "        {\n" +                                         
-//                "           var shopid = " + shps[i].getShopid() + ";\n" +
-//                "           var shop = { 'shopid': shopid.value };   \n" +      
-//                "           var url='shops';\n" +
-//                "           if (confirm('Are you sure')) {\n" +
-//                "             $.ajax({\n" +
-//                "               type: 'DELETE',\n" +
-//                "               url: url,\n" +
-//                "               datatype: 'json',\n" +
-//                "               data: JSON.stringify(shop),\n" +
-//                "               contentType: 'application/json',\n" +
-//                "               success: render_delete\n" +
-//                "             }); \n" +
-//                "           } \n" +         
-//                "        });"
-//                );
-//            }
+            sb.append(
+            "        \n$('#add-shop').click(function ()\n" +
+            "        {\n" +                                         
+            "            if (document.getElementById(\"id-field\").disabled)\n" +
+            "            {\n" +
+            "                var name = document.getElementById(\"name-field\");\n" +
+            "                var street = document.getElementById(\"street-field\");\n" +
+            "                var city = document.getElementById(\"city-field\");\n" +
+            "                var state = document.getElementById(\"state-field\");\n" +
+            "                var zip = document.getElementById(\"zip-field\");\n" +
+            "                var phone = document.getElementById(\"phone-field\");\n" +
+            "                var opentime = document.getElementById(\"opentime-field\");\n" +
+            "                var closetime = document.getElementById(\"closetime-field\");\n" +
+            "                var description = document.getElementById(\"description-field\");\n" +
+                    
+            "                var obj = { 'name': name.value, " +
+            "                            'street': street.value,            \n" +
+            "                            'city': city.value,           \n" +
+            "                            'state': state.value,           \n" +
+            "                            'zip': zip.value,            \n" +
+            "                            'phone': phone.value,            \n" +
+            "                            'opentime': opentime.value,            \n" +
+            "                            'closetime': closetime.value,            \n" +
+            "                            'description': description.value };           \n" +
+                    
+            "                var url='shops';\n" +
+            "                if (confirm('Are you sure you wanna add this?')) {\n" +
+            "                  $.ajax({\n" +
+            "                    type: 'POST',\n" +
+            "                    url: url,\n" +
+            "                    datatype: 'json',\n" +
+            "                    data: JSON.stringify(obj),\n" +
+            "                    contentType: 'application/json',\n" +
+            "                    success: render_newuser\n" +
+            "                  }); \n" +
+            "                }                 \n" +
+            "            }\n" +
+            "            else\n" +
+            "            {\n" +
+            "                var shopid = document.getElementById(\"id-field\");\n" +
+            "                var name = document.getElementById(\"name-field\");\n" +
+            "                var street = document.getElementById(\"street-field\");\n" +
+            "                var city = document.getElementById(\"city-field\");\n" +
+            "                var state = document.getElementById(\"state-field\");\n" +
+            "                var zip = document.getElementById(\"zip-field\");\n" +
+            "                var phone = document.getElementById(\"phone-field\");\n" +
+            "                var opentime = document.getElementById(\"opentime-field\");\n" +
+            "                var closetime = document.getElementById(\"closetime-field\");\n" +
+            "                var description = document.getElementById(\"description-field\");\n" +
+                    
+            "                var obj = { 'shopid': shopid.value, " +
+            "                            'name': name.value,            \n" +
+            "                            'street': street.value,            \n" +
+            "                            'city': city.value,           \n" +
+            "                            'state': state.value,           \n" +
+            "                            'zip': zip.value,            \n" +
+            "                            'phone': phone.value,            \n" +
+            "                            'opentime': opentime.value,            \n" +
+            "                            'closetime': closetime.value,            \n" +
+            "                            'description': description.value };           \n" +
+                    
+            "                var url='shops';\n" +
+            "                if (confirm('Are you sure you wanna update this?')) {\n" +
+            "                  $.ajax({\n" +
+            "                    type: 'POST',\n" +
+            "                    url: url,\n" +
+            "                    datatype: 'json',\n" +
+            "                    data: JSON.stringify(obj),\n" +
+            "                    contentType: 'application/json',\n" +
+            "                    success: render_newuser\n" +
+            "                  }); \n" +
+            "                }                 \n" +
+            "                }                    \n" +
+            "            }" +         
+            "        });"
+            );
+            
+            sb.append(
+            "        \n$('#new-shop').click(function ()\n" +
+            "        {\n" +                                         
+            "           document.getElementById(\"id-field\").disabled = true;\n" +       
+            "        }\n);"
+            );
             
             // Delete shop functionality.
             sb.append(
             "    function render_delete(data)\n" +
             "    {\n" +            
-            "        console.log('I am inside the delete.');"  +
-            "        $('#shopTable').empty();\n" +
-            "        getshops();\n" +
+            "        " +
+            "    }"
+            );
+            
+            // Add shop functionality.
+            sb.append(
+            "    function render_delete(data)\n" +
+            "    {\n" +            
+            "        document.getElementById(\"id-field\").disabled = false;" +
             "    }"
             );
 
             sb.append("});"
                     + "</script>"
                     + "</head>"
-
+                    
+                    + "<input type=\"button\" value=\"New Shop\" onclick=\"\" id=\"new-shop\"/>"
+                    + "<input type=\"button\" value=\"Add/Update Shop\" onclick=\"\" id=\"add-shop\"/>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Shop ID:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Name:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"name-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                   
+                    "   <tr>\n" +
+                    "       <td>Enter Street:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"street-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter City:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"city-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter State:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"state-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Zip:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"zip-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Phone Number:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"phone-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Opentime (HHMM):  </td>\n" +
+                    "       <td><input type=\"text\" id=\"opentime-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Closetime (HHMM):  </td>\n" +
+                    "       <td><input type=\"text\" id=\"closetime-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Description:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"description-field\" size=\"100\"/>  \n" +
+                    "   </tr>" 
+                    
                     + "<body><style>table, th, td "
                     + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
                     + "0px;border-spacing: 0px;}a {color: yellowgreen;-webkit-transition: "
@@ -207,9 +327,9 @@ public class ShopService {
                         + shps[i].getCoffeeRank() + "</td><td>"
                         + shps[i].getFoodRank() + "</td><td>"
                         + shps[i].getExpenseRank() + "</td>"
-                        + "<td><input type=\"button\" value=\"Edit " + shps[i].getName() + "\" onclick=\"\" id=\"update-shop-" + shps[i].getShopid() + "\"/></td>\n" 
                         + "<td><input type=\"button\" value=\"Delete " + shps[i].getName() + "\" onclick=\"\" id=\"delete-shop-" + shps[i].getShopid() + "\"/></td></tr>");
             }
+            
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
         }
