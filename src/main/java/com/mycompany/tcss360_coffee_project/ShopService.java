@@ -169,7 +169,8 @@ public class ShopService {
             
             sb.append(
             "        $('#new-shop').click(function ()\n" +
-            "        {\n" +                                         
+            "        {\n" +
+            "           console.log('Well, I'm in here. That's a start.')" +
             "           document.getElementById(\"id-field\").disabled = true;\n" +       
             "        }\n);"
             );
