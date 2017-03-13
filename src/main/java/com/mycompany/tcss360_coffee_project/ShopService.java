@@ -108,9 +108,8 @@ public class ShopService {
             for (int i = 0; i < shps.length; i++) 
             {
                 sb.append(
-                "        \n$('#delete-shop-" + shps[i].getShopid() + "').ready(function ()\n" +
-                "        {\n" +
-                "           function deleteit() {                                          " +       
+                "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
+                "        {\n" +                                           
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
                 "           var url='home/shops';\n" +
@@ -123,8 +122,7 @@ public class ShopService {
                 "               contentType: 'application/json',\n" +
                 "               success: render_delete\n" +
                 "             }); \n" +
-                "           } \n" +
-                "           }" +            
+                "           } \n" +         
                 "        });"
                 );
             }
@@ -214,7 +212,7 @@ public class ShopService {
                         + shps[i].getFoodRank() + "</td><td>"
                         + shps[i].getExpenseRank() + "</td>"
                         + "<td><input type=\"button\" value=\"Edit " + shps[i].getName() + "\" onclick=\"\" id=\"update-shop-" + shps[i].getShopid() + "\"/></td>\n" 
-                        + "<td><input type=\"button\" value=\"Delete " + shps[i].getName() + "\" onclick=\"deleteit()\" id=\"delete-shop-" + shps[i].getShopid() + "\"/></td></tr>");
+                        + "<td><input type=\"button\" value=\"Delete " + shps[i].getName() + "\" onclick=\"\" id=\"delete-shop-" + shps[i].getShopid() + "\"/></td></tr>");
             }
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
