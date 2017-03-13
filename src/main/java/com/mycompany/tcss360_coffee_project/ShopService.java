@@ -214,7 +214,7 @@ public class ShopService {
                         + shps[i].getFoodRank() + "</td><td>"
                         + shps[i].getExpenseRank() + "</td>"
                         + "<td><input type=\"button\" value=\"Edit " + shps[i].getName() + "\" onclick=\"\" id=\"update-shop-" + shps[i].getShopid() + "\"/></td>\n" 
-                        + "<td><input type=\"button\" value=\"Delete " + shps[i].getName() + "\" onclick=\"\" id=\"delete-shop-" + shps[i].getShopid() + "\"/></td></tr>");
+                        + "<td><input type=\"button\" value=\"Delete " + shps[i].getName() + "\" onclick=\"deleteit()\" id=\"delete-shop-" + shps[i].getShopid() + "\"/></td></tr>");
             }
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
