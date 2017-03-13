@@ -172,7 +172,7 @@ public class Model {
         
         if (query == 0)
         {
-            sqlQuery = "select * from shops orderby shopname;";
+            sqlQuery = "select * from shops orderby name;";
         }
         else
         {
