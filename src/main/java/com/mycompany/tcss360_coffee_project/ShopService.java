@@ -65,6 +65,7 @@ public class ShopService {
                     
                 
                     + "<script language=\"javascript\">"
+                    + "response.addHeader(\"Access-Control-Allow-Origin\", \"*\");"
                     + "$(document).ready(function () {");
             
             
