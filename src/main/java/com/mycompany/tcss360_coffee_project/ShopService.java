@@ -106,8 +106,6 @@ public class ShopService {
                 "           var shop = { 'shopid': shopid.value };   \n" +      
                 "           var url='home/shops';\n" +
                 "           if (confirm('Are you sure')) {\n" +
-                        
-                "           console.log('I am inside the confirmation if statement.');"  +
                 "             $.ajax({\n" +
                 "               type: 'DELETE',\n" +
                 "               url: url,\n" +
@@ -124,7 +122,8 @@ public class ShopService {
             // Delete shop functionality.
             sb.append(
             "    function render_delete(data)\n" +
-            "    {\n" +
+            "    {\n" +            
+            "        console.log('I am inside the delete.');"  +
             "        $('#shopTable').empty();\n" +
             "        getshops();\n" +
             "    }"
