@@ -178,7 +178,7 @@ public class ShopService {
             sb.append(
             "    function render_delete(data)\n" +
             "    {\n" +            
-            "        " +
+            "        console.log('Delete Succeeded')" +
             "    }"
             );
             
@@ -501,7 +501,7 @@ public class ShopService {
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String deleteUser(String jobj) throws IOException {
+    public String deleteShop(String jobj) throws IOException {
         // Convert JSON to a User object...
         ObjectMapper mapper = new ObjectMapper();
         Shop shp = mapper.readValue(jobj, Shop.class);
