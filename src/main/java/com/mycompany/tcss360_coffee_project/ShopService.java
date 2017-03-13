@@ -162,7 +162,6 @@ public class ShopService {
             "                    success: render_newuser\n" +
             "                  }); \n" +
             "                }                 \n" +
-            "                }                    \n" +
             "            }" +         
             "        });"
             );
