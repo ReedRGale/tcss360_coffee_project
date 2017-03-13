@@ -72,10 +72,10 @@ public class ShopService {
             
             // Design the functionality for each ajax call.
             sb.append(
-              "response.addHeader(\"Access-Control-Allow-Origin\", \"https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops\");"
-            + "getshops();"
+//              "response.addHeader(\"Access-Control-Allow-Origin\", \"https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops\");"
+              "getshops();"
             + "function getshops(){" 
-            + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
+            + "var url='team2coffeefinder.herokuapp.com/api/shops';" 
             + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
             );
 
