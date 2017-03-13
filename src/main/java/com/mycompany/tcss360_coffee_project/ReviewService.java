@@ -51,7 +51,244 @@ public class ReviewService
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String getReviews() {
-        //TODO return proper representation object
+        
+        StringBuilder sb = new StringBuilder();
+        
+         try {
+            Model db = Model.singleton();
+            Review[] reviews = db.getReviews();
+            sb.append("<html>"
+                    + "<head>"
+                    + "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">"
+                    + "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js\"></script>  "
+                   
+                    + "<script language=\"javascript\">"
+                    + "$(document).ready(function () {");
+            
+            // Designate all buttons a function.
+            for (int i = 0; i < reviews.length; i++) 
+            {
+                sb.append(
+                "        \n$('#delete-review-" + reviews[i].getReviewid() + "').click(function ()\n" +
+                "        {\n" +                                         
+                "           var shop = { 'reviewid': " + reviews[i].getReviewid() + "};   \n" +     
+                "           var url='reviews';\n" +
+                "           if (confirm('Are you sure')) {\n" +
+                "             $.ajax({\n" +
+                "               type: 'DELETE',\n" +
+                "               url: url,\n" +
+                "               datatype: 'json',\n" +
+                "               data: JSON.stringify(shop),\n" +
+                "               contentType: 'application/json',\n" +
+                "               success: render_delete\n" +
+                "             }); \n" +
+                "           } \n" +         
+                "        });"
+                );
+            }
+            
+            sb.append(
+            "        \n$('#add-review').click(function ()\n" +
+            "        {\n" +                                         
+            "            if (document.getElementById(\"id-field\").disabled)\n" +
+            "            {\n" +
+            "                var foodrank = document.getElementById(\"food-field\");\n" +
+            "                var expenserank = document.getElementById(\"expense-field\");\n" +
+            "                var coffeerank = document.getElementById(\"coffee-field\");\n" +
+            "                var ownerid = document.getElementById(\"owner-field\");\n" +
+            "                var shopid = document.getElementById(\"shop-field\");\n" +
+            "                var comment = document.getElementById(\"comment-field\");\n" +
+            "                var obj = { 'foodrank': foodrank.value, \n " + 
+            "                            'expenserank': expenserank.value,            \n" +
+            "                            'coffeerank': coffeerank.value,           \n" +
+            "                            'ownerid': ownerid.value,           \n" +
+            "                            'shopid': shopid.value,            \n" +
+            "                            'comment': comment.value}            \n" +
+                             "console.log(JSON.stringify(obj));" +
+            "                var url='reviews';\n" +
+            "                if (confirm('Are you sure you wanna add this?')) {\n" +
+            "                  $.ajax({\n" +
+            "                    type: 'POST',\n" +
+            "                    url: url,\n" +
+            "                    datatype: 'json',\n" +
+            "                    data: JSON.stringify(obj),\n" +
+            "                    contentType: 'application/json',\n" +
+            "                    success: render_newreview\n" +
+            "                  }); \n" +
+            "                }                 \n" +
+            "            }\n" +
+            "            else\n" +
+            "            {\n" +
+            "                var reviewid = document.getElementById(\"id-field\");\n" +
+            "                var foodrank = document.getElementById(\"food-field\");\n" +
+            "                var expenserank = document.getElementById(\"expense-field\");\n" +
+            "                var coffeerank = document.getElementById(\"coffee-field\");\n" +
+            "                var ownerid = document.getElementById(\"owner-field\");\n" +
+            "                var shopid = document.getElementById(\"shop-field\");\n" +
+            "                var comment = document.getElementById(\"comment-field\");\n" +
+                    
+            "                 var obj = {'reviewid':  reviewid.value, \n " +
+            "                            'foodrank': foodrank.value, \n " + 
+            "                            'expenserank': expenserank.value,            \n" +
+            "                            'coffeerank': coffeerank.value,           \n" +
+            "                            'ownerid': ownerid.value,           \n" +
+            "                            'shopid': shopid.value,            \n" +
+            "                            'comment': comment.value}            \n" +
+                    
+            "                var url='reviews';\n" +
+            "                if (confirm('Are you sure you wanna update this?')) {\n" +
+            "                  $.ajax({\n" +
+            "                    type: 'PUT',\n" +
+            "                    url: url,\n" +
+            "                    datatype: 'json',\n" +
+            "                    data: JSON.stringify(obj),\n" +
+            "                    contentType: 'application/json',\n" +
+            "                    success: render_newreview\n" +
+            "                  }); \n" +
+            "                }                 \n" +
+            "            }" +         
+            "        });"
+            );
+            
+            sb.append(
+            "        $('#new-review').click(function ()\n" +
+            "        {\n" +
+            "           document.getElementById(\"id-field\").disabled = true;\n" +       
+            "        }\n);"
+            );
+            
+            // Delete review functionality.
+            sb.append(
+            "    function render_delete(data)\n" +
+            "    {\n" +            
+            "        console.log(data);" +
+            "    }"
+            );
+            
+             // Add review functionality.
+            sb.append(
+            "    function render_newuser(data)\n" +
+            "    {\n" +            
+            "        document.getElementById(\"id-field\").disabled = false;" +
+            "        console.log(data);" +
+            "    }"
+            );
+            
+             sb.append("});"
+                    + "</script>"
+                    + "</head>"
+                    
+                    + "<input type=\"button\" value=\"New Review\" onclick=\"\" id=\"new-shop\"/>"
+                    + "<input type=\"button\" value=\"Add/Update Review\" onclick=\"\" id=\"add-shop\"/>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Review ID:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Food Rank:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"food-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                   
+                    "   <tr>\n" +
+                    "       <td>Enter Expense Rank:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"expense-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Coffee Rank:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"coffee-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Owner ID:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"owner-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Shop ID:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"shop-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Comment:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"comment-field\" size=\"20\"/>  \n" +
+                    "   </tr>" 
+                     
+                      + "<body><style>table, th, td "
+                    + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
+                    + "0px;border-spacing: 0px;}a {color: yellowgreen;-webkit-transition: "
+                    + "all .35s;-moz-transition: all .35s;transition: all "
+                    + ".35s;}a:hover,a:focus {color: forestgreen;}ul {list-style-type: "
+                    + "none;margin: 0;padding: 0;overflow: hidden;"
+                    + "background-color: #f1f1f1;}li {float: left;}li a {display: block;"
+                    + "text-align: center;padding: 14px 16px;text-decoration: none;"
+                    + "}li a:hover {background-color: yellowgreen;}"
+                    + ".navbar-default {border-color: rgba(34, 34, 34, .05);"
+                    + "background-color: #ffff;-webkit-transition: all .35s;"
+                    + "-moz-transition: all .35s;transition: all .35s;}.navbar-default "
+                    + ".navbar-header .navbar-brand {color: yellowgreen;}.navbar-default "
+                    + ".nav > li>a,.navbar-default .nav>li>a:focus {color: #222;}"
+                    + ".navbar-default .nav > li.active>a:hover,.navbar-default "
+                    + ".nav>li.active>a:focus {color: yeallowgreen!important;"
+                    + "background-color: transparent;}@media(min-width:768px) {"
+                    + ".navbar-default {border-color: rgba(255,255,255,.7);"
+                    + "background-color: transparent;}.navbar-default .navbar-header "
+                    + ".navbar-brand {color: rgba(255, 255, 255, .7);letter-spacing: 0.5em}"
+                    + ".navbar-default .navbar-header .navbar-brand:hover,.navbar-default "
+                    + ".navbar-header .navbar-brand:focus {color: #fff;}.navbar-default "
+                    + ".nav > li>a,.navbar-default .nav > li > a:focus {"
+                    + "color: rgba(255,255,255,.7);}.navbar-default "
+                    + ".nav > li>a:hover,.navbar-default .nav > li > a:focus:hover {"
+                    + "color: #fff;}.navbar-default.affix {border-color: #fff;"
+                    + "background-color: #fff;box-shadow: 0px 7px 20px 0px rgba(0,0,0,0.1);}"
+                    + ".navbar-default.affix .nav > li>a,.navbar-default.affix "
+                    + ".nav>li>a:focus:hover {color: yellowgreen;}}</style>"
+                    + "<nav id=\"siteNav\" class=\"navbar navbar-default navbar-fixed-top\" "
+                    + "role=\"navigation\"><div class=\"container\"><div "
+                    + "class=\"navbar-header\"></a>"
+                    + "</div></div><div class=\"collapse navbar-collapse\" id=\"navbar\">"
+                    + "<ul class=\"collapse navbar-collapse\" id=\"navbar\"><li "
+                    + "class=\"active\"><a href=\"https://shrouded-shore-30021.herokuapp.com\">"
+                    + "Home</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/shops\">"
+                    + "Shops</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/reviews\">"
+                    + "Reviews</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/users\">"
+                    + "Users</a></li></ul></div></nav>\n" 
+                    + "<b>ALL REVIEWS LIST:</b>"
+                    + "<br><br>"
+                    + "<table cellpadding=10 border=1 id=\"reviewTable\"><tr>"
+                    + "<td>ID</td>"
+                    + "<td>Food Rank</td>"
+                    + "<td>Expense Rank</td>"
+                    + "<td>Coffee Rank</td>"
+                    + "<td>Added On</td>"
+                    + "<td>Owner ID</td>"
+                    + "<td>Shop ID</td>"
+                    + "<td>Comment</td>"
+                    + "</tr> "
+                   
+            );
+            for (int i = 0; i < reviews.length; i++) {
+                sb.append("<tr><td>"
+                        + reviews[i].getReviewid() + "</td><td><a href=\"#\">"
+                        + reviews[i].getFoodrank() + "</a></td><td>"
+                        + reviews[i].getExpenserank() + "</td><td>"
+                        + reviews[i].getCoffeerank() + "</td><td>"
+                        + reviews[i].getDateadded() + "</td><td>"
+                        + reviews[i].getOwner() + "</td><td>"
+                        + reviews[i].getShop() + "</td><td>"
+                        + reviews[i].getComment() + "</td>"
+                        + "<td><input type=\"button\" value=\"Delete \" onclick=\"\" id=\"delete-shop-\"/></td></tr>");
+            }
+
+         } catch (Exception e) {
+              sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
+         }
+         
+         sb.append("</table></body></html>");
+         
+        /*
         StringBuilder sb = new StringBuilder();
         sb.append("<html><body><style>table, th, td "
                 + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
@@ -128,7 +365,7 @@ public class ReviewService
         catch (Exception e)
         {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
-        }
+        }*/
         
         return sb.toString();
     }
