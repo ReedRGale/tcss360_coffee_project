@@ -94,16 +94,6 @@ public class ShopService {
             + "newrow += \"<td>\" + shop.closetime + \"</td>\";"
             + "newrow += \"<td>\" + shop.description + \"</td></tr>\";"
             + "$('#shopTable').append(newrow);});}"
-            );   
-            
-            // Delete shop functionality.
-            sb.append(
-            "    function render_delete(data)\n" +
-            "    {\n" +
-                     "console.log('Now testing that button is pressed.');" +
-            "        $('#shopTable').empty();\n" +
-            "        getshops();\n" +
-            "    }"
             );
             
             // Designate all buttons a function.
@@ -114,6 +104,7 @@ public class ShopService {
                 "        {\n" +                                         
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
+                "           console.log('I made the JSON');"  +      
                 "           var url='home/shops';\n" +
                 "           if (confirm('Are you sure')) {\n" +
                 "             $.ajax({\n" +
@@ -128,6 +119,15 @@ public class ShopService {
                 "        });"
                 );
             }
+            
+            // Delete shop functionality.
+            sb.append(
+            "    function render_delete(data)\n" +
+            "    {\n" +
+            "        $('#shopTable').empty();\n" +
+            "        getshops();\n" +
+            "    }"
+            );
 
             sb.append("});"
                     + "</script>"
