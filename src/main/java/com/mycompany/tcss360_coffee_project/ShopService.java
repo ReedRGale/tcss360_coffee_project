@@ -108,7 +108,7 @@ public class ShopService {
             for (int i = 0; i < shps.length; i++) 
             {
                 sb.append(
-                "        \n$('#delete-shop-" + shps[i].getShopid() + "').onclick(function ()\n" +
+                "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
