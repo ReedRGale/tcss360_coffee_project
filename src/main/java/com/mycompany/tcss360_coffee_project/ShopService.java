@@ -103,9 +103,9 @@ public class ShopService {
                 "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +                                         
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
-                "           var shop = { 'shopid': shopid.value };   \n" +
-                "           console.log('I made the JSON');"  +      
+                "           var shop = { 'shopid': shopid.value };   \n" +      
                 "           var url='home/shops';\n" +
+                "           console.log('I made the JSON');"  +
                 "           if (confirm('Are you sure')) {\n" +
                 "             $.ajax({\n" +
                 "               type: 'DELETE',\n" +
