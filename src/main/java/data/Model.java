@@ -172,11 +172,11 @@ public class Model {
         
         if (query == 0)
         {
-            sqlQuery = "select * from shops orderby shopname;";
+            sqlQuery = "select * from shops;";
         }
         else
         {
-            sqlQuery = "select * from shops where shopid=" + query + "orderby shopid;";
+            sqlQuery = "select * from shops where shopid=" + query + ";";
         }
         
         Statement st = createStatement();
