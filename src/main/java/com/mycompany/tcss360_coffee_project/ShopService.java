@@ -105,8 +105,9 @@ public class ShopService {
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +      
                 "           var url='home/shops';\n" +
-                "           console.log('I made the JSON');"  +
                 "           if (confirm('Are you sure')) {\n" +
+                        
+                "           console.log('I am inside the confirmation if statement.');"  +
                 "             $.ajax({\n" +
                 "               type: 'DELETE',\n" +
                 "               url: url,\n" +
