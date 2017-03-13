@@ -148,7 +148,7 @@ public class ShopService {
             for (int i = 0; i < shps.length; i++) 
             {
                 sb.append(
-                "        $('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
+                "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
@@ -173,7 +173,7 @@ public class ShopService {
             sb.append(
             "    function render_delete(data)\n" +
             "    {\n" +
-            "        $('#mybody').empty();\n" +
+            "        $('#shopTable').empty();\n" +
             "        getshops();\n" +
             "    }"
             );
