@@ -139,15 +139,15 @@ public class ShopService {
             "                var closetime = document.getElementById(\"closetime-field\");\n" +
             "                var description = document.getElementById(\"description-field\");\n" +
                     
-            "                var obj = { 'shopid': shopid.value, " +
+            "                var obj = { 'shopid': parseInt(shopid.value), " +
             "                            'name': name.value,            \n" +
             "                            'street': street.value,            \n" +
             "                            'city': city.value,           \n" +
             "                            'state': state.value,           \n" +
-            "                            'zip': zip.value,            \n" +
+            "                            'zip': parseInt(zip.value,            \n" +
             "                            'phone': phone.value,            \n" +
-            "                            'opentime': opentime.value,            \n" +
-            "                            'closetime': closetime.value,            \n" +
+            "                            'opentime': parseInt(opentime.value),            \n" +
+            "                            'closetime': parseInt(closetime.value),            \n" +
             "                            'description': description.value };           \n" +
                     
             "                var url='shops';\n" +
@@ -443,7 +443,17 @@ public class ShopService {
     public String createShop(String jobj) throws IOException {
         // Turn the JSON into a Shop Object.
         ObjectMapper mapper = new ObjectMapper();
-        Shop[] shp = mapper.readValue(jobj, Shop[].class);
+        Shop[] shp = { };
+        
+        try
+        {
+            shp = mapper.readValue(jobj, Shop[].class);
+        }
+        catch (Exception e)
+        {
+            Shop temp = mapper.readValue(jobj, Shop.class);
+            shp[0] = temp;
+        }        
 
         try {
             Model db = Model.singleton();
