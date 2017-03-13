@@ -65,6 +65,42 @@ public class ShopService {
                     + "<script language=\"javascript\">"
                     + "$(document).ready(function () {");
             
+            
+            
+            // Design the functionality for each ajax call.
+            sb.append(
+              "getshops();"
+
+            + "function getshops()" 
+            + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
+            + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
+            );
+
+            sb.append(
+              "function render(data)  {" 
+            + "$.each(data, function(index, shop) {" 
+            + "var newrow = \"<tr><td>\" + shop.shopid + \"</td>\";" 
+            + "newrow += \"<td>\" + shop.name + \"</td>\";" 
+            + "newrow += \"<td>\" + shop.street + \"</td>\";" 
+            + "newrow += \"<td>\" + shop.city + \"</td>\";" 
+            + "newrow += \"<td>\" + shop.state + \"</td>\";" 
+            + "newrow += \"<td>\" + shop.zip + \"</td>\";"
+            + "newrow += \"<td>\" + shop.phone + \"</td>\";" 
+            + "newrow += \"<td>\" + shop.opentime + \"</td>\";"
+            + "newrow += \"<td>\" + shop.closetime + \"</td>\";"
+            + "newrow += \"<td>\" + shop.description + \"</td></tr>\";"
+            + "$('#shopTable').append(newrow);});}"
+            );   
+            
+            // Delete shop functionality.
+            sb.append(
+            "    function render_delete(data)\n" +
+            "    {\n" +
+            "        $('#shopTable').empty();\n" +
+            "        getshops();\n" +
+            "    }"
+            );
+            
             // Designate all buttons a function.
             for (int i = 0; i < shps.length; i++) 
             {
@@ -87,44 +123,10 @@ public class ShopService {
                 "        });"
                 );
             }
-            
-            // Design the functionality for each ajax call.
-                sb.append(
-                  "getshops();"
-                          
-                + "function getshops()" 
-                + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
-                + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
-                );
-                
-                sb.append(
-                  "function render(data)  {" 
-                + "$.each(data, function(index, shop) {" 
-                + "var newrow = \"<tr><td>\" + shop.shopid + \"</td>\";" 
-                + "newrow += \"<td>\" + shop.name + \"</td>\";" 
-                + "newrow += \"<td>\" + shop.street + \"</td>\";" 
-                + "newrow += \"<td>\" + shop.city + \"</td>\";" 
-                + "newrow += \"<td>\" + shop.state + \"</td>\";" 
-                + "newrow += \"<td>\" + shop.zip + \"</td>\";"
-                + "newrow += \"<td>\" + shop.phone + \"</td>\";" 
-                + "newrow += \"<td>\" + shop.opentime + \"</td>\";"
-                + "newrow += \"<td>\" + shop.closetime + \"</td>\";"
-                + "newrow += \"<td>\" + shop.description + \"</td></tr>\";"
-                + "$('#shopTable').append(newrow);});}</script>"
-                );   
-            
-            // Delete shop functionality.
-            sb.append(
-            "    function render_delete(data)\n" +
-            "    {\n" +
-            "        $('#shopTable').empty();\n" +
-            "        getshops();\n" +
-            "    }"
-            );
 
             sb.append("});"
-                    + "</head>"
                     + "</script>"
+                    + "</head>"
 
                     + "<body><style>table, th, td "
                     + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
