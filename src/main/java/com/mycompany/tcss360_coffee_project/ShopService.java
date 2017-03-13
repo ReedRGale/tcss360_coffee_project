@@ -99,7 +99,9 @@ public class ShopService {
             // Delete shop functionality.
             sb.append(
             "    function render_delete(data)\n" +
-            "    {\n" +
+            "    {\n"
+                    + "\n" +
+"                        + \"console.log('Now testing that button is pressed.');\" +  " +
             "        $('#shopTable').empty();\n" +
             "        getshops();\n" +
             "    }"
@@ -110,8 +112,7 @@ public class ShopService {
             {
                 sb.append(
                 "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
-                "        {\n"
-                        + "console.log('Now testing that button is pressed.');" +                                           
+                "        {\n" +                                         
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
                 "           var url='home/shops';\n" +
