@@ -74,6 +74,7 @@ public class ShopService {
                 "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +                                         
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
+                "           console.log(shopid);\n" +
                 "           var shop = { \"shopid\": shopid.value };   \n" +      
                 "           var url='shops';\n" +
                 "           if (confirm('Are you sure')) {\n" +
