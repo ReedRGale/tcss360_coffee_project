@@ -53,90 +53,135 @@ public class ShopService {
     @GET
     @Produces(MediaType.TEXT_HTML)
     public String getShops() {
-        //TODO return proper representation object
+        
         StringBuilder sb = new StringBuilder();
-        sb.append("<html><body><style>table, th, td "
-                + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
-                + "0px;border-spacing: 0px;}a {color: yellowgreen;-webkit-transition: "
-                + "all .35s;-moz-transition: all .35s;transition: all "
-                + ".35s;}a:hover,a:focus {color: forestgreen;}ul {list-style-type: "
-                + "none;margin: 0;padding: 0;overflow: hidden;"
-                + "background-color: #f1f1f1;}li {float: left;}li a {display: block;"
-                + "text-align: center;padding: 14px 16px;text-decoration: none;"
-                + "}li a:hover {background-color: yellowgreen;}"
-                + ".navbar-default {border-color: rgba(34, 34, 34, .05);"
-                + "background-color: #ffff;-webkit-transition: all .35s;"
-                + "-moz-transition: all .35s;transition: all .35s;}.navbar-default "
-                + ".navbar-header .navbar-brand {color: yellowgreen;}.navbar-default "
-                + ".nav > li>a,.navbar-default .nav>li>a:focus {color: #222;}"
-                + ".navbar-default .nav > li.active>a:hover,.navbar-default "
-                + ".nav>li.active>a:focus {color: yeallowgreen!important;"
-                + "background-color: transparent;}@media(min-width:768px) {"
-                + ".navbar-default {border-color: rgba(255,255,255,.7);"
-                + "background-color: transparent;}.navbar-default .navbar-header "
-                + ".navbar-brand {color: rgba(255, 255, 255, .7);letter-spacing: 0.5em}"
-                + ".navbar-default .navbar-header .navbar-brand:hover,.navbar-default "
-                + ".navbar-header .navbar-brand:focus {color: #fff;}.navbar-default "
-                + ".nav > li>a,.navbar-default .nav > li > a:focus {"
-                + "color: rgba(255,255,255,.7);}.navbar-default "
-                + ".nav > li>a:hover,.navbar-default .nav > li > a:focus:hover {"
-                + "color: #fff;}.navbar-default.affix {border-color: #fff;"
-                + "background-color: #fff;box-shadow: 0px 7px 20px 0px rgba(0,0,0,0.1);}"
-                + ".navbar-default.affix .nav > li>a,.navbar-default.affix "
-                + ".nav>li>a:focus:hover {color: yellowgreen;}}</style>"
-                + "<nav id=\"siteNav\" class=\"navbar navbar-default navbar-fixed-top\" "
-                + "role=\"navigation\"><div class=\"container\"><div "
-                + "class=\"navbar-header\"></a>"
-                + "</div></div><div class=\"collapse navbar-collapse\" id=\"navbar\">"
-                + "<ul class=\"collapse navbar-collapse\" id=\"navbar\"><li "
-                + "class=\"active\"><a href=\"https://shrouded-shore-30021.herokuapp.com\">"
-                + "Home</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/shops\">"
-                + "Shops</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/reviews\">"
-                + "Reviews</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/users\">"
-                + "Users</a></li></ul></div></nav>\n" 
-                + "<b>SHOP LIST:</b>"
-                + "<br><br>"
-                + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>" 
-                + "<table cellpadding=10 border=1 id=\"shopTable\"><tr>"
-                + "<td>ID</td>"
-                + "<td>Name</td>"
-                + "<td>Street</td>"
-                + "<td>City</td>"
-                + "<td>State</td>"
-                + "<td>Zip</td>"
-                + "<td>Phone</td>"
-                + "<td>Open Time</td>"
-                + "<td>Close Time</td>"
-                + "<td>Description</td>"
-                + "<td>Capacity</td>"
-                + "<td>Wifi</td>"
-                + "<td>Volume</td>"
-                + "<td>Coffee Ranking</td>"
-                + "<td>Food Ranking</td>"
-                + "<td>Expense Ranking</td>"
-                + "</tr> "
-                + "<script language=\"javascript\">\n" 
-                + "getshops();"
-                + "function getshops()" 
-                + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
-                + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
-                + "function render(data)  {" 
-                + "$.each(data, function(index, shop) {" 
-                + "var newrow = \"<tr><td id=\\\"shopid\\\"\" + index + \"\\\">\"+ shop.shopid + \"</td>\";" 
-                + "newrow += \"<td id=\\\"name\\\">\" + shop.name + \"</td>\";" 
-                + "newrow += \"<td id=\\\"street\\\">\" + shop.street + \"</td>\";" 
-                + "newrow += \"<td id=\\\"city\\\">\" + shop.city + \"</td>\";" 
-                + "newrow += \"<td id=\\\"state\\\">\" + shop.state + \"</td>\";" 
-                + "newrow += \"<td id=\\\"zip\\\">\" + shop.zip + \"</td>\";"
-                + "newrow += \"<td id=\\\"phone\\\">\" + shop.phone + \"</td>\";" 
-                + "newrow += \"<td id=\\\"opentime\\\">\" + shop.opentime + \"</td>\";"
-                + "newrow += \"<td id=\\\"closetime\\\">\" + shop.closetime + \"</td>\";"
-                + "newrow += \"<td id=\\\"description\\\">\" + shop.description + \"</td></tr>\";"
-                + "$('#shopTable').append(newrow);});}</script>"
-        );
+        
         try {
             Model db = Model.singleton();
             Shop[] shps = db.getShops(0);
+            sb.append("<html>"
+                
+                    + "<script language=\"javascript\">"
+                    + "$(document).ready(function () {");
+            
+            // Designate all buttons a function.
+            for (int i = 0; i < shps.length; i++) 
+            {
+                sb.append(
+                "        $('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
+                "        {\n" +
+                "           var shopid = " + shps[i].getShopid() + ";\n" +
+                "           var shop = { 'shopid': shopid.value };   \n" +
+                "           var url='home/shops';\n" +
+                "           if (confirm('Are you sure') {\n" +
+                "             $.ajax({\n" +
+                "               type: 'DELETE',\n" +
+                "               url: url,\n" +
+                "               datatype: 'json',\n" +
+                "               data: JSON.stringify(shop),\n" +
+                "               contentType: 'application/json',\n" +
+                "               success: render_delete\n" +
+                "             }); \n" +
+                "           } \n" +
+                "        });"
+                );
+            }
+            
+            // Design the functionality for each ajax call.
+            
+            // Delete shop functionality.
+            sb.append(
+            "    function render_delete(data)\n" +
+            "    {\n" +
+            "        $('#mybody').empty();\n" +
+            "        getshops();\n" +
+            "    }"
+            );
+
+            sb.append("});"
+                    + "</script>"
+
+                    + "<body><style>table, th, td "
+                    + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
+                    + "0px;border-spacing: 0px;}a {color: yellowgreen;-webkit-transition: "
+                    + "all .35s;-moz-transition: all .35s;transition: all "
+                    + ".35s;}a:hover,a:focus {color: forestgreen;}ul {list-style-type: "
+                    + "none;margin: 0;padding: 0;overflow: hidden;"
+                    + "background-color: #f1f1f1;}li {float: left;}li a {display: block;"
+                    + "text-align: center;padding: 14px 16px;text-decoration: none;"
+                    + "}li a:hover {background-color: yellowgreen;}"
+                    + ".navbar-default {border-color: rgba(34, 34, 34, .05);"
+                    + "background-color: #ffff;-webkit-transition: all .35s;"
+                    + "-moz-transition: all .35s;transition: all .35s;}.navbar-default "
+                    + ".navbar-header .navbar-brand {color: yellowgreen;}.navbar-default "
+                    + ".nav > li>a,.navbar-default .nav>li>a:focus {color: #222;}"
+                    + ".navbar-default .nav > li.active>a:hover,.navbar-default "
+                    + ".nav>li.active>a:focus {color: yeallowgreen!important;"
+                    + "background-color: transparent;}@media(min-width:768px) {"
+                    + ".navbar-default {border-color: rgba(255,255,255,.7);"
+                    + "background-color: transparent;}.navbar-default .navbar-header "
+                    + ".navbar-brand {color: rgba(255, 255, 255, .7);letter-spacing: 0.5em}"
+                    + ".navbar-default .navbar-header .navbar-brand:hover,.navbar-default "
+                    + ".navbar-header .navbar-brand:focus {color: #fff;}.navbar-default "
+                    + ".nav > li>a,.navbar-default .nav > li > a:focus {"
+                    + "color: rgba(255,255,255,.7);}.navbar-default "
+                    + ".nav > li>a:hover,.navbar-default .nav > li > a:focus:hover {"
+                    + "color: #fff;}.navbar-default.affix {border-color: #fff;"
+                    + "background-color: #fff;box-shadow: 0px 7px 20px 0px rgba(0,0,0,0.1);}"
+                    + ".navbar-default.affix .nav > li>a,.navbar-default.affix "
+                    + ".nav>li>a:focus:hover {color: yellowgreen;}}</style>"
+                    + "<nav id=\"siteNav\" class=\"navbar navbar-default navbar-fixed-top\" "
+                    + "role=\"navigation\"><div class=\"container\"><div "
+                    + "class=\"navbar-header\"></a>"
+                    + "</div></div><div class=\"collapse navbar-collapse\" id=\"navbar\">"
+                    + "<ul class=\"collapse navbar-collapse\" id=\"navbar\"><li "
+                    + "class=\"active\"><a href=\"https://shrouded-shore-30021.herokuapp.com\">"
+                    + "Home</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/shops\">"
+                    + "Shops</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/reviews\">"
+                    + "Reviews</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/users\">"
+                    + "Users</a></li></ul></div></nav>\n" 
+                    + "<b>SHOP LIST:</b>"
+                    + "<br><br>"
+                    + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>" 
+                    + "<table cellpadding=10 border=1 id=\"shopTable\"><tr>"
+                    + "<td>ID</td>"
+                    + "<td>Name</td>"
+                    + "<td>Street</td>"
+                    + "<td>City</td>"
+                    + "<td>State</td>"
+                    + "<td>Zip</td>"
+                    + "<td>Phone</td>"
+                    + "<td>Open Time</td>"
+                    + "<td>Close Time</td>"
+                    + "<td>Description</td>"
+                    + "<td>Capacity</td>"
+                    + "<td>Wifi</td>"
+                    + "<td>Volume</td>"
+                    + "<td>Coffee Ranking</td>"
+                    + "<td>Food Ranking</td>"
+                    + "<td>Expense Ranking</td>"
+                    + "</tr> "
+                    + "<script language=\"javascript\">\n" 
+                    + "getshops();"
+                    + "function getshops()" 
+                    + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
+                    + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
+                    + "function render(data)  {" 
+                    + "$.each(data, function(index, shop) {" 
+                    + "var newrow = \"<tr><td id=\\\"shopid\\\"\" + index + \"\\\">\"+ shop.shopid + \"</td>\";" 
+                    + "newrow += \"<td id=\\\"name\\\">\" + shop.name + \"</td>\";" 
+                    + "newrow += \"<td id=\\\"street\\\">\" + shop.street + \"</td>\";" 
+                    + "newrow += \"<td id=\\\"city\\\">\" + shop.city + \"</td>\";" 
+                    + "newrow += \"<td id=\\\"state\\\">\" + shop.state + \"</td>\";" 
+                    + "newrow += \"<td id=\\\"zip\\\">\" + shop.zip + \"</td>\";"
+                    + "newrow += \"<td id=\\\"phone\\\">\" + shop.phone + \"</td>\";" 
+                    + "newrow += \"<td id=\\\"opentime\\\">\" + shop.opentime + \"</td>\";"
+                    + "newrow += \"<td id=\\\"closetime\\\">\" + shop.closetime + \"</td>\";"
+                    + "newrow += \"<td id=\\\"description\\\">\" + shop.description + \"</td></tr>\";"
+                    + "$('#shopTable').append(newrow);});}"
+                    + "</script>"
+        );
+            
             for (int i = 0; i < shps.length; i++) {
                 sb.append("<tr><td>"
                         + shps[i].getShopid() + "</td><td><a href=\"#\">"
@@ -155,8 +200,8 @@ public class ShopService {
                         + shps[i].getCoffeeRank() + "</td><td>"
                         + shps[i].getFoodRank() + "</td><td>"
                         + shps[i].getExpenseRank() + "</td>"
-                        + "<td><input type=\"button\" value=\"Edit\" onclick=\"\" id=\"delete-user\"/></td>\n" 
-                        + "<td><input type=\"button\" value=\"X\" onclick=\"\" id=\"delete-user\"/></td></tr>");
+                        + "<td><input type=\"button\" value=\"Edit " + shps[i].getName() + "\" onclick=\"\" id=\"update-shop-" + shps[i].getShopid() + "\"/></td>\n" 
+                        + "<td><input type=\"button\" value=\"Delete " + shps[i].getName() + "\" onclick=\"\" id=\"delete-shop-" + shps[i].getShopid() + "\"/></td></tr>");
             }
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
