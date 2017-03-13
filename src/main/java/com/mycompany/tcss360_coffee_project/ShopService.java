@@ -193,10 +193,182 @@ public class ShopService {
                     + "</script>"
                     + "</head>"
                     
-                    + "<input type=\"button\" value=\"New Shop\" onclick=\"\" id=\"new-shop\"/>"
-                    + "<input type=\"button\" value=\"Add/Update Shop\" onclick=\"\" id=\"add-shop\"/>" +
+//                    + "<input type=\"button\" value=\"New Shop\" onclick=\"\" id=\"new-shop\"/>"
+//                    + "<input type=\"button\" value=\"Add/Update Shop\" onclick=\"\" id=\"add-shop\"/>" 
+//                    
+//                    + "   <tr>\n" +
+//                    "       <td>Enter Shop ID:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Name:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"name-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                   
+//                    "   <tr>\n" +
+//                    "       <td>Enter Street:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"street-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter City:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"city-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter State:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"state-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Zip:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"zip-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Phone Number:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"phone-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Opentime (HHMM):  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"opentime-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Closetime (HHMM):  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"closetime-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Description:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"description-field\" size=\"100\"/>  \n" +
+//                    "   </tr>" 
                     
-                    "   <tr>\n" +
+                    + "<body><style>table, th, td "
+                    + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
+                    + "0px;border-spacing: 0px;}a {color: yellowgreen;-webkit-transition: "
+                    + "all .35s;-moz-transition: all .35s;transition: all "
+                    + ".35s;}a:hover,a:focus {color: forestgreen;}ul {list-style-type: "
+                    + "none;margin: 0;padding: 0;overflow: hidden;"
+                    + "background-color: #f1f1f1;}li {float: left;}li a {display: block;"
+                    + "text-align: center;padding: 14px 16px;text-decoration: none;"
+                    + "}li a:hover {background-color: yellowgreen;}"
+                    + ".navbar-default {border-color: rgba(34, 34, 34, .05);"
+                    + "background-color: #ffff;-webkit-transition: all .35s;"
+                    + "-moz-transition: all .35s;transition: all .35s;}.navbar-default "
+                    + ".navbar-header .navbar-brand {color: yellowgreen;}.navbar-default "
+                    + ".nav > li>a,.navbar-default .nav>li>a:focus {color: #222;}"
+                    + ".navbar-default .nav > li.active>a:hover,.navbar-default "
+                    + ".nav>li.active>a:focus {color: yeallowgreen!important;"
+                    + "background-color: transparent;}@media(min-width:768px) {"
+                    + ".navbar-default {border-color: rgba(255,255,255,.7);"
+                    + "background-color: transparent;}.navbar-default .navbar-header "
+                    + ".navbar-brand {color: rgba(255, 255, 255, .7);letter-spacing: 0.5em}"
+                    + ".navbar-default .navbar-header .navbar-brand:hover,.navbar-default "
+                    + ".navbar-header .navbar-brand:focus {color: #fff;}.navbar-default "
+                    + ".nav > li>a,.navbar-default .nav > li > a:focus {"
+                    + "color: rgba(255,255,255,.7);}.navbar-default "
+                    + ".nav > li>a:hover,.navbar-default .nav > li > a:focus:hover {"
+                    + "color: #fff;}.navbar-default.affix {border-color: #fff;"
+                    + "background-color: #fff;box-shadow: 0px 7px 20px 0px rgba(0,0,0,0.1);}"
+                    + ".navbar-default.affix .nav > li>a,.navbar-default.affix "
+                    + ".nav>li>a:focus:hover {color: yellowgreen;}}"
+                  //put css here
+                    + ".modal {\n"
+                    + "    display: none; /* Hidden by default */\n"
+                    + "    position: fixed; /* Stay in place */\n"
+                    + "    z-index: 1; /* Sit on top */\n"
+                    + "    padding-top: 100px; /* Location of the box */\n"
+                    + "    left: 0;\n"
+                    + "    top: 0;\n"
+                    + "    width: 100%; /* Full width */\n"
+                    + "    height: 100%; /* Full height */\n"
+                    + "    overflow: auto; /* Enable scroll if needed */\n"
+                    + "    background-color: rgb(0,0,0); /* Fallback color */\n"
+                    + "    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */\n"
+                    + "}\n"
+                    + "\n"
+                    + "/* Modal Content */\n"
+                    + ".modal-content {\n"
+                    + "    position: relative;\n"
+                    + "    background-color: #fefefe;\n"
+                    + "    margin: auto;\n"
+                    + "    padding: 0;\n"
+                    + "    border: 1px solid #888;\n"
+                    + "    width: 80%;\n"
+                    + "    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);\n"
+                    + "    -webkit-animation-name: animatetop;\n"
+                    + "    -webkit-animation-duration: 0.4s;\n"
+                    + "    animation-name: animatetop;\n"
+                    + "    animation-duration: 0.4s\n"
+                    + "}\n"
+                    + "\n"
+                    + "/* Add Animation */\n"
+                    + "@-webkit-keyframes animatetop {\n"
+                    + "    from {top:-300px; opacity:0} \n"
+                    + "    to {top:0; opacity:1}\n"
+                    + "}\n"
+                    + "\n"
+                    + "@keyframes animatetop {\n"
+                    + "    from {top:-300px; opacity:0}\n"
+                    + "    to {top:0; opacity:1}\n"
+                    + "}\n"
+                    + "\n"
+                    + "/* The Close Button */\n"
+                    + ".close {\n"
+                    + "    color: white;\n"
+                    + "    float: right;\n"
+                    + "    font-size: 28px;\n"
+                    + "    font-weight: bold;\n"
+                    + "}\n"
+                    + "\n"
+                    + ".close:hover,\n"
+                    + ".close:focus {\n"
+                    + "    color: #000;\n"
+                    + "    text-decoration: none;\n"
+                    + "    cursor: pointer;\n"
+                    + "}\n"
+                    + "\n"
+                    + ".modal-header {\n"
+                    + "    padding: 2px 16px;\n"
+                    + "    background-color: #5cb85c;\n"
+                    + "    color: white;\n"
+                    + "}\n"
+                    + "\n"
+                    + ".modal-body {padding: 2px 16px;}\n"
+                    + "\n"
+                    + ".modal-footer {\n"
+                    + "    padding: 2px 16px;\n"
+                    + "    background-color: #5cb85c;\n"
+                    + "    color: white;\n"
+                    + "}"
+                    + "</style>"
+                    + "<nav id=\"siteNav\" class=\"navbar navbar-default navbar-fixed-top\" "
+                    + "role=\"navigation\"><div class=\"container\"><div "
+                    + "class=\"navbar-header\"></a>"
+                    + "</div></div><div class=\"collapse navbar-collapse\" id=\"navbar\">"
+                    + "<ul class=\"collapse navbar-collapse\" id=\"navbar\"><li "
+                    + "class=\"active\"><a href=\"https://shrouded-shore-30021.herokuapp.com\">"
+                    + "Home</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/shops\">"
+                    + "Shops</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/reviews\">"
+                    + "Reviews</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/users\">"
+                    + "Users</a></li></ul></div></nav>\n" 
+                    + "<b>SHOP LIST:</b>"
+                    + "<br><br>"
+                    + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>"
+                    + "<button id=\"myBtn\">Open Modal</button>"
+                    + "<div id=\"myModal\" class=\"modal\">\n" 
+                    + "  <!-- Modal content -->\n"
+                    + "  <div class=\"modal-content\">\n"
+                    + "    <div class=\"modal-header\">\n"
+                    + "      <span class=\"close\">&times;</span>\n"
+                    + "      <h2>Add/Update Shop</h2>\n"
+                    + "    </div>\n"
+                    + "    <div class=\"modal-body\">\n"
+                    //put shit here
+                    +                   "   <tr>\n" +
                     "       <td>Enter Shop ID:  </td>\n" +
                     "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
                     "   </tr>" +
@@ -245,49 +417,14 @@ public class ShopService {
                     "       <td>Enter Description:  </td>\n" +
                     "       <td><input type=\"text\" id=\"description-field\" size=\"100\"/>  \n" +
                     "   </tr>" 
-                    
-                    + "<body><style>table, th, td "
-                    + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
-                    + "0px;border-spacing: 0px;}a {color: yellowgreen;-webkit-transition: "
-                    + "all .35s;-moz-transition: all .35s;transition: all "
-                    + ".35s;}a:hover,a:focus {color: forestgreen;}ul {list-style-type: "
-                    + "none;margin: 0;padding: 0;overflow: hidden;"
-                    + "background-color: #f1f1f1;}li {float: left;}li a {display: block;"
-                    + "text-align: center;padding: 14px 16px;text-decoration: none;"
-                    + "}li a:hover {background-color: yellowgreen;}"
-                    + ".navbar-default {border-color: rgba(34, 34, 34, .05);"
-                    + "background-color: #ffff;-webkit-transition: all .35s;"
-                    + "-moz-transition: all .35s;transition: all .35s;}.navbar-default "
-                    + ".navbar-header .navbar-brand {color: yellowgreen;}.navbar-default "
-                    + ".nav > li>a,.navbar-default .nav>li>a:focus {color: #222;}"
-                    + ".navbar-default .nav > li.active>a:hover,.navbar-default "
-                    + ".nav>li.active>a:focus {color: yeallowgreen!important;"
-                    + "background-color: transparent;}@media(min-width:768px) {"
-                    + ".navbar-default {border-color: rgba(255,255,255,.7);"
-                    + "background-color: transparent;}.navbar-default .navbar-header "
-                    + ".navbar-brand {color: rgba(255, 255, 255, .7);letter-spacing: 0.5em}"
-                    + ".navbar-default .navbar-header .navbar-brand:hover,.navbar-default "
-                    + ".navbar-header .navbar-brand:focus {color: #fff;}.navbar-default "
-                    + ".nav > li>a,.navbar-default .nav > li > a:focus {"
-                    + "color: rgba(255,255,255,.7);}.navbar-default "
-                    + ".nav > li>a:hover,.navbar-default .nav > li > a:focus:hover {"
-                    + "color: #fff;}.navbar-default.affix {border-color: #fff;"
-                    + "background-color: #fff;box-shadow: 0px 7px 20px 0px rgba(0,0,0,0.1);}"
-                    + ".navbar-default.affix .nav > li>a,.navbar-default.affix "
-                    + ".nav>li>a:focus:hover {color: yellowgreen;}}</style>"
-                    + "<nav id=\"siteNav\" class=\"navbar navbar-default navbar-fixed-top\" "
-                    + "role=\"navigation\"><div class=\"container\"><div "
-                    + "class=\"navbar-header\"></a>"
-                    + "</div></div><div class=\"collapse navbar-collapse\" id=\"navbar\">"
-                    + "<ul class=\"collapse navbar-collapse\" id=\"navbar\"><li "
-                    + "class=\"active\"><a href=\"https://shrouded-shore-30021.herokuapp.com\">"
-                    + "Home</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/shops\">"
-                    + "Shops</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/reviews\">"
-                    + "Reviews</a></li><li><a href=\"https://shrouded-shore-30021.herokuapp.com/home/users\">"
-                    + "Users</a></li></ul></div></nav>\n" 
-                    + "<b>SHOP LIST:</b>"
-                    + "<br><br>"
-                    + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>" 
+                    + "    </div>\n"
+                    + "    <div class=\"modal-footer\">\n"
+                    + "      <h3><input type=\"button\" value=\"New Shop\" onclick=\"\" id=\"new-shop\"/>\n"
+                    + "      <input type=\"button\" value=\"Add/Update\" Shop onclick=\"\" id=\"add-shop\"/></h3>\n"
+                    + "    </div>\n"
+                    + "  </div>\n"
+                    + "\n"
+                    + "</div>"
                     + "<table cellpadding=10 border=1 id=\"shopTable\"><tr>"
                     + "<td>ID</td>"
                     + "<td>Name</td>"
@@ -422,6 +559,30 @@ public class ShopService {
                 + "  resultsMap.fitBounds(bounds);\n"
                 + "}\n"
                 + "</script>\n"
+                + "<script>var modal = document.getElementById('myModal');\n" +
+ "\n"
+                        + "// Get the button that opens the modal\n"
+                        + "var btn = document.getElementById(\"myBtn\");\n"
+                        + "\n"
+                        + "// Get the <span> element that closes the modal\n"
+                        + "var span = document.getElementsByClassName(\"close\")[0];\n"
+                        + "\n"
+                        + "// When the user clicks the button, open the modal \n"
+                        + "btn.onclick = function() {\n"
+                        + "    modal.style.display = \"block\";\n"
+                        + "}\n"
+                        + "\n"
+                        + "// When the user clicks on <span> (x), close the modal\n"
+                        + "span.onclick = function() {\n"
+                        + "    modal.style.display = \"none\";\n"
+                        + "}\n"
+                        + "\n"
+                        + "// When the user clicks anywhere outside of the modal, close it\n"
+                        + "window.onclick = function(event) {\n"
+                        + "    if (event.target == modal) {\n"
+                        + "        modal.style.display = \"none\";\n"
+                        + "    }\n"
+                        + "}</script>"
                 + "<script src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyAtTXi_yuz0tnAri_Xd_XZenxYBRTqzqYE&callback=myMap\"></script></body></html>");
             
         } catch (Exception e) {
