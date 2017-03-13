@@ -55,9 +55,7 @@ public class ShopService {
     public String getShops() {
         
         StringBuilder sb = new StringBuilder();
-<<<<<<< HEAD
         
-=======
         sb.append("<html><body><style>table, th, td "
                 + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
                 + "0px;border-spacing: 0px;}a {color: yellowgreen;-webkit-transition: "
@@ -118,26 +116,8 @@ public class ShopService {
                 + "<td>Food Ranking</td>"
                 + "<td>Expense Ranking</td>"
                 + "</tr> "
-//                + "<script language=\"javascript\">\n" 
-//                + "getshops();"
-//                + "function getshops()" 
-//                + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
-//                + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
-//                + "function render(data)  {" 
-//                + "$.each(data, function(index, shop) {" 
-//                + "var newrow = \"<tr><td>\" + shop.shopid + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.name + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.street + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.city + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.state + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.zip + \"</td>\";"
-//                + "newrow += \"<td>\" + shop.phone + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.opentime + \"</td>\";"
-//                + "newrow += \"<td>\" + shop.closetime + \"</td>\";"
-//                + "newrow += \"<td>\" + shop.description + \"</td></tr>\";"
-//                + "$('#shopTable').append(newrow);});}</script>"
         );
->>>>>>> ba57f0d558e4203c6bbefb032700c8c7f49ba140
+        
         try {
             Model db = Model.singleton();
             Shop[] shps = db.getShops(0);
