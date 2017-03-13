@@ -111,7 +111,7 @@ public class ShopService {
                 sb.append(
                 "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n"
-                        + "console.log('Now testing that button is pressed.')" +                                           
+                        + "console.log('Now testing that button is pressed.');" +                                           
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
                 "           var url='home/shops';\n" +
