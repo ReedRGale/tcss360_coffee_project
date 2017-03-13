@@ -104,15 +104,15 @@ public class ShopService {
             "                var closetime = document.getElementById(\"closetime-field\");\n" +
             "                var description = document.getElementById(\"description-field\");\n" +
                     
-            "                var obj = { \"name\": name.value, " +
-            "                            \"street\": street.value,            \n" +
-            "                            \"city\": city.value,           \n" +
-            "                            \"state\": state.value,           \n" +
-            "                            \"zip\": zip.value,            \n" +
-            "                            \"phone\": phone.value,            \n" +
-            "                            \"opentime\": opentime.value,            \n" +
-            "                            \"closetime\": closetime.value,            \n" +
-            "                            \"description\": description.value };           \n" +
+            "                var obj = { 'name': name.value, \n " + 
+            "                            'street': street.value,            \n" +
+            "                            'city': city.value,           \n" +
+            "                            'state': state.value,           \n" +
+            "                            'zip': zip.value,            \n" +
+            "                            'phone': phone.value,            \n" +
+            "                            'opentime': opentime.value,            \n" +
+            "                            'closetime': closetime.value,            \n" +
+            "                            'description': description.value };           \n" +
                     
             "                var url='shops';\n" +
             "                if (confirm('Are you sure you wanna add this?')) {\n" +
@@ -139,16 +139,16 @@ public class ShopService {
             "                var closetime = document.getElementById(\"closetime-field\");\n" +
             "                var description = document.getElementById(\"description-field\");\n" +
                     
-            "                var obj = { \"shopid\": shopid.value, " +
-            "                            \"name\": name.value,            \n" +
-            "                            \"street\": street.value,            \n" +
-            "                            \"city\": city.value,           \n" +
-            "                            \"state\": state.value,           \n" +
-            "                            \"zip\": zip.value,            \n" +
-            "                            \"phone\": phone.value,            \n" +
-            "                            \"opentime\": opentime.value,            \n" +
-            "                            \"closetime\": closetime.value,            \n" +
-            "                            \"description\": description.value };           \n" +
+            "                var obj = { 'shopid': shopid.value, " +
+            "                            'name': name.value,            \n" +
+            "                            'street': street.value,            \n" +
+            "                            'city': city.value,           \n" +
+            "                            'state': state.value,           \n" +
+            "                            'zip': zip.value,            \n" +
+            "                            'phone': phone.value,            \n" +
+            "                            'opentime': opentime.value,            \n" +
+            "                            'closetime': closetime.value,            \n" +
+            "                            'description': description.value };           \n" +
                     
             "                var url='shops';\n" +
             "                if (confirm('Are you sure you wanna update this?')) {\n" +
