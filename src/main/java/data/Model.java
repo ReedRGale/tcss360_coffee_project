@@ -172,11 +172,15 @@ public class Model {
         
         if (query == 0)
         {
+<<<<<<< HEAD
             sqlQuery = "select * from shops orderby name;";
+=======
+            sqlQuery = "select * from shops;";
+>>>>>>> dbaa969110a48f978c99fe2a57da2cba8086367b
         }
         else
         {
-            sqlQuery = "select * from shops where shopid=" + query + "orderby shopid;";
+            sqlQuery = "select * from shops where shopid=" + query + ";";
         }
         
         Statement st = createStatement();

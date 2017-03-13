@@ -116,30 +116,13 @@ public class ShopService {
                 + "<td>Food Ranking</td>"
                 + "<td>Expense Ranking</td>"
                 + "</tr> "
-//                + "<script language=\"javascript\">\n" 
-//                + "getshops();"
-//                + "function getshops()" 
-//                + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
-//                + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
-//                + "function render(data)  {" 
-//                + "$.each(data, function(index, shop) {" 
-//                + "var newrow = \"<tr><td>\" + shop.shopid + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.name + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.street + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.city + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.state + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.zip + \"</td>\";"
-//                + "newrow += \"<td>\" + shop.phone + \"</td>\";" 
-//                + "newrow += \"<td>\" + shop.opentime + \"</td>\";"
-//                + "newrow += \"<td>\" + shop.closetime + \"</td>\";"
-//                + "newrow += \"<td>\" + shop.description + \"</td></tr>\";"
-//                + "$('#shopTable').append(newrow);});}</script>"
         );
         
         try {
             Model db = Model.singleton();
             Shop[] shps = db.getShops(0);
             sb.append("<html>"
+                    + "<head>"
                 
                     + "<script language=\"javascript\">"
                     + "$(document).ready(function () {");
@@ -148,8 +131,9 @@ public class ShopService {
             for (int i = 0; i < shps.length; i++) 
             {
                 sb.append(
-                "        $('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
+                "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +
+                "           console.log('the button was pressed');\n" +
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
                 "           var url='home/shops';\n" +
@@ -168,17 +152,41 @@ public class ShopService {
             }
             
             // Design the functionality for each ajax call.
+                sb.append(
+                  "<script language=\"javascript\">\n" 
+                + "getshops();"
+                + "function getshops()" 
+                + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
+                + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
+                );
+                
+                sb.append(
+                  "function render(data)  {" 
+                + "$.each(data, function(index, shop) {" 
+                + "var newrow = \"<tr><td>\" + shop.shopid + \"</td>\";" 
+                + "newrow += \"<td>\" + shop.name + \"</td>\";" 
+                + "newrow += \"<td>\" + shop.street + \"</td>\";" 
+                + "newrow += \"<td>\" + shop.city + \"</td>\";" 
+                + "newrow += \"<td>\" + shop.state + \"</td>\";" 
+                + "newrow += \"<td>\" + shop.zip + \"</td>\";"
+                + "newrow += \"<td>\" + shop.phone + \"</td>\";" 
+                + "newrow += \"<td>\" + shop.opentime + \"</td>\";"
+                + "newrow += \"<td>\" + shop.closetime + \"</td>\";"
+                + "newrow += \"<td>\" + shop.description + \"</td></tr>\";"
+                + "$('#shopTable').append(newrow);});}</script>"
+                );   
             
             // Delete shop functionality.
             sb.append(
             "    function render_delete(data)\n" +
             "    {\n" +
-            "        $('#mybody').empty();\n" +
+            "        $('#shopTable').empty();\n" +
             "        getshops();\n" +
             "    }"
             );
 
             sb.append("});"
+                    + "</head>"
                     + "</script>"
 
                     + "<body><style>table, th, td "
