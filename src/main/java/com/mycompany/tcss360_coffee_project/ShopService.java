@@ -93,7 +93,7 @@ public class ShopService {
                 sb.append(
                   "<script language=\"javascript\">\n" 
                 + "getshops();"
-                + "function getshops()" 
+                + "function getshops(){" 
                 + "var url='https://gentle-coast-59786.herokuapp.com/tcss360/coffeeShop/api/shops';" 
                 + "$.ajax({type: 'GET',url: url,datatype: 'json',success: render});}"
                 );
