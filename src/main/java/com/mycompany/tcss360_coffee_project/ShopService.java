@@ -140,6 +140,7 @@ public class ShopService {
             Model db = Model.singleton();
             Shop[] shps = db.getShops(0);
             sb.append("<html>"
+                    + "<head>"
                 
                     + "<script language=\"javascript\">"
                     + "$(document).ready(function () {");
@@ -150,6 +151,7 @@ public class ShopService {
                 sb.append(
                 "        \n$('#delete-shop-" + shps[i].getShopid() + "').click(function ()\n" +
                 "        {\n" +
+                "           console.log('the button was pressed');\n" +
                 "           var shopid = " + shps[i].getShopid() + ";\n" +
                 "           var shop = { 'shopid': shopid.value };   \n" +
                 "           var url='home/shops';\n" +
@@ -179,6 +181,7 @@ public class ShopService {
             );
 
             sb.append("});"
+                    + "</head>"
                     + "</script>"
 
                     + "<body><style>table, th, td "
