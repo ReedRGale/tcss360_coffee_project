@@ -193,58 +193,58 @@ public class ShopService {
                     + "</script>"
                     + "</head>"
                     
-//                    + "<input type=\"button\" value=\"New Shop\" onclick=\"\" id=\"new-shop\"/>"
-//                    + "<input type=\"button\" value=\"Add/Update Shop\" onclick=\"\" id=\"add-shop\"/>" 
-//                    
-//                    + "   <tr>\n" +
-//                    "       <td>Enter Shop ID:  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                    
-//                    "   <tr>\n" +
-//                    "       <td>Enter Name:  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"name-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                   
-//                    "   <tr>\n" +
-//                    "       <td>Enter Street:  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"street-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                    
-//                    "   <tr>\n" +
-//                    "       <td>Enter City:  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"city-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                    
-//                    "   <tr>\n" +
-//                    "       <td>Enter State:  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"state-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                    
-//                    "   <tr>\n" +
-//                    "       <td>Enter Zip:  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"zip-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                    
-//                    "   <tr>\n" +
-//                    "       <td>Enter Phone Number:  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"phone-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                    
-//                    "   <tr>\n" +
-//                    "       <td>Enter Opentime (HHMM):  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"opentime-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                    
-//                    "   <tr>\n" +
-//                    "       <td>Enter Closetime (HHMM):  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"closetime-field\" size=\"10\"/>  \n" +
-//                    "   </tr>" +
-//                    
-//                    "   <tr>\n" +
-//                    "       <td>Enter Description:  </td>\n" +
-//                    "       <td><input type=\"text\" id=\"description-field\" size=\"100\"/>  \n" +
-//                    "   </tr>" 
+                    + "<input type=\"button\" value=\"New Shop\" onclick=\"\" id=\"new-shop\"/>"
+                    + "<input type=\"button\" value=\"Add/Update Shop\" onclick=\"\" id=\"add-shop\"/>" 
+                    
+                    + "   <tr>\n" +
+                    "       <td>Enter Shop ID:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Name:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"name-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                   
+                    "   <tr>\n" +
+                    "       <td>Enter Street:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"street-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter City:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"city-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter State:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"state-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Zip:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"zip-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Phone Number:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"phone-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Opentime (HHMM):  </td>\n" +
+                    "       <td><input type=\"text\" id=\"opentime-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Closetime (HHMM):  </td>\n" +
+                    "       <td><input type=\"text\" id=\"closetime-field\" size=\"10\"/>  \n" +
+                    "   </tr>" +
+                    
+                    "   <tr>\n" +
+                    "       <td>Enter Description:  </td>\n" +
+                    "       <td><input type=\"text\" id=\"description-field\" size=\"100\"/>  \n" +
+                    "   </tr>" 
                     
                     + "<body><style>table, th, td "
                     + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
@@ -358,9 +358,7 @@ public class ShopService {
                     + "<b>SHOP LIST:</b>"
                     + "<br><br>"
                     + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>"
-                    + "<br></br>\n"
-                    + "<button id=\"myBtn\">Add/Update Shop!!</button>"
-                    + "<br></br>"
+                    + "<button id=\"myBtn\">Open Modal</button>"
                     + "<div id=\"myModal\" class=\"modal\">\n" 
                     + "  <!-- Modal content -->\n"
                     + "  <div class=\"modal-content\">\n"
@@ -501,8 +499,8 @@ public class ShopService {
             sb.append("var infoWindowContent = [\n");
             for (int i = 0; i < shps.length; i++) {
                 sb.append("['<div><h3>" + shps[i].getName() + "</h3>"
-                        + "<h5>Coffee Ranking: " + shps[i].getCoffeeRank() + "<br />Food Ranking: " + shps[i].getFoodRank() + "   <br />Expense Ranking: " + shps[i].getExpenseRank() + "</h5>"
                         + "<p>" + shps[i].getDescription() + "</p></div>'],");
+
             }
                 sb.append("];\n"
                 //initializer of the map
