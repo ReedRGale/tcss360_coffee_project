@@ -117,7 +117,7 @@ public class ShopService {
             "                var url='shops';\n" +
             "                if (confirm('Are you sure you wanna add this?')) {\n" +
             "                  $.ajax({\n" +
-            "                    type: 'PUT',\n" +
+            "                    type: 'POST',\n" +
             "                    url: url,\n" +
             "                    datatype: 'json',\n" +
             "                    data: JSON.stringify(obj),\n" +
