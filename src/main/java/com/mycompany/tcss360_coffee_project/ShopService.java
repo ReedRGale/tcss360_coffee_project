@@ -526,6 +526,7 @@ public class ShopService {
                 //                + "  geocodeAddress(address2, geocoder, map);\n"
                 //                + "  geocodeAddress(address3, geocoder, map);\n"
                 + "}\n" 
+                        + "getShopses();"
                         + "    function getShopses() {\n"
                         + "        // Form load\n"
                         + "        var url='http://team4360.herokuapp.com/tcss360/shops/0';\n"
