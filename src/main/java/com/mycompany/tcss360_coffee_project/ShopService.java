@@ -193,58 +193,58 @@ public class ShopService {
                     + "</script>"
                     + "</head>"
                     
-                    + "<input type=\"button\" value=\"New Shop\" onclick=\"\" id=\"new-shop\"/>"
-                    + "<input type=\"button\" value=\"Add/Update Shop\" onclick=\"\" id=\"add-shop\"/>" 
-                    
-                    + "   <tr>\n" +
-                    "       <td>Enter Shop ID:  </td>\n" +
-                    "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                    
-                    "   <tr>\n" +
-                    "       <td>Enter Name:  </td>\n" +
-                    "       <td><input type=\"text\" id=\"name-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                   
-                    "   <tr>\n" +
-                    "       <td>Enter Street:  </td>\n" +
-                    "       <td><input type=\"text\" id=\"street-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                    
-                    "   <tr>\n" +
-                    "       <td>Enter City:  </td>\n" +
-                    "       <td><input type=\"text\" id=\"city-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                    
-                    "   <tr>\n" +
-                    "       <td>Enter State:  </td>\n" +
-                    "       <td><input type=\"text\" id=\"state-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                    
-                    "   <tr>\n" +
-                    "       <td>Enter Zip:  </td>\n" +
-                    "       <td><input type=\"text\" id=\"zip-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                    
-                    "   <tr>\n" +
-                    "       <td>Enter Phone Number:  </td>\n" +
-                    "       <td><input type=\"text\" id=\"phone-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                    
-                    "   <tr>\n" +
-                    "       <td>Enter Opentime (HHMM):  </td>\n" +
-                    "       <td><input type=\"text\" id=\"opentime-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                    
-                    "   <tr>\n" +
-                    "       <td>Enter Closetime (HHMM):  </td>\n" +
-                    "       <td><input type=\"text\" id=\"closetime-field\" size=\"10\"/>  \n" +
-                    "   </tr>" +
-                    
-                    "   <tr>\n" +
-                    "       <td>Enter Description:  </td>\n" +
-                    "       <td><input type=\"text\" id=\"description-field\" size=\"100\"/>  \n" +
-                    "   </tr>" 
+//                    + "<input type=\"button\" value=\"New Shop\" onclick=\"\" id=\"new-shop\"/>"
+//                    + "<input type=\"button\" value=\"Add/Update Shop\" onclick=\"\" id=\"add-shop\"/>" 
+//                    
+//                    + "   <tr>\n" +
+//                    "       <td>Enter Shop ID:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"id-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Name:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"name-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                   
+//                    "   <tr>\n" +
+//                    "       <td>Enter Street:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"street-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter City:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"city-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter State:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"state-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Zip:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"zip-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Phone Number:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"phone-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Opentime (HHMM):  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"opentime-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Closetime (HHMM):  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"closetime-field\" size=\"10\"/>  \n" +
+//                    "   </tr>" +
+//                    
+//                    "   <tr>\n" +
+//                    "       <td>Enter Description:  </td>\n" +
+//                    "       <td><input type=\"text\" id=\"description-field\" size=\"100\"/>  \n" +
+//                    "   </tr>" 
                     
                     + "<body><style>table, th, td "
                     + "{font-family:Arial,Verdana,sans-serif;font-size:16px;padding: "
