@@ -358,7 +358,7 @@ public class ShopService {
                     + "<b>SHOP LIST:</b>"
                     + "<br><br>"
                     + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>"
-                    + "<button id=\"myBtn\">Open Modal</button>"
+                    + "<button id=\"myBtn\">Open Add/Update Shop</button>"
                     + "<div id=\"myModal\" class=\"modal\">\n" 
                     + "  <!-- Modal content -->\n"
                     + "  <div class=\"modal-content\">\n"
