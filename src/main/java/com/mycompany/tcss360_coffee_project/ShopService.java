@@ -358,7 +358,7 @@ public class ShopService {
                     + "<b>SHOP LIST:</b>"
                     + "<br><br>"
                     + "<div id=\"googleMap\" style=\"width:100%;height:300px;\"></div>"
-                    + "<button id=\"myBtn\">Open Add/Update Shop</button>"
+                    + "<button id=\"myBtn\">Open Add/Update Shop!</button>"
                     + "<div id=\"myModal\" class=\"modal\">\n" 
                     + "  <!-- Modal content -->\n"
                     + "  <div class=\"modal-content\">\n"
@@ -465,10 +465,6 @@ public class ShopService {
                         + shps[i].getExpenseRank() + "</td>"
                         + "<td><input type=\"button\" value=\"Delete " + shps[i].getName() + "\" onclick=\"\" id=\"delete-shop-" + shps[i].getShopid() + "\"/></td></tr>");
             }
-            sb.append("<tbody id=\"mybody\" class=\"table-body\">\n" +
-"               <tr>\n" +
-"        \n" +
-"           </tbody>");
             
         } catch (Exception e) {
             sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
@@ -525,30 +521,8 @@ public class ShopService {
                 + "}\n"
                 //                + "  geocodeAddress(address2, geocoder, map);\n"
                 //                + "  geocodeAddress(address3, geocoder, map);\n"
-                + "}\n" 
-                        + "getShopses();"
-                        + "    function getShopses() {\n"
-                        + "        // Form load\n"
-                        + "        var url='http://team4360.herokuapp.com/tcss360/shops/0';\n"
-                        + "\n"
-                        + "        $.ajax({\n"
-                        + "          type: 'GET',\n"
-                        + "          url: url,\n"
-                        + "          datatype: 'json',\n"
-                        + "          success: others\n"
-                        + "        }); \n"
-                        + "    }"
-                        
-                        + "    function others(data)  {\n"
-                        + "      $.each(data, function(index, message) { \n"
-                        + "          var newrow = \"<tr>"
-                        + "<td></td><td>\" + message.name + \"</td>\";\n"
-                        + "          newrow += \"<td>\" + message.city + \"</td>\";\n"
-                        + "          newrow += \"<td>\" + message.state + \"</td>\";\n"
-                        + "          newrow += \"<td>\" + message.zip + \"</td></tr>\";\n"
-                        + "          $('#mybody').append(newrow);\n"
-                        + "      });\n"
-                        + "    }"
+                + "}\n"
+
                 + "function geocodeAddress(address, i, title, geocoder, resultsMap, infoWindow) {\n"
                 + "  geocoder.geocode({\n"
                 + "    'address': address\n"
