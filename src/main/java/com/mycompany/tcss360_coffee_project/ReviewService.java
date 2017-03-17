@@ -71,7 +71,7 @@ public class ReviewService
                 sb.append(
                 "        \n$('#delete-review-" + reviews[i].getReviewid() + "').click(function ()\n" +
                 "        {\n" +                                         
-                "           var shop = { 'reviewid': " + reviews[i].getReviewid() + "};   \n" +     
+                "           var review = { 'reviewid': " + reviews[i].getReviewid() + "};   \n" +     
                 "           var url='reviews';\n" +
                 "           if (confirm('Are you sure')) {\n" +
                 "             $.ajax({\n" +
@@ -279,8 +279,7 @@ public class ReviewService
                         + reviews[i].getOwner() + "</td><td>"
                         + reviews[i].getShop() + "</td><td>"
                         + reviews[i].getComment() + "</td>"
-                        + "<td><input type=\"button\" value=\"Delete \" onclick=\"\" id=\"delete-shop-\"/></td></tr>");
-            }
+                        + "<td><input type=\"button\" value=\"Delete \" onclick=\"\"  id=\"delete-review-" + reviews[i].getReviewid() + "\"/></td></tr>");
 
          } catch (Exception e) {
               sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
