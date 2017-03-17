@@ -280,6 +280,7 @@ public class ReviewService
                         + reviews[i].getShop() + "</td><td>"
                         + reviews[i].getComment() + "</td>"
                         + "<td><input type=\"button\" value=\"Delete \" onclick=\"\"  id=\"delete-review-" + reviews[i].getReviewid() + "\"/></td></tr>");
+            }
 
          } catch (Exception e) {
               sb.append("</table><br>Error getting shops: " + e.toString() + "<br>");
